@@ -5,7 +5,6 @@
   "main": "index.js",
 "scripts": {
   "build": "tsc",
-  "start": "npm run build && node ./dist/app.js",
   "server": "npm run build && node ./dist/server.js",
   "tdd": "npm run build && node ./dist/tdd.js"
 },
