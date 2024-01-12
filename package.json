@@ -6,7 +6,8 @@
 "scripts": {
   "build": "tsc",
   "server": "npm run build && node ./dist/server.js",
-  "tdd": "npm run build && node ./dist/tdd.js"
+  "tdd": "npm run build && node ./dist/tdd.js",
+  "v2tdd": "npm run build && node ./dist/v2_tdd.js"
 },
   "author": "",
   "license": "ISC",

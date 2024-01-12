@@ -1,53 +1,6 @@
 
-import { PASS, FAIL, Receipt, Rollup } from './types';
+import { PASS, FAIL, Receipt, Rollup , Price, Sku, Product, Name, Collection, Component, CollectionList, ProductInteraction, CollectionData} from './types';
 
-interface Price {
-    saleWithoutTaxShipping: string;
-    regularWithoutTaxShipping: string;
-    taxOnly: string;
-    isSale: boolean;
-    displaySale: string;
-    displayRegular: string;
-}
-
-interface Sku {
-    price: Price;
-    quantity: number;
-    size: string;
-    sku: string;
-}
-
-interface Product {
-    categoryUnifiedId: string;
-    unifiedId: string;
-    productId: string;
-    skuList: Sku[];
-}
-interface Name {
-    unified: string;
-    localized: string;
-};
-interface Collection {
-    id: string;
-    type: string;
-    name: Name;
-    productList: Product[];
-}
-
-interface Component {
-    id?: string;
-    type?: string;
-    text?: string;
-}
-
-interface ProductInteraction {
-    component: Component;
-    collectionList: Collection[];
-}
-
-interface CollectionData {
-    collectionList: Collection[];
-}
 
 let rollup: { [key: string]: Rollup } = {};
 function footPrints(bool: boolean, whence: string) {
