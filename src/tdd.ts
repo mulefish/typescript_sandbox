@@ -112,7 +112,6 @@ function happyPath_productInteraction_timeIt() {
   const t2 = new Date().getTime() 
   const milliseconds = t2 - t1 
   receipt.millisec = milliseconds
-  // console.log( receipt)
   const isOk = receipt.verdict === true &&  receipt.millisec < 10
   verdict(receipt.verdict, true, "happyPath_productInteraction_timeIt " + receipt.millisec)
 }
