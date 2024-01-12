@@ -3,7 +3,7 @@ import { validateProductInteraction } from './dataValidator';
 
 
 
-const LAMproductInteraction = {
+const LAM_product_interaction = {
   "component": {
     "id": "string",
     "type": "string",
@@ -11,7 +11,7 @@ const LAMproductInteraction = {
   },
   "collectionList": [
     {
-      "id": "pdp-recs-vertical-product-image",
+      "id": "dinosaur-recs-vertical-product-image",
       "type": "recommender",
       "name": {
         "unified": "you-may-like",
@@ -43,15 +43,10 @@ const LAMproductInteraction = {
   ]
 }
 
-
-const LAMmissingComponentText = {
-  "component": {
-    "id": "string",
-    "type": "See? No text entry!",
-  },
+const page_products_displayed = {
   "collectionList": [
     {
-      "id": "pdp-recs-vertical-product-image",
+      "id": "dinosaur-recs-vertical-product-image",
       "type": "recommender",
       "name": {
         "unified": "you-may-like",
@@ -82,8 +77,6 @@ const LAMmissingComponentText = {
     }
   ]
 }
-
-
 function verdict(a: any, b: any, msg: string) {
   if (JSON.stringify(a) === JSON.stringify(b)) {
     console.log(`${PASS} ${msg}`)
@@ -93,42 +86,43 @@ function verdict(a: any, b: any, msg: string) {
 }
 
 
-function happyPath() {
-  const receipt: Receipt = validateProductInteraction(LAMproductInteraction);
+function happyPath_productInteraction() {
+  const receipt: Receipt = validateProductInteraction(LAM_product_interaction);
   // console.log(receipt)
-  verdict(receipt.verdict, true, "happyPath")
+  verdict(receipt.verdict, true, "happyPath_productInteraction")
 }
 
-function sadPath1() {
+function sadPath_productInteraction() {
   /* This will fail because it missing component text, */
 
-  const json_as_string = JSON.stringify(LAMproductInteraction)
+  const json_as_string = JSON.stringify(LAM_product_interaction)
   const brokenJson = JSON.parse(json_as_string)
   delete brokenJson.component.text
   const receipt: Receipt = validateProductInteraction(brokenJson);
   // console.log(receipt)
-  verdict(receipt.verdict, false, "sadPath1")
+  verdict(receipt.verdict, false, "sadPath_productInteraction")
 }
 
 
 
-function happyPath_timeIt() {
+function happyPath_productInteraction_timeIt() {
+  /* Better to quick! */ 
   const t1 = new Date().getTime() 
-  const receipt: Receipt = validateProductInteraction(LAMproductInteraction);
+  const receipt: Receipt = validateProductInteraction(LAM_product_interaction);
   const t2 = new Date().getTime() 
   const milliseconds = t2 - t1 
   receipt.millisec = milliseconds
   // console.log( receipt)
   const isOk = receipt.verdict === true &&  receipt.millisec < 10
-  verdict(receipt.verdict, true, "happyPath_timeIt")
+  verdict(receipt.verdict, true, "happyPath_productInteraction_timeIt " + receipt.millisec)
 }
 
 
 
 function runner() {
-  happyPath()
-  sadPath1()
-  happyPath_timeIt() 
+  happyPath_productInteraction()
+  sadPath_productInteraction()
+  happyPath_productInteraction_timeIt() 
 }
 runner()
 

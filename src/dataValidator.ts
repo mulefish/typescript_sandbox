@@ -23,14 +23,14 @@ interface Product {
     productId: string;
     skuList: Sku[];
 }
-
+interface Name {
+    unified: string;
+    localized: string;
+};
 interface Collection {
     id: string;
     type: string;
-    name: {
-        unified: string;
-        localized: string;
-    };
+    name: Name;
     productList: Product[];
 }
 
@@ -44,10 +44,15 @@ interface ProductInteraction {
     component: Component;
     collectionList: Collection[];
 }
+
+interface CollectionData {
+    collectionList: Collection[];
+}
+
 let rollup: { [key: string]: Rollup } = {};
 function footPrints(bool: boolean, whence: string) {
-    if ( rollup.hasOwnProperty(whence)) {
-        if ( bool === false ) {
+    if (rollup.hasOwnProperty(whence)) {
+        if (bool === false) {
             rollup[whence].verdict = false
         }
         rollup[whence].seen++
@@ -107,7 +112,7 @@ function validateComponent(component: Component): boolean {
 }
 
 
-function resetRollup() { 
+function resetRollup() {
     rollup = {};
 }
 
@@ -116,10 +121,10 @@ export function validateProductInteraction(pi: ProductInteraction): Receipt {
     const isOk = validateComponent(pi.component) &&
         Array.isArray(pi.collectionList) && pi.collectionList.every(validateCollection);
 
-        let finding: Receipt = {
-            verdict: isOk,
-            receipt: rollup
-        };
+    let finding: Receipt = {
+        verdict: isOk,
+        receipt: rollup
+    };
 
     return finding;
 }

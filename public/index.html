@@ -3,23 +3,10 @@
 <head>
     <script>
         const TTFB = new Date().getTime()
-        let analytics = undefined
+        let mice = undefined
         let categoricalOptionalityObjects = undefined
         let transformationModule = undefined
     </script>
-    <!-- <script src="https://assets.adobedtm.com/7a84fdea953b/09aece6f582f/launch-e6cc9ebc113b-development.min.js"></script>
-
-    <script
-        src="https://shop.lululemon.com/static/fmodules/dcp/transformation-configs/latest/transformation-configs-remoteEntry.js"></script>
-    <script
-        src="https://shop.lululemon.com/static/fmodules/dcp/validation-configs/latest/validation-configs-remoteEntry.js"></script>
-    <script src="https://shop.lululemon.com/static/fmodules/dcp/lam-model/latest/lam-model-remoteEntry.js"></script>
-    <script
-        src="https://shop.lululemon.com/static/fmodules/dcp/experiment-module/latest/experiment-module-remoteEntry.js"></script>
-
-    <script async
-        src="https://shop.lululemon.com/static/fmodules/dcp/%40lululemon/mwa-analytics/4.1.10/browser/mwa-analytics.js"></script>
- -->
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
@@ -27,7 +14,7 @@
 <body>
     <div id="loadingModal" class="modal">
         <div class="modal-content">
-            <p>mwa-analytics.js is not ready.</p>
+            <p>mwa-mice.js is not ready.</p>
         </div>
     </div>
     <select onchange="changeSelectedLAMEvent()" id="lam_select">
@@ -49,7 +36,7 @@
 
     <span id="feedBack"></span>
     <div class="container">
-        <textarea class="textarea" id="tdr_area" rows="30"></textarea>
+        <textarea class="textarea" id="tdr_area" rows="30">Currently only product-interaction is a PASS but that will change soon. Select in the dropdown and hit the 'TS' button</textarea>
     </div>
 
     <div class="container">
@@ -142,12 +129,12 @@
                 if (isWellFormed === true) {
                     const json_as_str = document.getElementById("tdr_area").value
                     const json = JSON.parse(json_as_str)
-                    const thing_to_send = `analytics.trackEvent("${selectedEvent}", ${json_as_str})`
+                    const thing_to_send = `mice.trackEvent("${selectedEvent}", ${json_as_str})`
                     console.log(thing_to_send)
 
 
 
-                    const x = await analytics.trackEvent(selectedEvent, json)
+                    const x = await mice.trackEvent(selectedEvent, json)
 
                     const payload = x['payload']['properties']['validationResult']['data']['payload'];
                     // foldableResultsViewer(payload)

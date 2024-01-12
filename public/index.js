@@ -87,8 +87,8 @@ const lam_data = {
             "property": "web-US",
             "collections": [],
             "country": "US",
-            "path": "/products/analytics-module/sandbox",
-            "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+            "path": "/products/mice-module/sandbox",
+            "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
     }, 
     "error":{
@@ -181,8 +181,8 @@ const lam_data = {
           "property": "web-US",
           "collections": [],
           "country": "US",
-          "path": "/products/analytics-module/sandbox",
-          "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+          "path": "/products/mice-module/sandbox",
+          "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
       },
       "general-component-event":{
@@ -276,8 +276,8 @@ const lam_data = {
           "property": "web-US",
           "collections": [],
           "country": "US",
-          "path": "/products/analytics-module/sandbox",
-          "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+          "path": "/products/mice-module/sandbox",
+          "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
       },
       "page-view":{
@@ -367,14 +367,14 @@ const lam_data = {
           "property": "web-US",
           "collections": [],
           "country": "US",
-          "path": "/products/analytics-module/sandbox",
-          "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+          "path": "/products/mice-module/sandbox",
+          "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
       },
       "page-products-displayed":{
         "collectionList": [
           {
-            "id": "pdp-recs-vertical-product-image",
+            "id": "dinosaur-recs-vertical-product-image",
             "type": "recommender",
             "name": {
               "unified": "you-may-like",
@@ -459,7 +459,7 @@ const lam_data = {
               "localized": "You may like"
             },
             "type": "recommender",
-            "id": "pdp-recs-vertical-product-image"
+            "id": "dinosaur-recs-vertical-product-image"
           }
         ],
         "user": {
@@ -527,8 +527,8 @@ const lam_data = {
           "property": "web-US",
           "collections": [],
           "country": "US",
-          "path": "/products/analytics-module/sandbox",
-          "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+          "path": "/products/mice-module/sandbox",
+          "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
       },
       "purchase":{
@@ -617,8 +617,8 @@ const lam_data = {
           "property": "web-US",
           "collections": [],
           "country": "US",
-          "path": "/products/analytics-module/sandbox",
-          "urlRoute": "https://analytics.lululemon.com/products/analytics-module/sandbox"
+          "path": "/products/mice-module/sandbox",
+          "urlRoute": "https://mice.kittycats.com/products/mice-module/sandbox"
         }
       }
 }
@@ -650,7 +650,7 @@ const lam_min_data = {
       "page-products-displayed": {
         "collectionList": [
           {
-            "id": "pdp-recs-vertical-product-image",
+            "id": "dinosaur-recs-vertical-product-image",
             "type": "recommender",
             "name": {
               "unified": "you-may-like",
@@ -689,7 +689,7 @@ const lam_min_data = {
         },
         "collectionList": [
           {
-            "id": "pdp-recs-vertical-product-image",
+            "id": "dinosaur-recs-vertical-product-image",
             "type": "recommender",
             "name": {
               "unified": "you-may-like",
@@ -731,7 +731,7 @@ const shopify_data = {
             "click_id": "",
             "click_url": "",
             "click_text": "\n        \n      ",
-            "click_element": "<div class=\"banner__media banner__media--mobile media\">\n        <img src=\"//lululemon-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=750\" alt=\"\" srcset=\"//lululemon-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=375 375w, //lululemon-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=550 550w, //lululemon-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=750 750w\" width=\"2408\" loading=\"lazy\" sizes=\"100vw\">\n      </div>",
+            "click_element": "<div class=\"banner__media banner__media--mobile media\">\n        <img src=\"//kittycats-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=750\" alt=\"\" srcset=\"//kittycats-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=375 375w, //kittycats-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=550 550w, //kittycats-trove.myshopify.com/cdn/shop/files/NA_Q3_Trove_PartB_Homepage_SingleBanner_FallEssentials_M.jpg?v=1692738654&width=750 750w\" width=\"2408\" loading=\"lazy\" sizes=\"100vw\">\n      </div>",
             "click_target": ""
         },
         "clientId": "df1007bb-d108-4f4b-b09e-c9ac586d263d",
@@ -739,11 +739,11 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/ ",
+                    "href": "https://kittycats-trove.myshopify.com/ ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/",
                     "port": "",
                     "protocol": "https:",
@@ -751,7 +751,7 @@ const shopify_data = {
                 },
                 "referrer": "",
                 "characterSet": "UTF-8",
-                "title": "lululemon Like New | Gently used gear for resale"
+                "title": "kittycats Like New | Gently used gear for resale"
             },
             "navigator": {
                 "language": "en-US",
@@ -770,17 +770,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/ ",
+                    "href": "https://kittycats-trove.myshopify.com/ ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/",
                     "port": "",
                     "protocol": "https:",
                     "search": ""
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -801,19 +801,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/ ",
+                "referrer": "https://kittycats-trove.myshopify.com/ ",
                 "characterSet": "UTF-8",
-                "title": "All Tied Up Tank Top - Resale – lululemon Like New"
+                "title": "All Tied Up Tank Top - Resale – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -832,17 +832,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -861,7 +861,7 @@ const shopify_data = {
             "productVariant": {
                 "id": "47331074113812",
                 "image": {
-                    "src": "//lululemon-trove.myshopify.com/cdn/shop/products/udhygjqgh994ikplkrdw.jpg?v=1702492182"
+                    "src": "//kittycats-trove.myshopify.com/cdn/shop/products/udhygjqgh994ikplkrdw.jpg?v=1702492182"
                 },
                 "price": {
                     "amount": 29,
@@ -872,7 +872,7 @@ const shopify_data = {
                     "title": "All Tied Up Tank Top - Resale",
                     "untranslatedTitle": "All Tied Up Tank Top - Resale",
                     "url": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
-                    "vendor": "Lululemon",
+                    "vendor": "kittycats",
                     "type": "LW1BX7S"
                 },
                 "sku": "LW1BX7S_27574_4_Good as new",
@@ -885,19 +885,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/ ",
+                "referrer": "https://kittycats-trove.myshopify.com/ ",
                 "characterSet": "UTF-8",
-                "title": "All Tied Up Tank Top - Resale – lululemon Like New"
+                "title": "All Tied Up Tank Top - Resale – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -916,17 +916,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -959,7 +959,7 @@ const shopify_data = {
                     "product": {
                         "id": "8896125829396",
                         "title": "All Tied Up Tank Top - Resale - 4 / Good as new",
-                        "vendor": "Lululemon"
+                        "vendor": "kittycats"
                     },
                     "sku": "LW1BX7S_27574_4_Good as new"
                 },
@@ -971,19 +971,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/ ",
+                "referrer": "https://kittycats-trove.myshopify.com/ ",
                 "characterSet": "UTF-8",
-                "title": "All Tied Up Tank Top - Resale – lululemon Like New"
+                "title": "All Tied Up Tank Top - Resale – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -1002,17 +1002,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 1050.2857666015625,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
+                    "href": "https://kittycats-trove.myshopify.com/products/all-tied-up-tank-top-resale_lw1bx7s_27574?variant=47331074113812 ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
                     "port": "",
                     "protocol": "https:",
                     "search": "?variant=47331074113812"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -1034,7 +1034,7 @@ const shopify_data = {
                     {
                         "id": "47331349922068",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/omfecmndxj6oqfeunwgw.jpg?v=1702496725"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/omfecmndxj6oqfeunwgw.jpg?v=1702496725"
                         },
                         "price": {
                             "amount": 71,
@@ -1045,7 +1045,7 @@ const shopify_data = {
                             "title": "Women's Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Women's Bhakti Yoga Jacket - Resale",
                             "url": "/products/womens-bhakti-yoga-jacket-resale_trove-44370_black?_pos=1&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "TROVE-44370"
                         },
                         "sku": "TROVE-44370_Black_0_Good as new",
@@ -1055,7 +1055,7 @@ const shopify_data = {
                     {
                         "id": "46203817558292",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/vtxlovk5jou8h665nxuv_e06e0d02-4e64-4686-b686-607c440c28a4.jpg?v=1697194600"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/vtxlovk5jou8h665nxuv_e06e0d02-4e64-4686-b686-607c440c28a4.jpg?v=1697194600"
                         },
                         "price": {
                             "amount": 35,
@@ -1066,7 +1066,7 @@ const shopify_data = {
                             "title": "The Yoga Bag - Resale",
                             "untranslatedTitle": "The Yoga Bag - Resale",
                             "url": "/products/the-yoga-bag-resale_lw9mdcs_28903?_pos=2&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW9MDCS_28903_One Size_Good as new",
@@ -1076,7 +1076,7 @@ const shopify_data = {
                     {
                         "id": "47330550382868",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/kw1opnwf2g48lw2ork7f.jpg?v=1702479179"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/kw1opnwf2g48lw2ork7f.jpg?v=1702479179"
                         },
                         "price": {
                             "amount": 59,
@@ -1087,7 +1087,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4c20s_1?_pos=3&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4C20S"
                         },
                         "sku": "LW4C20S_1_10_Gently used",
@@ -1097,7 +1097,7 @@ const shopify_data = {
                     {
                         "id": "47099527659796",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/h6mojdvg8opdthijvapv.jpg?v=1698596776"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/h6mojdvg8opdthijvapv.jpg?v=1698596776"
                         },
                         "price": {
                             "amount": 69,
@@ -1108,7 +1108,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4f02s_9355?_pos=4&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4F02S"
                         },
                         "sku": "LW4F02S_9355_6_Good as new",
@@ -1118,7 +1118,7 @@ const shopify_data = {
                     {
                         "id": "47099527495956",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/u6ntzmx7elxnxpqs6shq.jpg?v=1698596772"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/u6ntzmx7elxnxpqs6shq.jpg?v=1698596772"
                         },
                         "price": {
                             "amount": 69,
@@ -1129,7 +1129,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4f02s_8903?_pos=5&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4F02S"
                         },
                         "sku": "LW4F02S_8903_6_Good as new",
@@ -1139,7 +1139,7 @@ const shopify_data = {
                     {
                         "id": "47099527168276",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/LW4F02S_7524_D.webp?v=1698596767"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/LW4F02S_7524_D.webp?v=1698596767"
                         },
                         "price": {
                             "amount": 69,
@@ -1150,7 +1150,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4f02s_7524?_pos=6&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4F02S"
                         },
                         "sku": "LW4F02S_7524_8_Good as new",
@@ -1160,7 +1160,7 @@ const shopify_data = {
                     {
                         "id": "47099527102740",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/pawviruannwo1vyu8nok.jpg?v=1698596765"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/pawviruannwo1vyu8nok.jpg?v=1698596765"
                         },
                         "price": {
                             "amount": 69,
@@ -1171,7 +1171,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4f02s_14?_pos=7&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4F02S"
                         },
                         "sku": "LW4F02S_14_6_Good as new",
@@ -1181,7 +1181,7 @@ const shopify_data = {
                     {
                         "id": "47099526414612",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/rakqxx4jjzltuz2x5eu4.jpg?v=1698596760"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/rakqxx4jjzltuz2x5eu4.jpg?v=1698596760"
                         },
                         "price": {
                             "amount": 59,
@@ -1192,7 +1192,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Jacket - Resale",
                             "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                             "url": "/products/bhakti-yoga-jacket-resale_lw4f02s_1?_pos=8&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4F02S"
                         },
                         "sku": "LW4F02S_1_4_Gently used",
@@ -1202,7 +1202,7 @@ const shopify_data = {
                     {
                         "id": "46206074945812",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/zdmw2xfmhoocy5gtwywd.jpg?v=1692072214"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/zdmw2xfmhoocy5gtwywd.jpg?v=1692072214"
                         },
                         "price": {
                             "amount": 45,
@@ -1213,7 +1213,7 @@ const shopify_data = {
                             "title": "Devi Yoga Crop - Resale",
                             "untranslatedTitle": "Devi Yoga Crop - Resale",
                             "url": "/products/devi-yoga-crop-resale_lw6e45s_16523?_pos=9&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW6E45S_16523_6_Good as new",
@@ -1223,7 +1223,7 @@ const shopify_data = {
                     {
                         "id": "46205949247764",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/r7el92ijlftoyoblex3f.jpg?v=1692070692"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/r7el92ijlftoyoblex3f.jpg?v=1692070692"
                         },
                         "price": {
                             "amount": 35,
@@ -1234,7 +1234,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Short - Resale",
                             "untranslatedTitle": "Bhakti Yoga Short - Resale",
                             "url": "/products/bhakti-yoga-short-resale_lw7914s_1?_pos=10&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW7914S_1_2_Gently used",
@@ -1244,7 +1244,7 @@ const shopify_data = {
                     {
                         "id": "46205942923540",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/oie7pxvtmknnskbrqwkw.jpg?v=1702484243"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/oie7pxvtmknnskbrqwkw.jpg?v=1702484243"
                         },
                         "price": {
                             "amount": 41,
@@ -1255,7 +1255,7 @@ const shopify_data = {
                             "title": "Bhakti Yoga Short - Resale",
                             "untranslatedTitle": "Bhakti Yoga Short - Resale",
                             "url": "/products/bhakti-yoga-short-resale_lw7939s_12600?_pos=11&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW7939S"
                         },
                         "sku": "LW7939S_12600_6_Good as new",
@@ -1265,7 +1265,7 @@ const shopify_data = {
                     {
                         "id": "46204896051476",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/xcmqhchfzrqjpskjeqi9_3524091d-9884-4931-8102-03d2c4e13516.jpg?v=1701431587"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/xcmqhchfzrqjpskjeqi9_3524091d-9884-4931-8102-03d2c4e13516.jpg?v=1701431587"
                         },
                         "price": {
                             "amount": 45,
@@ -1276,7 +1276,7 @@ const shopify_data = {
                             "title": "Yoga Over Skirt - Resale",
                             "untranslatedTitle": "Yoga Over Skirt - Resale",
                             "url": "/products/yoga-over-skirt-resale_lw8426s_3172?_pos=12&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW8426S"
                         },
                         "sku": "LW8426S_3172_2_Gently used",
@@ -1286,7 +1286,7 @@ const shopify_data = {
                     {
                         "id": "46204888908052",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/u7toyezlbwufzzg72b9y.jpg?v=1692064349"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/u7toyezlbwufzzg72b9y.jpg?v=1692064349"
                         },
                         "price": {
                             "amount": 49,
@@ -1297,7 +1297,7 @@ const shopify_data = {
                             "title": "Yoga Over Skirt - Resale",
                             "untranslatedTitle": "Yoga Over Skirt - Resale",
                             "url": "/products/yoga-over-skirt-resale_lw8524s_1?_pos=13&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW8524S_1_4_Good as new",
@@ -1307,7 +1307,7 @@ const shopify_data = {
                     {
                         "id": "46204766257428",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/lirlqdjteawbb1smx69d.jpg?v=1692063024"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/lirlqdjteawbb1smx69d.jpg?v=1692063024"
                         },
                         "price": {
                             "amount": 39,
@@ -1318,7 +1318,7 @@ const shopify_data = {
                             "title": "The Yoga Mat Bag - Resale",
                             "untranslatedTitle": "The Yoga Mat Bag - Resale",
                             "url": "/products/the-yoga-mat-bag-resale_lw9cjcs_45740?_pos=14&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW9CJCS_45740_One Size_Good as new",
@@ -1328,7 +1328,7 @@ const shopify_data = {
                     {
                         "id": "46204765831444",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/qrre11uhcmrbhcf6vq9v.jpg?v=1692063019"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/qrre11uhcmrbhcf6vq9v.jpg?v=1692063019"
                         },
                         "price": {
                             "amount": 39,
@@ -1339,7 +1339,7 @@ const shopify_data = {
                             "title": "The Yoga Mat Bag - Resale",
                             "untranslatedTitle": "The Yoga Mat Bag - Resale",
                             "url": "/products/the-yoga-mat-bag-resale_lw9cjcs_26950?_pos=15&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW9CJCS_26950_One Size_Good as new",
@@ -1358,7 +1358,7 @@ const shopify_data = {
                             "title": "High-Rise Yoga Crop - Resale",
                             "untranslatedTitle": "High-Rise Yoga Crop - Resale",
                             "url": "/products/high-rise-yoga-crop-resale_lw6bnys_49929?_pos=16&_sid=090fd0cfd&_ss=r",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW6BNYS_49929_6_Good as new",
@@ -1373,19 +1373,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/search?q=yoga&options%5Bprefix%5D=last ",
+                    "href": "https://kittycats-trove.myshopify.com/search?q=yoga&options%5Bprefix%5D=last ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/search",
                     "port": "",
                     "protocol": "https:",
                     "search": "?q=yoga&options%5Bprefix%5D=last"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/products/commission-long-sleeve-shirt-resale_lm3cuis_2?variant=47024438346004 ",
+                "referrer": "https://kittycats-trove.myshopify.com/products/commission-long-sleeve-shirt-resale_lm3cuis_2?variant=47024438346004 ",
                 "characterSet": "UTF-8",
-                "title": "Search: 28 results found for \"yoga\" – lululemon Like New"
+                "title": "Search: 28 results found for \"yoga\" – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -1404,17 +1404,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/search?q=yoga&options%5Bprefix%5D=last ",
+                    "href": "https://kittycats-trove.myshopify.com/search?q=yoga&options%5Bprefix%5D=last ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/search",
                     "port": "",
                     "protocol": "https:",
                     "search": "?q=yoga&options%5Bprefix%5D=last"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -1457,7 +1457,7 @@ const shopify_data = {
                         }
                     }
                 ],
-                "email": "pmontgomery@lululemon.com",
+                "email": "pmontgomery@kittycats.com",
                 "phone": "",
                 "lineItems": [
                     {
@@ -1477,7 +1477,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8873232072980",
                                 "title": "Women's Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "AZ3058",
                                 "untranslatedTitle": "Women's Shirt - Resale",
                                 "url": "/products/womens-shirt-resale_az3058_black"
@@ -1504,7 +1504,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8782840430868",
                                 "title": "Commission Long Sleeve Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3cuis_2"
@@ -1531,7 +1531,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8896125829396",
                                 "title": "All Tied Up Tank Top - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW1BX7S",
                                 "untranslatedTitle": "All Tied Up Tank Top - Resale",
                                 "url": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574"
@@ -1558,7 +1558,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8843988304148",
                                 "title": "Commission Long Sleeve Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LM3CLXS",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3clxs_48096"
@@ -1585,7 +1585,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8895935217940",
                                 "title": "Bhakti Yoga Jacket - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW4C20S",
                                 "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                                 "url": "/products/bhakti-yoga-jacket-resale_lw4c20s_1"
@@ -1635,19 +1635,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
+                    "href": "https://kittycats-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information",
                     "port": "",
                     "protocol": "https:",
                     "search": "?ew_m=f"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/products/bhakti-yoga-jacket-resale_lw4c20s_1?variant=47330550382868 ",
+                "referrer": "https://kittycats-trove.myshopify.com/products/bhakti-yoga-jacket-resale_lw4c20s_1?variant=47330550382868 ",
                 "characterSet": "UTF-8",
-                "title": "Information - lululemon Like New - Checkout"
+                "title": "Information - kittycats Like New - Checkout"
             },
             "navigator": {
                 "language": "en-US",
@@ -1666,17 +1666,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
+                    "href": "https://kittycats-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information",
                     "port": "",
                     "protocol": "https:",
                     "search": "?ew_m=f"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -1711,7 +1711,7 @@ const shopify_data = {
                         "merchandise": {
                             "id": "47024438346004",
                             "image": {
-                                "src": "//lululemon-trove.myshopify.com/cdn/shop/products/vatv3uqtcsnwugk2reoj_1f52168e-be30-499c-b430-72ac9d044efe.jpg?v=1697578859"
+                                "src": "//kittycats-trove.myshopify.com/cdn/shop/products/vatv3uqtcsnwugk2reoj_1f52168e-be30-499c-b430-72ac9d044efe.jpg?v=1697578859"
                             },
                             "price": {
                                 "amount": 65,
@@ -1722,7 +1722,7 @@ const shopify_data = {
                                 "title": "Commission Long Sleeve Shirt - Resale",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3cuis_2",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": ""
                             },
                             "sku": "LM3CUIS_2_XL_Gently used",
@@ -1741,7 +1741,7 @@ const shopify_data = {
                         "merchandise": {
                             "id": "47174553665812",
                             "image": {
-                                "src": "//lululemon-trove.myshopify.com/cdn/shop/products/wphxfash4zy0i0swflvj.jpg?v=1699613880"
+                                "src": "//kittycats-trove.myshopify.com/cdn/shop/products/wphxfash4zy0i0swflvj.jpg?v=1699613880"
                             },
                             "price": {
                                 "amount": 65,
@@ -1752,7 +1752,7 @@ const shopify_data = {
                                 "title": "Commission Long Sleeve Shirt - Resale",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3clxs_48096",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LM3CLXS"
                             },
                             "sku": "LM3CLXS_48096_L_Good as new",
@@ -1771,7 +1771,7 @@ const shopify_data = {
                         "merchandise": {
                             "id": "47264580501780",
                             "image": {
-                                "src": "//lululemon-trove.myshopify.com/cdn/shop/products/m3qtosdcvkytffaoh30f_c8a8cfd2-db11-4218-a03b-437a1c6d5064.jpg?v=1701152440"
+                                "src": "//kittycats-trove.myshopify.com/cdn/shop/products/m3qtosdcvkytffaoh30f_c8a8cfd2-db11-4218-a03b-437a1c6d5064.jpg?v=1701152440"
                             },
                             "price": {
                                 "amount": 42,
@@ -1782,7 +1782,7 @@ const shopify_data = {
                                 "title": "Women's Shirt - Resale",
                                 "untranslatedTitle": "Women's Shirt - Resale",
                                 "url": "/products/womens-shirt-resale_az3058_black",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "AZ3058"
                             },
                             "sku": "AZ3058_Black_16_Good as new",
@@ -1801,7 +1801,7 @@ const shopify_data = {
                         "merchandise": {
                             "id": "47330550382868",
                             "image": {
-                                "src": "//lululemon-trove.myshopify.com/cdn/shop/products/kw1opnwf2g48lw2ork7f.jpg?v=1702479179"
+                                "src": "//kittycats-trove.myshopify.com/cdn/shop/products/kw1opnwf2g48lw2ork7f.jpg?v=1702479179"
                             },
                             "price": {
                                 "amount": 59,
@@ -1812,7 +1812,7 @@ const shopify_data = {
                                 "title": "Bhakti Yoga Jacket - Resale",
                                 "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                                 "url": "/products/bhakti-yoga-jacket-resale_lw4c20s_1",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW4C20S"
                             },
                             "sku": "LW4C20S_1_10_Gently used",
@@ -1831,7 +1831,7 @@ const shopify_data = {
                         "merchandise": {
                             "id": "47331074113812",
                             "image": {
-                                "src": "//lululemon-trove.myshopify.com/cdn/shop/products/udhygjqgh994ikplkrdw.jpg?v=1702492182"
+                                "src": "//kittycats-trove.myshopify.com/cdn/shop/products/udhygjqgh994ikplkrdw.jpg?v=1702492182"
                             },
                             "price": {
                                 "amount": 29,
@@ -1842,7 +1842,7 @@ const shopify_data = {
                                 "title": "All Tied Up Tank Top - Resale",
                                 "untranslatedTitle": "All Tied Up Tank Top - Resale",
                                 "url": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW1BX7S"
                             },
                             "sku": "LW1BX7S_27574_4_Good as new",
@@ -1860,19 +1860,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/cart ",
+                    "href": "https://kittycats-trove.myshopify.com/cart ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/cart",
                     "port": "",
                     "protocol": "https:",
                     "search": ""
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/collections/women?sort_by=price-descending ",
+                "referrer": "https://kittycats-trove.myshopify.com/collections/women?sort_by=price-descending ",
                 "characterSet": "UTF-8",
-                "title": "Your Shopping Cart – lululemon Like New"
+                "title": "Your Shopping Cart – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -1891,17 +1891,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/cart ",
+                    "href": "https://kittycats-trove.myshopify.com/cart ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/cart",
                     "port": "",
                     "protocol": "https:",
                     "search": ""
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -1957,7 +1957,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8873232072980",
                                 "title": "Women's Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "AZ3058",
                                 "untranslatedTitle": "Women's Shirt - Resale",
                                 "url": "/products/womens-shirt-resale_az3058_black"
@@ -1984,7 +1984,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8782840430868",
                                 "title": "Commission Long Sleeve Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3cuis_2"
@@ -2011,7 +2011,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8896125829396",
                                 "title": "All Tied Up Tank Top - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW1BX7S",
                                 "untranslatedTitle": "All Tied Up Tank Top - Resale",
                                 "url": "/products/all-tied-up-tank-top-resale_lw1bx7s_27574"
@@ -2038,7 +2038,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8843988304148",
                                 "title": "Commission Long Sleeve Shirt - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LM3CLXS",
                                 "untranslatedTitle": "Commission Long Sleeve Shirt - Resale",
                                 "url": "/products/commission-long-sleeve-shirt-resale_lm3clxs_48096"
@@ -2065,7 +2065,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8895935217940",
                                 "title": "Bhakti Yoga Jacket - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "LW4C20S",
                                 "untranslatedTitle": "Bhakti Yoga Jacket - Resale",
                                 "url": "/products/bhakti-yoga-jacket-resale_lw4c20s_1"
@@ -2092,7 +2092,7 @@ const shopify_data = {
                             "product": {
                                 "id": "8797079830804",
                                 "title": "Wunder Under Crop - Resale",
-                                "vendor": "Lululemon",
+                                "vendor": "kittycats",
                                 "type": "",
                                 "untranslatedTitle": "Wunder Under Crop - Resale",
                                 "url": "/products/wunder-under-crop-resale_lw6339s_3407"
@@ -2142,19 +2142,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
+                    "href": "https://kittycats-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information",
                     "port": "",
                     "protocol": "https:",
                     "search": "?ew_m=f"
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/products/wunder-under-crop-resale_lw6339s_3407?variant=47063657120020 ",
+                "referrer": "https://kittycats-trove.myshopify.com/products/wunder-under-crop-resale_lw6339s_3407?variant=47063657120020 ",
                 "characterSet": "UTF-8",
-                "title": "Information - lululemon Like New - Checkout"
+                "title": "Information - kittycats Like New - Checkout"
             },
             "navigator": {
                 "language": "en-US",
@@ -2173,17 +2173,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
+                    "href": "https://kittycats-trove.myshopify.com/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information?ew_m=f ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/checkouts/cn/c1-d0867c69c60f829d08e02baa85958309/information",
                     "port": "",
                     "protocol": "https:",
                     "search": "?ew_m=f"
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440
@@ -2206,7 +2206,7 @@ const shopify_data = {
                     {
                         "id": "47210660823316",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/lofjlp4aixw68amc7gzm.jpg?v=1700217715"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/lofjlp4aixw68amc7gzm.jpg?v=1700217715"
                         },
                         "price": {
                             "amount": 69,
@@ -2217,7 +2217,7 @@ const shopify_data = {
                             "title": "Wunder Under High Rise Legging - Resale",
                             "untranslatedTitle": "Wunder Under High Rise Legging - Resale",
                             "url": "/products/wunder-under-high-rise-legging-resale_lw5cnls_43965",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW5CNLS"
                         },
                         "sku": "LW5CNLS_43965_12_Good as new",
@@ -2227,7 +2227,7 @@ const shopify_data = {
                     {
                         "id": "46205959110932",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/tnn97jziaaklou7aadxc.jpg?v=1692070756"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/tnn97jziaaklou7aadxc.jpg?v=1692070756"
                         },
                         "price": {
                             "amount": 15,
@@ -2238,7 +2238,7 @@ const shopify_data = {
                             "title": "Astro Short - Resale",
                             "untranslatedTitle": "Astro Short - Resale",
                             "url": "/products/astro-short-resale_lw7858s_1",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW7858S_1_10_Good as new",
@@ -2248,7 +2248,7 @@ const shopify_data = {
                     {
                         "id": "47190286041364",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/bcmmk7ojfuvjf21xkmob.jpg?v=1699912721"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/bcmmk7ojfuvjf21xkmob.jpg?v=1699912721"
                         },
                         "price": {
                             "amount": 49,
@@ -2256,10 +2256,10 @@ const shopify_data = {
                         },
                         "product": {
                             "id": "8849081958676",
-                            "title": "lululemon Align™ High-Rise Crop - Resale",
-                            "untranslatedTitle": "lululemon Align™ High-Rise Crop - Resale",
-                            "url": "/products/lululemon-align-high-rise-crop-resale_lw6ay2s_2",
-                            "vendor": "Lululemon",
+                            "title": "kittycats Align™ High-Rise Crop - Resale",
+                            "untranslatedTitle": "kittycats Align™ High-Rise Crop - Resale",
+                            "url": "/products/kittycats-align-high-rise-crop-resale_lw6ay2s_2",
+                            "vendor": "kittycats",
                             "type": "LW6AY2S"
                         },
                         "sku": "LW6AY2S_2_0_Good as new",
@@ -2269,7 +2269,7 @@ const shopify_data = {
                     {
                         "id": "47318391882004",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/ulenpapvl7mqjdho0nb6_c9bf1438-b4fb-49b3-a319-eede1ea5cac0.jpg?v=1702487868"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/ulenpapvl7mqjdho0nb6_c9bf1438-b4fb-49b3-a319-eede1ea5cac0.jpg?v=1702487868"
                         },
                         "price": {
                             "amount": 49,
@@ -2280,7 +2280,7 @@ const shopify_data = {
                             "title": "Wunder Under Legging - Resale",
                             "untranslatedTitle": "Wunder Under Legging - Resale",
                             "url": "/products/wunder-under-legging-resale_lw5500s_7428",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW5500S"
                         },
                         "sku": "LW5500S_7428_8_Good as new",
@@ -2290,7 +2290,7 @@ const shopify_data = {
                     {
                         "id": "47310715552020",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/swwera0xaz1i9ic7a5ap.jpg?v=1702033625"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/swwera0xaz1i9ic7a5ap.jpg?v=1702033625"
                         },
                         "price": {
                             "amount": 19,
@@ -2301,7 +2301,7 @@ const shopify_data = {
                             "title": "Love Sleeveless Tank Top - Resale",
                             "untranslatedTitle": "Love Sleeveless Tank Top - Resale",
                             "url": "/products/love-sleeveless-tank-top-resale_lw1aops_2",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW1AOPS"
                         },
                         "sku": "LW1AOPS_2_4_Gently used",
@@ -2311,7 +2311,7 @@ const shopify_data = {
                     {
                         "id": "47219208814868",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/wowx7kdgisb8f0syhykt.jpg?v=1700404415"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/wowx7kdgisb8f0syhykt.jpg?v=1700404415"
                         },
                         "price": {
                             "amount": 69,
@@ -2322,7 +2322,7 @@ const shopify_data = {
                             "title": "All Yours Tank Midi Dress - Resale",
                             "untranslatedTitle": "All Yours Tank Midi Dress - Resale",
                             "url": "/products/all-yours-tank-midi-dress-resale_lw1cq8s_48131",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW1CQ8S"
                         },
                         "sku": "LW1CQ8S_48131_6_Good as new",
@@ -2341,7 +2341,7 @@ const shopify_data = {
                             "title": "Hooded Define Jacket - Resale",
                             "untranslatedTitle": "Hooded Define Jacket - Resale",
                             "url": "/products/hooded-define-jacket-resale_lw4bcjs_47316",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW4BCJS"
                         },
                         "sku": "LW4BCJS_47316_10_Good as new",
@@ -2351,7 +2351,7 @@ const shopify_data = {
                     {
                         "id": "47063660101908",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/ml9dddvezlkfexabjawo.jpg?v=1698087676"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/ml9dddvezlkfexabjawo.jpg?v=1698087676"
                         },
                         "price": {
                             "amount": 39,
@@ -2362,7 +2362,7 @@ const shopify_data = {
                             "title": "Wunder Under Crop - Resale",
                             "untranslatedTitle": "Wunder Under Crop - Resale",
                             "url": "/products/wunder-under-crop-resale_lw6339s_9732",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": ""
                         },
                         "sku": "LW6339S_9732_4_Good as new",
@@ -2381,7 +2381,7 @@ const shopify_data = {
                             "title": "Rush Hour Long Sleeve Shirt - Resale",
                             "untranslatedTitle": "Rush Hour Long Sleeve Shirt - Resale",
                             "url": "/products/rush-hour-long-sleeve-shirt-resale_lw3aaos_26620",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW3AAOS"
                         },
                         "sku": "LW3AAOS_26620_10_Good as new",
@@ -2391,7 +2391,7 @@ const shopify_data = {
                     {
                         "id": "47360885653780",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/tn4cguljhdv069od709z.jpg?v=1703028863"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/tn4cguljhdv069od709z.jpg?v=1703028863"
                         },
                         "price": {
                             "amount": 39,
@@ -2402,7 +2402,7 @@ const shopify_data = {
                             "title": "Love Scoop Long Sleeve - Resale",
                             "untranslatedTitle": "Love Scoop Long Sleeve - Resale",
                             "url": "/products/love-scoop-long-sleeve-resale_lw3af3s_2",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW3AF3S"
                         },
                         "sku": "LW3AF3S_2_4_Gently used",
@@ -2412,7 +2412,7 @@ const shopify_data = {
                     {
                         "id": "47360881426708",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/hj8rp77mulqsc5yrllrc_cba33ef2-b595-4ad3-88c1-b965d6bdedde.jpg?v=1703028785"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/hj8rp77mulqsc5yrllrc_cba33ef2-b595-4ad3-88c1-b965d6bdedde.jpg?v=1703028785"
                         },
                         "price": {
                             "amount": 39,
@@ -2423,7 +2423,7 @@ const shopify_data = {
                             "title": "Wunder Under Crop - Resale",
                             "untranslatedTitle": "Wunder Under Crop - Resale",
                             "url": "/products/wunder-under-crop-resale_lw6712s_2",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW6712S"
                         },
                         "sku": "LW6712S_2_6_Good as new",
@@ -2433,7 +2433,7 @@ const shopify_data = {
                     {
                         "id": "47360882114836",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/xf46hpdk8mmma4zfqvhp_9c433576-cefe-4784-8497-f705ce8883b7.jpg?v=1703028788"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/xf46hpdk8mmma4zfqvhp_9c433576-cefe-4784-8497-f705ce8883b7.jpg?v=1703028788"
                         },
                         "price": {
                             "amount": 39,
@@ -2444,7 +2444,7 @@ const shopify_data = {
                             "title": "Wunder Under Crop - Resale",
                             "untranslatedTitle": "Wunder Under Crop - Resale",
                             "url": "/products/wunder-under-crop-resale_lw6712s_9927",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW6712S"
                         },
                         "sku": "LW6712S_9927_10_Good as new",
@@ -2454,7 +2454,7 @@ const shopify_data = {
                     {
                         "id": "47360312246548",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/qlcsxf609qwxnp3faedn_9b8561a2-e058-4aa8-94ed-cb8ea0c9a77b.jpg?v=1703025040"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/qlcsxf609qwxnp3faedn_9b8561a2-e058-4aa8-94ed-cb8ea0c9a77b.jpg?v=1703025040"
                         },
                         "price": {
                             "amount": 89,
@@ -2465,7 +2465,7 @@ const shopify_data = {
                             "title": "Tight Stuff Tight - Resale",
                             "untranslatedTitle": "Tight Stuff Tight - Resale",
                             "url": "/products/tight-stuff-tight-resale_lw5bc8s_32558",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW5BC8S"
                         },
                         "sku": "LW5BC8S_32558_2_Good as new",
@@ -2475,7 +2475,7 @@ const shopify_data = {
                     {
                         "id": "47353032081684",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/bhuoicwlosdl9cpkcjv4_2260a27b-810a-4d36-a2a5-77668321c570.jpg?v=1703008090"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/bhuoicwlosdl9cpkcjv4_2260a27b-810a-4d36-a2a5-77668321c570.jpg?v=1703008090"
                         },
                         "price": {
                             "amount": 29,
@@ -2486,7 +2486,7 @@ const shopify_data = {
                             "title": "Feminine High Volume Burnout Tank Top - Resale",
                             "untranslatedTitle": "Feminine High Volume Burnout Tank Top - Resale",
                             "url": "/products/feminine-high-volume-burnout-tank-top-resale_lw1cq6s_1",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW1CQ6S"
                         },
                         "sku": "LW1CQ6S_1_4_Good as new",
@@ -2496,7 +2496,7 @@ const shopify_data = {
                     {
                         "id": "47353032507668",
                         "image": {
-                            "src": "//lululemon-trove.myshopify.com/cdn/shop/products/mo73oq4rqxrp7s33dnv9_93b8a2a7-63ec-4552-beb1-342aefa59f29.jpg?v=1703008094"
+                            "src": "//kittycats-trove.myshopify.com/cdn/shop/products/mo73oq4rqxrp7s33dnv9_93b8a2a7-63ec-4552-beb1-342aefa59f29.jpg?v=1703008094"
                         },
                         "price": {
                             "amount": 29,
@@ -2507,7 +2507,7 @@ const shopify_data = {
                             "title": "Feminine High Volume Burnout Tank Top - Resale",
                             "untranslatedTitle": "Feminine High Volume Burnout Tank Top - Resale",
                             "url": "/products/feminine-high-volume-burnout-tank-top-resale_lw1cq6s_4242",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW1CQ6S"
                         },
                         "sku": "LW1CQ6S_4242_4_Good as new",
@@ -2526,7 +2526,7 @@ const shopify_data = {
                             "title": "Cinch Me Up Tank Top - Resale",
                             "untranslatedTitle": "Cinch Me Up Tank Top - Resale",
                             "url": "/products/cinch-me-up-tank-top-resale_lw1cq6s_34464",
-                            "vendor": "Lululemon",
+                            "vendor": "kittycats",
                             "type": "LW1CQ6S"
                         },
                         "sku": "LW1CQ6S_34464_0_Good as new",
@@ -2541,19 +2541,19 @@ const shopify_data = {
         "context": {
             "document": {
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/collections/women ",
+                    "href": "https://kittycats-trove.myshopify.com/collections/women ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/collections/women",
                     "port": "",
                     "protocol": "https:",
                     "search": ""
                 },
-                "referrer": "https://lululemon-trove.myshopify.com/ ",
+                "referrer": "https://kittycats-trove.myshopify.com/ ",
                 "characterSet": "UTF-8",
-                "title": "Women's Clothing & Accessories – lululemon Like New"
+                "title": "Women's Clothing & Accessories – kittycats Like New"
             },
             "navigator": {
                 "language": "en-US",
@@ -2572,17 +2572,17 @@ const shopify_data = {
                 "pageXOffset": 0,
                 "pageYOffset": 0,
                 "location": {
-                    "href": "https://lululemon-trove.myshopify.com/collections/women ",
+                    "href": "https://kittycats-trove.myshopify.com/collections/women ",
                     "hash": "",
-                    "host": "http://lululemon-trove.myshopify.com ",
-                    "hostname": "http://lululemon-trove.myshopify.com ",
-                    "origin": "https://lululemon-trove.myshopify.com ",
+                    "host": "http://kittycats-trove.myshopify.com ",
+                    "hostname": "http://kittycats-trove.myshopify.com ",
+                    "origin": "https://kittycats-trove.myshopify.com ",
                     "pathname": "/collections/women",
                     "port": "",
                     "protocol": "https:",
                     "search": ""
                 },
-                "origin": "https://lululemon-trove.myshopify.com ",
+                "origin": "https://kittycats-trove.myshopify.com ",
                 "screen": {
                     "height": 900,
                     "width": 1440

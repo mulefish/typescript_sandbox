@@ -6,7 +6,7 @@ git@github.com:mulefish/typescript_sandbox.git
 
 
 # COMMANDS
-npm run build // javac 
-npm run tdd // test 
-npm run start // web server 
+npm run build // javac    
+npm run tdd // test   
+npm run server // web server    
 
