@@ -113,7 +113,6 @@ function sadPath1() {
 
 function runner() {
   happyPath()
-
   console.log("")
   sadPath1()
 }
