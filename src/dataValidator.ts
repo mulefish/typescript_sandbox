@@ -1,8 +1,3 @@
-interface Component {
-    id: string;
-    type: string;
-    text: string;
-}
 
 interface Price {
     saleWithoutTaxShipping: string;
@@ -37,62 +32,53 @@ interface Collection {
     productList: Product[];
 }
 
-interface Data {
+interface Component {
+    id?: string;
+    type?: string;
+    text?: string;
+}
+
+interface ProductInteraction {
     component: Component;
     collectionList: Collection[];
 }
 
-export function isValidComponent(component: any): component is Component {
-    return component && typeof component.id === 'string' && typeof component.type === 'string' && typeof component.text === 'string';
+function validatePrice(price: Price): boolean {
+    return typeof price.saleWithoutTaxShipping === 'string' &&
+           typeof price.regularWithoutTaxShipping === 'string';
 }
 
-export function isValidPrice(price: any): price is Price {
-    // Add specific validation for each field in the Price interface
-    return price && typeof price.isSale === 'boolean';
+function validateSku(sku: Sku): boolean {
+    return validatePrice(sku.price) &&
+           typeof sku.quantity === 'number' &&
+           typeof sku.size === 'string' &&
+           typeof sku.sku === 'string';
 }
 
-export function isValidSku(sku: any): sku is Sku {
-    return sku && isValidPrice(sku.price) && typeof sku.quantity === 'number';
+function validateProduct(product: Product): boolean {
+    return typeof product.categoryUnifiedId === 'string' &&
+           typeof product.unifiedId === 'string' &&
+           typeof product.productId === 'string' &&
+           Array.isArray(product.skuList) && product.skuList.every(validateSku);
 }
 
-export function isValidProduct(product: any): product is Product {
-    return product && Array.isArray(product.skuList) && product.skuList.every(isValidSku);
+function validateCollection(collection: Collection): boolean {
+    return typeof collection.id === 'string' &&
+           typeof collection.type === 'string' &&
+           typeof collection.name.unified === 'string' &&
+           typeof collection.name.localized === 'string' &&
+           Array.isArray(collection.productList) && collection.productList.every(validateProduct);
 }
 
-export function isValidCollection(collection: any): collection is Collection {
-    return collection && Array.isArray(collection.productList) && collection.productList.every(isValidProduct);
+function validateComponent(component: Component): boolean {
+    return typeof component.id === 'string' &&
+           typeof component.type === 'string' &&
+           typeof component.text === 'string';
+}
+
+export function validateProductInteraction(pi: ProductInteraction): boolean {
+    return validateComponent(pi.component) &&
+           Array.isArray(pi.collectionList) && pi.collectionList.every(validateCollection);
 }
 
 
-function validateComponent(component: any): { isValid: boolean; errors: string[] } {
-    let errors: string[] = [];
-
-    if (!component) errors.push("Component is missing");
-    if (typeof component.id !== 'string') errors.push("Invalid or missing component.id");
-    if (typeof component.type !== 'string') errors.push("Invalid or missing component.type");
-    if (typeof component.text !== 'string') errors.push("Invalid or missing component.text");
-
-    return {
-        isValid: errors.length === 0,
-        errors: errors
-    };
-}
-
-//export function isValidData(data: any): data is Data {
-//    return data && isValidComponent(data.component) && Array.isArray(data.collectionList) && data.collectionList.every(isValidCollection);
-//}
-export function isValidData(data: any): { isValid: boolean; errors: string[] } {
-    let errors: string[] = [];
-
-    const componentValidation = validateComponent(data.component);
-    if (!componentValidation.isValid) {
-        errors = errors.concat(componentValidation.errors.map(e => `Component: ${e}`));
-    }
-
-    // ... (Other validations for Collection, Price, etc.)
-
-    return {
-        isValid: errors.length === 0,
-        errors: errors
-    };
-}

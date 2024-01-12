@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { isValidData } from './dataValidator';
+import { validateProductInteraction } from './dataValidator';
 
 const app = express();
 const port = 3000;
@@ -14,7 +14,7 @@ app.post('/send-data', (req, res) => {
 
 
 
-  if (isValidData(data)) {
+  if (validateProductInteraction(data)) {
     res.status(200).json({ response: 'Data received and validated!', result: data });
   } else {
     console.log('Invalid data:', data);
