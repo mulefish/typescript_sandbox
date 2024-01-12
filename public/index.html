@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -21,7 +20,7 @@
     <script async
         src="https://shop.lululemon.com/static/fmodules/dcp/%40lululemon/mwa-analytics/4.1.10/browser/mwa-analytics.js"></script>
  -->
-        <script src="index.js"></script>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -246,52 +245,39 @@
 
     </script>
 
+
+
     <script>
+        function sendData() {
+            const json_as_string = document.getElementById('tdr_area').value;
+            // const json = JSON.parse(json_as_string)
+            fetch('/send-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: json_as_string,
+            })
+                .then(response => response.json())
+                .then(json => {
 
 
-            function typescriptValidation() {
-                const jsonData_as_string = document.getElementById('tdr_area').value
-                const jsonData = JSON.parse( jsonData_as_string)
+                    function set_PassFail_TrueFalse(ballOfJson) {
+                        ballOfJson.verdict = ballOfJson.verdict ? "PASS" : "FAIL"
+                        for (let k in ballOfJson.receipt) {
+                            ballOfJson.receipt[k].verdict = ballOfJson.receipt[k].verdict ? "PASS" : "FAIL"
+                        }
+                    }
+                    set_PassFail_TrueFalse(json)
 
-                fetch('/submit-json', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(jsonData),
+
+                    document.getElementById("resultViewer").value = JSON.stringify(json, null, 2)
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById("resultViewer").value = JSON.stringify( data, null, 2 )
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            }
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
     </script>
-
-
-
-<script>
-    function sendData() {
-        const json_as_string = document.getElementById('tdr_area').value;
-        // const json = JSON.parse(json_as_string)
-        fetch('/send-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body:json_as_string,
-        })
-        .then(response => response.json())
-        .then(json => {
-            document.getElementById("resultViewer").value = JSON.stringify(json, null, 2 )
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-</script>
 
 
 </body>
@@ -299,6 +285,3 @@
 
 
 </html>
-
-
-

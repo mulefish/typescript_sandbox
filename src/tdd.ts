@@ -110,9 +110,25 @@ function sadPath1() {
   verdict(receipt.verdict, false, "sadPath1")
 }
 
+
+
+function happyPath_timeIt() {
+  const t1 = new Date().getTime() 
+  const receipt: Receipt = validateProductInteraction(LAMproductInteraction);
+  const t2 = new Date().getTime() 
+  const milliseconds = t2 - t1 
+  receipt.millisec = milliseconds
+  // console.log( receipt)
+  const isOk = receipt.verdict === true &&  receipt.millisec < 10
+  verdict(receipt.verdict, true, "happyPath_timeIt")
+}
+
+
+
 function runner() {
   happyPath()
   sadPath1()
+  happyPath_timeIt() 
 }
 runner()
 
