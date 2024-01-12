@@ -10,19 +10,18 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.post('/send-data', (req, res) => {
-  const candidate = req.body
-  console.log("BYTES " + JSON.stringify(candidate).length)
+  try {
+    const candidate = req.body
+    console.log("BYTES " + JSON.stringify(candidate).length)
 
-  const receipt: Receipt = validateProductInteraction(candidate);
-  res.status(200).json(receipt)
-  /* 
-  if (validateProductInteraction(data)) {
-    res.status(200).json({ response: 'Data received and validated!', result: data });
-  } else {
-    console.log('Invalid data:', data);
-    res.status(400).json({ error: 'Invalid data format' });
+    const receipt: Receipt = validateProductInteraction(candidate);
+    res.status(200).json(receipt)
+  } catch (boom: unknown) {
+    console.log(boom)
+    console.error(boom)
+    const obj = { "status": "bad", "message": boom }
+    res.status(500).json(obj)
   }
-  */ 
 });
 
 app.listen(port, () => {

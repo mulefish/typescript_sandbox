@@ -1,5 +1,5 @@
 
-import { PASS, FAIL, Receipt } from './types';
+import { PASS, FAIL, Receipt, Rollup } from './types';
 
 interface Price {
     saleWithoutTaxShipping: string;
@@ -44,11 +44,19 @@ interface ProductInteraction {
     component: Component;
     collectionList: Collection[];
 }
-
-let rollup: [string, string][] = [];
-function footPrints(bool: boolean, msg: string) {
-    const verdict = bool === true ? PASS : FAIL
-    rollup.push([verdict, msg])
+let rollup: { [key: string]: Rollup } = {};
+function footPrints(bool: boolean, whence: string) {
+    if ( rollup.hasOwnProperty(whence)) {
+        if ( bool === false ) {
+            rollup[whence].verdict = false
+        }
+        rollup[whence].seen++
+    } else {
+        rollup[whence] = {
+            verdict: bool,
+            seen: 1
+        };
+    }
 }
 
 function validatePrice(price: Price): boolean {
@@ -99,17 +107,21 @@ function validateComponent(component: Component): boolean {
 }
 
 
-
+function resetRollup() { 
+    rollup = {};
+}
 
 export function validateProductInteraction(pi: ProductInteraction): Receipt {
+    resetRollup()
     const isOk = validateComponent(pi.component) &&
         Array.isArray(pi.collectionList) && pi.collectionList.every(validateCollection);
 
-    const verdict = isOk === true ? PASS : FAIL
+        let finding: Receipt = {
+            verdict: isOk,
+            receipt: rollup
+        };
 
-    let finding: Receipt = { verdict, receipt: rollup };
     return finding;
-
 }
 
 

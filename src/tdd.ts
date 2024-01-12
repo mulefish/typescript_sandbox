@@ -95,8 +95,8 @@ function verdict(a: any, b: any, msg: string) {
 
 function happyPath() {
   const receipt: Receipt = validateProductInteraction(LAMproductInteraction);
-  console.log(receipt)
-  verdict(receipt.verdict, PASS, "happyPath")
+  // console.log(receipt)
+  verdict(receipt.verdict, true, "happyPath")
 }
 
 function sadPath1() {
@@ -105,15 +105,13 @@ function sadPath1() {
   const json_as_string = JSON.stringify(LAMproductInteraction)
   const brokenJson = JSON.parse(json_as_string)
   delete brokenJson.component.text
-  console.log(JSON.stringify(brokenJson, null, 2))
-
   const receipt: Receipt = validateProductInteraction(brokenJson);
-  verdict(receipt.verdict, FAIL, "sadPath1")
+  // console.log(receipt)
+  verdict(receipt.verdict, false, "sadPath1")
 }
 
 function runner() {
   happyPath()
-  console.log("")
   sadPath1()
 }
 runner()
