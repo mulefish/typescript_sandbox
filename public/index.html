@@ -1,0 +1,304 @@
+
+<html>
+
+<head>
+    <script>
+        const TTFB = new Date().getTime()
+        let analytics = undefined
+        let categoricalOptionalityObjects = undefined
+        let transformationModule = undefined
+    </script>
+    <!-- <script src="https://assets.adobedtm.com/7a84fdea953b/09aece6f582f/launch-e6cc9ebc113b-development.min.js"></script>
+
+    <script
+        src="https://shop.lululemon.com/static/fmodules/dcp/transformation-configs/latest/transformation-configs-remoteEntry.js"></script>
+    <script
+        src="https://shop.lululemon.com/static/fmodules/dcp/validation-configs/latest/validation-configs-remoteEntry.js"></script>
+    <script src="https://shop.lululemon.com/static/fmodules/dcp/lam-model/latest/lam-model-remoteEntry.js"></script>
+    <script
+        src="https://shop.lululemon.com/static/fmodules/dcp/experiment-module/latest/experiment-module-remoteEntry.js"></script>
+
+    <script async
+        src="https://shop.lululemon.com/static/fmodules/dcp/%40lululemon/mwa-analytics/4.1.10/browser/mwa-analytics.js"></script>
+ -->
+        <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <p>mwa-analytics.js is not ready.</p>
+        </div>
+    </div>
+    <select onchange="changeSelectedLAMEvent()" id="lam_select">
+        <option>lam</option>
+        <option>app-response</option>
+        <option>error</option>
+        <option>general-component-event</option>
+        <option>page-view</option>
+        <option>page-products-displayed</option>
+        <option>product-interaction</option>
+        <option>purchase</option>
+
+    </select>
+    <button onclick="save()">save</button>
+    <button onclick="load()">load</button>
+    <button onclick="beautify()">beautify</button>
+    <button onclick="flattenLAM()">flatten</button>
+    <button onclick="sendData()">TS</button>
+
+    <span id="feedBack"></span>
+    <div class="container">
+        <textarea class="textarea" id="tdr_area" rows="30"></textarea>
+    </div>
+
+    <div class="container">
+
+
+        <textarea class="textarea" id="lam_area" rows="40"></textarea>
+        <textarea class="textarea" id="resultViewer" rows="40"></textarea>
+    </div>
+
+
+    <script>
+
+
+        //////////////////////
+
+
+        function flattenJson(obj, parentPrefix = '') {
+            let flattened = {};
+
+            for (const [key, value] of Object.entries(obj)) {
+                // Construct the new key
+                const newKey = parentPrefix ? `${parentPrefix}.${key}` : key;
+
+                if (typeof value === 'object' && value !== null) {
+                    if (Array.isArray(value)) {
+                        // If the value is an array, iterate through its elements
+                        value.forEach((item, index) => {
+                            const arrayKey = `${newKey}[${index}]`;
+                            Object.assign(flattened, flattenJson(item, arrayKey));
+                        });
+                    } else {
+                        // If the value is a nested object, recursively flatten it
+                        Object.assign(flattened, flattenJson(value, newKey));
+                    }
+                } else {
+                    // Otherwise, it's a primitive value, add it to the flattened object
+                    flattened[newKey] = value;
+                }
+            }
+
+            return flattened;
+        }
+
+        function flattenLAM() {
+            const json_as_string = document.getElementById("lam_area").value
+            const json = JSON.parse(json_as_string)
+            const flat = flattenJson(json)
+            document.getElementById("lam_area").value = JSON.stringify(flat, null, 2)
+            document.getElementById("feedBack").innerHTML = "flattenLAM"
+
+
+        }
+
+
+        function verifyGivenIsInsideRecieved() {
+            const result_json_as_string = document.getElementById("resultViewer").value;
+            const result_json = JSON.parse(result_json_as_string);
+            const flatResult = flattenJson(result_json);
+
+            const tdr_json_as_string = document.getElementById("tdr_area").value;
+            const tdr_json = JSON.parse(tdr_json_as_string);
+            const flatTDR = flattenJson(tdr_json);
+            let accumulator = ""
+            try {
+                let isOk = true;
+                Object.values(flatTDR).forEach(value => {
+                    if (!Object.values(flatResult).includes(value)) {
+                        console.log("Not included:", value);
+                        accumulator += "<li>" + value + "</li>"
+                        isOk = false;
+                    }
+                });
+                if (isOk === true) {
+                    return { "status": isOk, "found": "" };
+                } else {
+                    return { "status": isOk, "found": "<ul>" + accumulator + "</ul>" };
+                }
+            } catch (boom) {
+                return { "status": false, "found": "<ul><li>" + boom + "</li></ul>" };
+            }
+        }
+
+        async function send() {
+            const selectedEvent = getSelectLamEvent()
+            document.getElementById("resultViewer").value = "sending"
+
+            try {
+
+                const isWellFormed = beautify()
+                if (isWellFormed === true) {
+                    const json_as_str = document.getElementById("tdr_area").value
+                    const json = JSON.parse(json_as_str)
+                    const thing_to_send = `analytics.trackEvent("${selectedEvent}", ${json_as_str})`
+                    console.log(thing_to_send)
+
+
+
+                    const x = await analytics.trackEvent(selectedEvent, json)
+
+                    const payload = x['payload']['properties']['validationResult']['data']['payload'];
+                    // foldableResultsViewer(payload)
+
+                    document.getElementById("resultViewer").value = JSON.stringify(payload, null, 2)
+                    document.getElementById("feedBack").innerHTML = "send " + selectedEvent
+
+                    const result = verifyGivenIsInsideRecieved()
+                    const isOk = result["status"]
+                    if (isOk === true) {
+                        document.getElementById("feedBack").innerHTML = "send " + selectedEvent + ' <span style="color: green;">PASS</span>'
+                    } else {
+                        const issuesFound = result["found"]
+
+                        document.getElementById("feedBack").innerHTML = "send " + selectedEvent + ' <span style="color: red;">FAIL</span><br>' + issuesFound
+                    }
+                } else {
+                    document.getElementById("resultViewer").value = "JSON is b0rken"
+                }
+            } catch (e) {
+                document.getElementById("feedBack").innerHTML = "send " + e
+            }
+        }
+
+        function save() {
+            try {
+                const selectedEvent = getSelectLamEvent()
+                const json_as_str = document.getElementById("tdr_area").value
+                localStorage.setItem(selectedEvent, json_as_str)
+                document.getElementById("feedBack").innerHTML = "save " + selectedEvent
+            } catch (boom) {
+                console.log("Save fail " + boom)
+                document.getElementById("feedBack").innerHTML = "save " + boom.message
+            }
+        }
+
+
+
+        async function load() {
+            try {
+                const selectedEvent = getSelectLamEvent()
+                if (localStorage.getItem(selectedEvent) === null) {
+                    alert("Nothing is here " + selectedEvent)
+                    document.getElementById("feedBack").innerHTML = "load " + selectedEvent + " does not exist"
+                } else {
+                    const json_as_str = await localStorage.getItem(selectedEvent)
+                    document.getElementById("tdr_area").value = json_as_str
+                    document.getElementById("feedBack").innerHTML = "load " + selectedEvent
+                }
+            } catch (boom) {
+                console.log("Load fail " + boom)
+                document.getElementById("feedBack").innerHTML = "load " + boom.message
+            }
+        }
+        function beautify() {
+            const x = document.getElementById("tdr_area").value
+            try {
+                const json = JSON.parse(x)
+                const json_as_string = JSON.stringify(json, null, 2)
+                document.getElementById("tdr_area").value = json_as_string
+                document.getElementById("feedBack").innerHTML = "Beautify OK"
+                return true
+            } catch (boom) {
+                document.getElementById("feedBack").innerHTML = "Beautify " + boom.message
+                return false
+            }
+        }
+        const getSelectLamEvent = () => {
+            const selectElement = document.getElementById("lam_select");
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const x = selectedOption.text
+            return x
+        }
+
+        function changeSelectedLAMEvent() {
+            const x = getSelectLamEvent()
+            document.getElementById("feedBack").innerHTML = "lam event " + x
+
+            if (x === "lam") {
+                document.getElementById("lam_area").innerHTML = ""
+                document.getElementById("tdr_area").value = ""
+            } else {
+                const big = lam_data[x]
+                const str_big = JSON.stringify(big, null, 2)
+                document.getElementById("lam_area").innerHTML = str_big
+
+                // foldableLAMViewer(big)
+                const small = lam_min_data[x]
+                const small_str = JSON.stringify(small, null, 2)
+                document.getElementById("tdr_area").value = small_str
+
+            }
+        }
+
+
+    </script>
+
+    <script>
+
+
+            function typescriptValidation() {
+                const jsonData_as_string = document.getElementById('tdr_area').value
+                const jsonData = JSON.parse( jsonData_as_string)
+
+                fetch('/submit-json', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("resultViewer").value = JSON.stringify( data, null, 2 )
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+    </script>
+
+
+
+<script>
+    function sendData() {
+        const json_as_string = document.getElementById('tdr_area').value;
+        // const json = JSON.parse(json_as_string)
+        fetch('/send-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body:json_as_string,
+        })
+        .then(response => response.json())
+        .then(json => {
+            document.getElementById("resultViewer").value = JSON.stringify(json, null, 2 )
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+
+</body>
+
+
+
+</html>
+
+
+
