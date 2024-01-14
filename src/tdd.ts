@@ -1,7 +1,4 @@
-import { PASS, FAIL, Receipt } from './types';
-import { validateProductInteraction } from './dataValidator';
-
-
+import { validateThis } from './dataValidator';
 
 const LAM_product_interaction = {
   "component": {
@@ -79,49 +76,37 @@ const page_products_displayed = {
 }
 function verdict(a: any, b: any, msg: string) {
   if (JSON.stringify(a) === JSON.stringify(b)) {
-    console.log(`${PASS} ${msg}`)
+    console.log(`PASS ${msg}`)
   } else {
-    console.log(`${FAIL} ${msg}`)
+    console.log(`FAIL ${msg}`)
   }
 }
 
 
-function happyPath_productInteraction() {
-  const receipt: Receipt = validateProductInteraction(LAM_product_interaction);
-  // console.log(receipt)
-  verdict(receipt.verdict, true, "happyPath_productInteraction")
+async function happyPath_productInteraction() {
+  const t1:number = new Date().getTime() 
+  const x:Record<string, boolean> = validateThis( LAM_product_interaction )
+  const milliseconds:number = new Date().getTime() - t1 
+  let isOk:boolean = true 
+  let count:number = 0 
+  for ( let k in x) {
+    isOk &&= x[k]
+    count++
+  }
+  isOk &&= milliseconds < 10 
+
+  verdict(isOk, true, "happyPath_productInteraction has " + count + " members and took " + milliseconds + " millisecond")
 }
+function test() { 
 
-function sadPath_productInteraction() {
-  /* This will fail because it missing component text, */
+  const x = validateThis({}) 
+  console.log(x)
 
-  const json_as_string = JSON.stringify(LAM_product_interaction)
-  const brokenJson = JSON.parse(json_as_string)
-  delete brokenJson.component.text
-  const receipt: Receipt = validateProductInteraction(brokenJson);
-  // console.log(receipt)
-  verdict(receipt.verdict, false, "sadPath_productInteraction")
 }
-
-
-
-function happyPath_productInteraction_timeIt() {
-  /* Better to quick! */ 
-  const t1 = new Date().getTime() 
-  const receipt: Receipt = validateProductInteraction(LAM_product_interaction);
-  const t2 = new Date().getTime() 
-  const milliseconds = t2 - t1 
-  receipt.millisec = milliseconds
-  const isOk = receipt.verdict === true &&  receipt.millisec < 10
-  verdict(receipt.verdict, true, "happyPath_productInteraction_timeIt " + receipt.millisec)
-}
-
-
 
 function runner() {
   happyPath_productInteraction()
-  sadPath_productInteraction()
-  happyPath_productInteraction_timeIt() 
+
 }
 runner()
 

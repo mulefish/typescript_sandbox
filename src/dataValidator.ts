@@ -1,85 +1,88 @@
 
-import { PASS, FAIL, Receipt, Rollup , Price, Sku, Product, Name, Collection, Component, CollectionList, ProductInteraction, CollectionData} from './types';
+import { Product, Sku, Price, Name } from './types'
 
+function isProductList(LoO: Product[]): boolean {
+  let isOk = true;
+  for (let i = 0; i < LoO.length; i++) {
+      isOk &&= LoO[i].hasOwnProperty('categoryUnifiedId');
+      isOk &&= LoO[i].hasOwnProperty('unifiedId');
+      isOk &&= LoO[i].hasOwnProperty('productId');
+      isOk &&= LoO[i].hasOwnProperty('productId') && Array.isArray(LoO[i].skuList);
+  }
+  return isOk;
+}
 
-let rollup: { [key: string]: Rollup } = {};
-function footPrints(bool: boolean, whence: string) {
-    if (rollup.hasOwnProperty(whence)) {
-        if (bool === false) {
-            rollup[whence].verdict = false
+function isName(obj: Name): boolean {
+  return obj.hasOwnProperty("unified") && obj.hasOwnProperty("localized");
+}
+
+function isSkuList(LoO: Sku[]): boolean {
+  let isOk = true;
+  for (let i = 0; i < LoO.length; i++) {
+      isOk &&= LoO[i].hasOwnProperty('quantity') && isNumber(LoO[i].quantity);
+      isOk &&= LoO[i].hasOwnProperty('size');
+      isOk &&= LoO[i].hasOwnProperty('sku');
+      isOk &&= LoO[i].hasOwnProperty('price') && typeof LoO[i].price === "object";
+  }
+  return isOk;
+}
+
+function isPrice(obj: Price): boolean {
+  let isOk = true;
+  isOk &&= obj.hasOwnProperty('saleWithoutTaxShipping');
+  isOk &&= obj.hasOwnProperty('taxOnly');
+  isOk &&= obj.hasOwnProperty('displaySale');
+  isOk &&= obj.hasOwnProperty('displayRegular');
+  isOk &&= obj.hasOwnProperty('isSale') && isBoolean(obj.isSale);
+  return isOk;
+}
+
+const lookup: Record<string, (arg: any) => boolean> = {
+  'productList': isProductList,
+  'name': isName,
+  'skuList': isSkuList,
+  'price': isPrice
+};
+
+function isNumber(x: any): x is number {
+  return typeof x === 'number';
+}
+
+function isBoolean(x: any): x is boolean {
+  return typeof x === 'boolean';
+}
+
+const BASE = "BASE";
+type UnfoldResult = Record<string, any>;
+function unfold(
+    candidate: any, 
+    parent: string = BASE, 
+    loop: number, 
+    results: UnfoldResult
+): UnfoldResult {
+    loop++; 
+    if (typeof candidate === 'object' && candidate !== null) {
+        for (let child in candidate) {
+            if (candidate.hasOwnProperty(child)) {
+                if (typeof candidate[child] === 'object') {
+                    if (parent !== BASE) {
+                        if (!isNumber(child)) {
+                            if (lookup.hasOwnProperty(child)) { 
+                                const x = lookup[child](candidate[child]);  
+                                results[child] = x; 
+                            }            
+                        }
+                    }
+                    unfold(candidate[child], child, loop, results);
+                }
+            }
         }
-        rollup[whence].seen++
-    } else {
-        rollup[whence] = {
-            verdict: bool,
-            seen: 1
-        };
-    }
+    } 
+    return results;
 }
 
-function validatePrice(price: Price): boolean {
-    const isOk = typeof price.saleWithoutTaxShipping === 'string' &&
-        typeof price.regularWithoutTaxShipping === 'string';
-    footPrints(isOk, "validatePrice")
-    return isOk
+export function validateThis(theJson: any):Record<string, boolean> {
+    const unfoldedResults = unfold(theJson, undefined, 0, []);
+    console.log( unfoldedResults)
+    return unfoldedResults;
 }
-
-function validateSku(sku: Sku): boolean {
-    const isOk = validatePrice(sku.price) &&
-        typeof sku.quantity === 'number' &&
-        typeof sku.size === 'string' &&
-        typeof sku.sku === 'string';
-    footPrints(isOk, "validateSku")
-    return isOk
-}
-
-function validateProduct(product: Product): boolean {
-    const isOk = typeof product.categoryUnifiedId === 'string' &&
-        typeof product.unifiedId === 'string' &&
-        typeof product.productId === 'string' &&
-        Array.isArray(product.skuList) && product.skuList.every(validateSku);
-
-    footPrints(isOk, "validateProduct")
-    return isOk
-}
-
-function validateCollection(collection: Collection): boolean {
-    const isOk = typeof collection.id === 'string' &&
-        typeof collection.type === 'string' &&
-        typeof collection.name.unified === 'string' &&
-        typeof collection.name.localized === 'string' &&
-        Array.isArray(collection.productList) && collection.productList.every(validateProduct);
-
-    footPrints(isOk, "validateCollection")
-
-    return isOk
-}
-
-function validateComponent(component: Component): boolean {
-    const isOk = typeof component.id === 'string' &&
-        typeof component.type === 'string' &&
-        typeof component.text === 'string';
-    footPrints(isOk, "validateComponent")
-
-    return isOk
-}
-
-
-function resetRollup() {
-    rollup = {};
-}
-
-export function validateProductInteraction(pi: ProductInteraction): Receipt {
-    resetRollup()
-    const isOk = validateComponent(pi.component) &&
-        Array.isArray(pi.collectionList) && pi.collectionList.every(validateCollection);
-
-    let finding: Receipt = {
-        verdict: isOk,
-        receipt: rollup
-    };
-
-    return finding;
-}
-
-
