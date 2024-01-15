@@ -1,8 +1,14 @@
 export type Product = {
-    categoryUnifiedId: string;
-    unifiedId: string;
-    productId: string;
-    skuList: Sku[];
+    categoryUnifiedId?: string;
+    unifiedId?: string;
+    productId?: string;
+    skuList?: Sku[];
+    id?:string;
+    title?:string;
+    vendor?:string;
+    untranslatedTitle?:string;
+    url?:string;
+    type?:string;
 };
 
 
@@ -14,11 +20,13 @@ export type Sku = {
 };
 
 export type Price = {
-    saleWithoutTaxShipping: string;
-    taxOnly: string;
-    displaySale: string;
-    displayRegular: string;
-    isSale: boolean;
+    saleWithoutTaxShipping?: string;
+    taxOnly?: string;
+    displaySale?: string;
+    displayRegular?: string;
+    isSale?: boolean;
+    amount?: number;
+    currencyCode?: string;
 };
 
 export type Name = {
@@ -32,3 +40,15 @@ export type Component = {
     type: string,
     text: string
 };
+export type Image = {
+    src:string
+}
+export type ProductVariant = {
+    id:string,
+    image:Image,
+    price:Price,
+    product:Product,
+    sku:string, 
+    title:string, 
+    untranslatedTitle:string
+}

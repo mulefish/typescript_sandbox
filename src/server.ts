@@ -18,7 +18,7 @@ app.post('/validate', async (req, res) => {
     for ( let k in x ) {
       results[k] = x[k]
     }
-    results['milliseconds2'] = milliseconds
+    results['milliseconds'] = milliseconds
     res.status(200).json(results)
   } catch (boom: unknown) {
     console.log(boom)

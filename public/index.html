@@ -26,16 +26,16 @@
         <option>page-products-displayed</option>
         <option>product-interaction</option>
         <option>purchase</option>
-    <option>click_event</option>
-    <option>page_viewed</option>
-    <option>product_viewed</option>
-    <option>product_added_to_cart</option>
-    <option>search_submitted</option>
-    <option>checkout_contact_info_submitted</option>
-    <option>cart_viewed</option>
-    <option>checkout_started</option>
-    <option>collection_viewed</option>
-</select>
+        <option>click_event</option>
+        <option>page_viewed</option>
+        <option>product_viewed</option>
+        <option>product_added_to_cart</option>
+        <option>search_submitted</option>
+        <option>checkout_contact_info_submitted</option>
+        <option>cart_viewed</option>
+        <option>checkout_started</option>
+        <option>collection_viewed</option>
+    </select>
 
 
     <button onclick="save()">save</button>
@@ -128,45 +128,6 @@
             }
         }
 
-        async function send() {
-            const selectedEvent = getSelectLamEvent()
-            document.getElementById("resultViewer").value = "sending"
-
-            try {
-
-                const isWellFormed = beautify()
-                if (isWellFormed === true) {
-                    const json_as_str = document.getElementById("tdr_area").value
-                    const json = JSON.parse(json_as_str)
-                    const thing_to_send = `mice.trackEvent("${selectedEvent}", ${json_as_str})`
-                    console.log(thing_to_send)
-
-
-
-                    const x = await mice.trackEvent(selectedEvent, json)
-
-                    const payload = x['payload']['properties']['validationResult']['data']['payload'];
-                    // foldableResultsViewer(payload)
-
-                    document.getElementById("resultViewer").value = JSON.stringify(payload, null, 2)
-                    document.getElementById("feedBack").innerHTML = "send " + selectedEvent
-
-                    const result = verifyGivenIsInsideRecieved()
-                    const isOk = result["status"]
-                    if (isOk === true) {
-                        document.getElementById("feedBack").innerHTML = "send " + selectedEvent + ' <span style="color: green;">PASS</span>'
-                    } else {
-                        const issuesFound = result["found"]
-
-                        document.getElementById("feedBack").innerHTML = "send " + selectedEvent + ' <span style="color: red;">FAIL</span><br>' + issuesFound
-                    }
-                } else {
-                    document.getElementById("resultViewer").value = "JSON is b0rken"
-                }
-            } catch (e) {
-                document.getElementById("feedBack").innerHTML = "send " + e
-            }
-        }
 
         function save() {
             try {
@@ -252,7 +213,11 @@
 
                     function set_PassFail_TrueFalse(ballOfJson) {
                         let isOk = true
+                        let count = 0 
+
                         for (let k in ballOfJson) {
+                            count++
+                            console.log( k )
                             const type = typeof ballOfJson[k]
                             if (type === "boolean") {
                                 isOk &&= ballOfJson[k]
@@ -266,11 +231,12 @@
                                 isOk &&= ballOfJson[k] < 10
                             }
                         }
-                        ballOfJson["verdict"] = isOk === true ? "PASS" : "FAIL"
-                        // ballOfJson.verdict = ballOfJson.verdict ? "PASS" : "FAIL"
-                        // for (let k in ballOfJson.receipt) {
-                        //     ballOfJson.receipt[k].verdict = ballOfJson.receipt[k].verdict ? "PASS" : "FAIL"
-                        // }
+                        if ( document.getElementById("tdr_area").value === "{}") {
+                            ballOfJson["verdict"] = "PASS"
+
+                        } else {
+                            ballOfJson["verdict"] = count > 1 && isOk === true ? "PASS" : "FAIL"
+                        }
                     }
                     set_PassFail_TrueFalse(json)
 
