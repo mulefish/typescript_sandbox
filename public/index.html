@@ -46,8 +46,7 @@
 
     <span id="feedBack"></span>
     <div class="container">
-        <textarea class="textarea" id="tdr_area"
-            rows="30">The purpose of this was for me to learn some of the ins and outs of validating EDDL telemetry. The LAM stuff is done and the Shopify events I have not ( and will not ) finish. I have learned what I set out to, vis-a-vis using typescript and validating EDDL telemetry.        
+        <textarea class="textarea" id="tdr_area" rows="30">The purpose of this was for me to learn some of the ins and outs of validating EDDL telemetry. The LAM stuff is done and the Shopify events I have not ( and will not ) finish. I have learned what I set out to, vis-a-vis using typescript and validating EDDL telemetry.        
 Core algo is:  
 function unfold( 
   candidate: any, 
@@ -233,6 +232,7 @@ function unfold(
 
 
     <script>
+
         function sendData() {
             const json_as_string = document.getElementById('tdr_area').value;
             // const json = JSON.parse(json_as_string)
@@ -249,11 +249,11 @@ function unfold(
 
                     function set_PassFail_TrueFalse(ballOfJson) {
                         let isOk = true
-                        let count = 0 
+                        let count = 0
 
                         for (let k in ballOfJson) {
                             count++
-                            console.log( k )
+                            console.log(k)
                             const type = typeof ballOfJson[k]
                             if (type === "boolean") {
                                 isOk &&= ballOfJson[k]
@@ -267,7 +267,7 @@ function unfold(
                                 isOk &&= ballOfJson[k] < 10
                             }
                         }
-                        if ( document.getElementById("tdr_area").value === "{}") {
+                        if (document.getElementById("tdr_area").value === "{}") {
                             ballOfJson["verdict"] = "PASS"
 
                         } else {
