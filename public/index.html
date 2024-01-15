@@ -47,7 +47,41 @@
     <span id="feedBack"></span>
     <div class="container">
         <textarea class="textarea" id="tdr_area"
-            rows="30">The purpose of this was for me to learn some of the ins and outs of validating EDDL telemetry. The LAM stuff is done and the Shopify events I have not ( and will not ) finish. I have learned what I set out to, vis-a-vis using typescript and validating EDDL telemetry. 
+            rows="30">The purpose of this was for me to learn some of the ins and outs of validating EDDL telemetry. The LAM stuff is done and the Shopify events I have not ( and will not ) finish. I have learned what I set out to, vis-a-vis using typescript and validating EDDL telemetry.\n        
+Core algo is: \n 
+function unfold(\n 
+  candidate: any,\n 
+  parent: string = BASE,\n 
+  loop: number,\n 
+  results: UnfoldResult\n 
+): UnfoldResult {\n 
+  loop++;\n 
+  \n 
+  if (lookup.hasOwnProperty(parent)) {\n 
+    const x = lookup[parent](candidate);\n 
+    results[parent] = x;\n 
+  }\n 
+  \n 
+  if (typeof candidate === 'object' && candidate !== null) {\n 
+    for (let child in candidate) {\n 
+      if (candidate.hasOwnProperty(child)) {\n 
+        if (typeof candidate[child] === 'object') {\n 
+          if (parent !== BASE) {\n 
+            if (!isNumber(child)) {\n 
+              if (lookup.hasOwnProperty(child)) {\n 
+                const x = lookup[child](candidate[child]);\n 
+                results[child] = x;\n 
+              }\n 
+            }\n 
+          }\n 
+          unfold(candidate[child], child, loop, results);\n 
+        }\n 
+      }\n 
+    }\n 
+  }\n 
+  return results;\n 
+}\n        
+        
         
         </textarea>
     </div>
