@@ -8,13 +8,11 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.post('/validate', async (req, res) => {
-  console.log( 'validate')
   try {
     const candidate_json = req.body
     const t1 = new Date().getTime() 
     const x = await validateThis( candidate_json )
     const milliseconds = new Date().getTime() - t1 
-    console.log(x)
 
     let results: Record<string, boolean|number> = {}; 
     for ( let k in x ) {

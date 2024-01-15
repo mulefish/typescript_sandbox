@@ -84,30 +84,42 @@ function verdict(a: any, b: any, msg: string) {
 
 
 async function happyPath_productInteraction() {
-  const t1:number = new Date().getTime() 
-  const x:Record<string, boolean> = validateThis( LAM_product_interaction )
-  const milliseconds:number = new Date().getTime() - t1 
-  let isOk:boolean = true 
-  let count:number = 0 
-  for ( let k in x) {
+  const t1: number = new Date().getTime()
+  const x: Record<string, boolean> = validateThis(LAM_product_interaction)
+  const milliseconds: number = new Date().getTime() - t1
+  let isOk: boolean = true
+  let count: number = 0
+  for (let k in x) {
     isOk &&= x[k]
     count++
   }
-  isOk &&= milliseconds < 10 
-
+  isOk &&= milliseconds < 10
   verdict(isOk, true, "happyPath_productInteraction has " + count + " members and took " + milliseconds + " millisecond")
 }
-function test() { 
 
-  const x = validateThis({}) 
-  console.log(x)
-
+function parent_mentioned_early_test() {
+  const json = {
+    "component": {
+      "id": "string",
+      "type": "string",
+      "text": "string"
+    }
+  }
+  const x: Record<string, boolean> = validateThis(json)
+  let isOk = false 
+  for ( let k in x ) {
+    if ( k === "component") {
+      isOk = true 
+    }
+  }
+  verdict(isOk, true, "component_test " + x )
 }
 
 function runner() {
   happyPath_productInteraction()
+  parent_mentioned_early_test()
 
 }
 runner()
 
- 
+

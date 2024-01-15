@@ -25,3 +25,10 @@ export type Name = {
     unified: string;
     localized: string;
 };
+
+
+export type Component = {
+    id: string,
+    type: string,
+    text: string
+};

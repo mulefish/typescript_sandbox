@@ -26,8 +26,18 @@
         <option>page-products-displayed</option>
         <option>product-interaction</option>
         <option>purchase</option>
+    <option>click_event</option>
+    <option>page_viewed</option>
+    <option>product_viewed</option>
+    <option>product_added_to_cart</option>
+    <option>search_submitted</option>
+    <option>checkout_contact_info_submitted</option>
+    <option>cart_viewed</option>
+    <option>checkout_started</option>
+    <option>collection_viewed</option>
+</select>
 
-    </select>
+
     <button onclick="save()">save</button>
     <button onclick="load()">load</button>
     <button onclick="beautify()">beautify</button>
@@ -36,7 +46,8 @@
 
     <span id="feedBack"></span>
     <div class="container">
-        <textarea class="textarea" id="tdr_area" rows="30">Currently only product-interaction is a PASS but that will change soon. Select in the dropdown and hit the 'TS' button</textarea>
+        <textarea class="textarea" id="tdr_area"
+            rows="30">Currently only product-interaction is a PASS but that will change soon. Select in the dropdown and hit the 'TS' button</textarea>
     </div>
 
     <div class="container">
@@ -52,12 +63,10 @@
 
         //////////////////////
 
-
         function flattenJson(obj, parentPrefix = '') {
             let flattened = {};
 
             for (const [key, value] of Object.entries(obj)) {
-                // Construct the new key
                 const newKey = parentPrefix ? `${parentPrefix}.${key}` : key;
 
                 if (typeof value === 'object' && value !== null) {
@@ -217,19 +226,11 @@
                 document.getElementById("lam_area").innerHTML = ""
                 document.getElementById("tdr_area").value = ""
             } else {
-                const big = lam_data[x]
-                const str_big = JSON.stringify(big, null, 2)
-                document.getElementById("lam_area").innerHTML = str_big
-
-                // foldableLAMViewer(big)
                 const small = lam_min_data[x]
                 const small_str = JSON.stringify(small, null, 2)
                 document.getElementById("tdr_area").value = small_str
-
             }
         }
-
-
     </script>
 
 
@@ -250,17 +251,22 @@
 
 
                     function set_PassFail_TrueFalse(ballOfJson) {
-                        let isOk = true 
-                        for ( let k in ballOfJson ) {
+                        let isOk = true
+                        for (let k in ballOfJson) {
                             const type = typeof ballOfJson[k]
-                            if ( type === "boolean") {
+                            if (type === "boolean") {
                                 isOk &&= ballOfJson[k]
-                            } else if ( type === "number") {
+                                if (ballOfJson[k] === true) {
+                                    ballOfJson[k] = "PASS"
+                                } else {
+                                    ballOfJson[k] = "FAIL"
+                                }
+                            } else if (type === "number") {
                                 // Quicker than 10 milliseconds
                                 isOk &&= ballOfJson[k] < 10
                             }
                         }
-                        ballOfJson["verdict"] = isOk
+                        ballOfJson["verdict"] = isOk === true ? "PASS" : "FAIL"
                         // ballOfJson.verdict = ballOfJson.verdict ? "PASS" : "FAIL"
                         // for (let k in ballOfJson.receipt) {
                         //     ballOfJson.receipt[k].verdict = ballOfJson.receipt[k].verdict ? "PASS" : "FAIL"
