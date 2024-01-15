@@ -8,7 +8,7 @@ git@github.com:mulefish/typescript_sandbox.git
 # COMMANDS
 npm run build // javac    
 npm run tdd // test   
-npm run server // web server    
+npm run server // web server  
 
 # screencap
 ![screencap.png](./screencap.png)
