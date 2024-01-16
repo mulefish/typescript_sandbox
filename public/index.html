@@ -42,6 +42,7 @@
     <button onclick="load()">load</button>
     <button onclick="beautify()">beautify</button>
     <button onclick="flattenLAM()">flatten</button>
+    <button onclick="shape()">shape</button>
     <button onclick="sendData()">verify</button>
 
     <span id="feedBack"></span>
@@ -232,7 +233,35 @@ function unfold(
 
 
     <script>
+        function shape() {
+            function analyzeJson(jsonObj) {
+                function getType(obj) {
+                    let type = typeof obj;
 
+                    if (Array.isArray(obj)) {
+                        let arrayTypes = obj.map(item => getType(item));
+                        return arrayTypes.length > 0 ? arrayTypes : 'empty array';
+                    }
+
+                    if (type === 'object' && obj !== null) {
+                        let nestedType = {};
+                        for (let key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                nestedType[key] = getType(obj[key]);
+                            }
+                        }
+                        return nestedType;
+                    }
+                    return type;
+                }
+                return getType(jsonObj);
+            }
+            const x = getSelectLamEvent() 
+            const json = lam_min_data[x]
+            const results = analyzeJson(json)
+            // 
+            document.getElementById('lam_area').value = JSON.stringify( results, null, 2 )
+        }
         function sendData() {
             const json_as_string = document.getElementById('tdr_area').value;
             // const json = JSON.parse(json_as_string)
