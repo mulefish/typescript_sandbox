@@ -11,6 +11,7 @@ app.post('/validate', async (req, res) => {
   try {
     const candidate_json = req.body
     const t1 = new Date().getTime() 
+    console.log(candidate_json )
     const x = await validateThis( candidate_json )
     const milliseconds = new Date().getTime() - t1 
 
