@@ -37,7 +37,11 @@ function verdict(a: any, b: any, msg: string) {
     console.log(`${result} ${msg}`)
 }
 
-function test_allInterfaces() {
+
+
+    function test_allInterfaces(): { [key: string]: any } {
+    
+
     try {
         const addToCart_Json: AddToCart = {
             // TypeProduct properties
@@ -85,7 +89,7 @@ function test_allInterfaces() {
             pageName: "Cart Page"
         };
 
-        const cartViewInstance: CartView = {
+        const cartViewInstance_Json: CartView = {
             // TypeProduct properties
             productId: "12345",
             productName: "Awesome Gadget",
@@ -488,43 +492,42 @@ function test_allInterfaces() {
             browserUserAgent: "Mozilla/5.0 (iPad; CPU OS 13_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Mobile/15E148 Safari/604.1"
         };
 
-        const goodObjects = {
+        const goodObjects: { [key: string]: any } = {};
+        goodObjects['addToCart'] = addToCart_Json
+        goodObjects['cartPageView'] = cartPageView_Json
+        goodObjects['cartViewInstance'] = cartViewInstance_Json
+        goodObjects['cartViewWithProductOutOfStock'] = cartViewWithProductOutOfStock_Json
+        goodObjects['categoryPageView'] = categoryPageView_Json
+        goodObjects['checkoutPaymentPageView'] = checkoutPaymentPageView_Json
+        goodObjects['checkoutPurchaseCompletePageView'] = checkoutPurchaseCompletePageView_Json
+        goodObjects['checkoutShippingPageView'] = checkoutShippingPageView_Json
+        goodObjects['exitLinkClick'] = exitLinkClick_Json
+        goodObjects['homePageView'] = homePageView_Json
+        goodObjects['orderReviewPageView'] = orderReviewPageView_Json
+        goodObjects['pageView'] = pageView_Json
+        goodObjects['productDetailPageView'] = productDetailPageView_Json
+        goodObjects['purchase'] = purchase_Json
+        goodObjects['removeFromCart'] = removeFromCart_Json
+        goodObjects['searchResultsPageView'] = searchResultsPageView_Json
+        goodObjects['err'] = err_Json
+        goodObjects['searchResultsClick'] = searchResultsClick_Json
+        goodObjects['componentImpression'] = componentImpression_Json
+        goodObjects['emailSignupSuccess'] = emailSignupSuccess_Json
+        goodObjects['faqClick'] = faqClick_Json
+        goodObjects['filtersClick'] = filtersClick_Json
+        goodObjects['linkClick'] = linkClick_Json
+        goodObjects['liveChatClick'] = liveChatClick_Json
+        goodObjects['navigationLinkClick'] = navigationLinkClick_Json
+        goodObjects['topBannerClick'] = topBannerClick_Json
 
-            addToCart_Json,
-            cartPageView_Json,
-            cartViewInstance,
-            cartViewWithProductOutOfStock_Json,
-            categoryPageView_Json,
-            checkoutPaymentPageView_Json,
-            checkoutPurchaseCompletePageView_Json,
-            checkoutShippingPageView_Json,
-            exitLinkClick_Json,
-            homePageView_Json,
-            orderReviewPageView_Json,
-            pageView_Json,
-            productDetailPageView_Json,
-            purchase_Json,
-            removeFromCart_Json,
-            searchResultsPageView_Json,
-            err_Json,
-            searchResultsClick_Json,
-            componentImpression_Json,
-            emailSignupSuccess_Json,
-            faqClick_Json,
-            filtersClick_Json,
-            linkClick_Json,
-            liveChatClick_Json,
-            navigationLinkClick_Json,
-            topBannerClick_Json
+        for (let k in goodObjects) {
+            console.log(k)
         }
-        // for (let k in goodObjects) {
-        //     console.log(k)
-        // }
         verdict(true, true, "test_allInterfaces")
         return goodObjects
     } catch (boom) {
         verdict(true, false, "test_allInterfaces")
-        return undefined
+        return {}
     }
 
 
@@ -532,12 +535,12 @@ function test_allInterfaces() {
 
 function test_addToCart(candidate: any) {
     for ( let k in candidate) {
-        console.log( k )
+    //     console.log( k )
     }
 }
 
 const objectJsonMap = test_allInterfaces()
-test_addToCart(objectJsonMap)
+test_addToCart(objectJsonMap["addToCart"])
 
 
 
