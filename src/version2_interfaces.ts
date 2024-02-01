@@ -106,33 +106,40 @@ type TypeFilterUniques = {
     filterState: string;
 };
 
-// p0
-export interface AddToCart extends TypeProduct, TypeLocaleLanguage, TypeGuestEmail { }
-export interface CartPageView extends TypeProduct, TypeLocaleLanguage, TypeCart, TypeGuestEmail, TypeCartTotalQuantity, TypePageName { }
-export interface CartView extends TypeProduct, TypeLocaleLanguage, TypeCart, TypeGuestEmail { }
-export interface CartViewWithProductOutOfStock extends TypeProduct, TypeLocaleLanguage, TypeGuestEmail, TypeProductOutOfStock { }
-export interface CategoryPageView extends TypeLocaleLanguage, TypePageName, TypePageUrl, TypeCategoryName, TypeGuestEmail { }
-export interface CheckoutPaymentPageView extends TypeProduct, TypeLocaleLanguage, TypePageName, TypeGuestEmail { }
-export interface CheckoutPurchaseCompletePageView extends TypeProduct, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeGuestEmail { }
-export interface CheckoutShippingPageView extends TypeProduct, TypeLocaleLanguage, TypePageName, TypeGuestEmail { }
-export interface ExitLinkClick extends TypeLocaleLanguage, TypeLink, TypeGuestEmail { }
-export interface HomePageView extends TypeLocaleLanguage, TypePageName, TypePageUrl, TypeGuestEmail { }
-export interface OrderReviewPageView extends TypeProduct, TypeLocaleLanguage, TypePageName, TypeGuestEmail { }
-export interface PageView extends TypeLocaleLanguage, TypePageName, TypePageUrl, TypeGuestEmail, TypePageViewUniques { }
-export interface ProductDetailPageView extends TypeProduct, TypeLocaleLanguage, TypePageName, TypeGuestEmail { }
-export interface Purchase extends TypeLocaleLanguage, TypeGuestEmail, TypeOrderTotal, TypeProductUniques, TypeUserId { }
-export interface RemoveFromCart extends TypeProduct, TypeLocaleLanguage, TypeGuestEmail { }
-export interface SearchResultsPageView extends TypeLocaleLanguage, TypeSearch, TypePageName, TypeGuestEmail { }
-// p1 
-export interface Err extends Type, TypeLocaleLanguage, TypeGuestEmail { }
-export interface SearchResultsClick extends TypeSearch, TypeLocaleLanguage, TypeGuestEmail { }
-// p2
-export interface ComponentImpression extends TypePageName, TypeLocaleLanguage, TypeGuestEmail { }
-export interface EmailSignupSuccess extends TypeUserId, TypeLocaleLanguage, TypeGuestEmail { }
-export interface FAQClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
-export interface FiltersClick extends TypeFilterUniques, TypeLocaleLanguage, TypeGuestEmail { }
-export interface LinkClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
-export interface LiveChatClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
-export interface NavigationLinkClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
-export interface TopBannerClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
+
+// uniques
+export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+export interface CartView extends TypeCart, TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+export interface CartViewWithProductOutOfStock extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct, TypeProductOutOfStock { }
+export interface CategoryPageView extends TypeCategoryName, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
+export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeProduct { }
+export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
+export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
+export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
+export interface SearchResultsClick extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
+export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeSearch { }
+export interface Purchase extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
+export interface PageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
+export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
+export interface FiltersClick extends TypeFilterUniques, TypeGuestEmail, TypeLocaleLanguage { }
+
+
+// duplicates
+export interface OrderReviewPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+export interface ProductDetailPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+export interface CheckoutPaymentPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+export interface CheckoutShippingPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+//
+export interface AddToCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+export interface RemoveFromCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+//
+export interface ExitLinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface FAQClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface LinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface LiveChatClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface NavigationLinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface TopBannerClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+
+
+
 
