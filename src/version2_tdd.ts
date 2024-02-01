@@ -1,4 +1,4 @@
-import { cartValidation, isValidCartPageView } from './version2_validater';
+import { cartValidation, isValidCartPageView, isCartViewValidation, isCartViewWithProductOutOfStockValidation, isCategoryPageView } from './version2_validater';
 import {
     AddToCart,
     CartPageView,
@@ -89,7 +89,7 @@ function verdict(a: any, b: any, msg: string) {
             pageName: "Cart Page"
         };
 
-        const cartViewInstance_Json: CartView = {
+        const cartView_Json: CartView = {
             // TypeProduct properties
             productId: "12345",
             productName: "Awesome Gadget",
@@ -495,7 +495,7 @@ function verdict(a: any, b: any, msg: string) {
         const goodObjects: { [key: string]: any } = {};
         goodObjects['addToCart'] = addToCart_Json
         goodObjects['cartPageView'] = cartPageView_Json
-        goodObjects['cartViewInstance'] = cartViewInstance_Json
+        goodObjects['cartView'] = cartView_Json
         goodObjects['cartViewWithProductOutOfStock'] = cartViewWithProductOutOfStock_Json
         goodObjects['categoryPageView'] = categoryPageView_Json
         goodObjects['checkoutPaymentPageView'] = checkoutPaymentPageView_Json
@@ -555,10 +555,31 @@ function test_removeFromCart(candidate: any) {
 }
 
 
-function test_isValidCartPageView(candidate: any) { 
+function test_isCartPageView(candidate: any) { 
     const score = isValidCartPageView(candidate)
 
-    verdict(score, 0, "test_isValidCartPageView " + score )
+    verdict(score, 0, "test_isCartPageView " + score )
+}
+
+
+
+function test_isCartView(candidate: any) {
+    const score = isCartViewValidation(candidate)
+    verdict(0, score, "test_isCartView " + score)
+}
+
+
+
+
+
+function test_isCartViewWithProductOutOfStock(candidate: any) {
+    const score = isCartViewWithProductOutOfStockValidation(candidate)
+    verdict(0, score, "test_isCartViewWithProductOutOfStockValidation " + score)
+}
+
+function test_isCategoryPageView(candidate: any) {
+    const score = isCategoryPageView(candidate)
+    verdict(0, score, "test_isCategoryPageView " + score)
 }
 console.log("+ ------------------- +")
 const objectJsonMap = test_allInterfaces()
@@ -568,7 +589,11 @@ test_addToCart(objectJsonMap["removeFromCart"])
 test_addToCart_withNoise(objectJsonMap["addToCart"])
 test_addToCart_missingParams(objectJsonMap["addToCart"])
 // unique
-test_isValidCartPageView(objectJsonMap["cartPageView"])
+test_isCartPageView(objectJsonMap["cartPageView"])
+test_isCartView(objectJsonMap["cartView"])
+test_isCartViewWithProductOutOfStock(objectJsonMap["cartViewWithProductOutOfStock"])
+test_isCategoryPageView(objectJsonMap["categoryPageView"])
+
 
 
 
