@@ -112,7 +112,6 @@ type TypeFilterUniques = {
 export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
 export interface CartView extends TypeCart, TypeGuestEmail, TypeLocaleLanguage, TypeProduct { } 
 export interface CartViewWithProductOutOfStock extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct, TypeProductOutOfStock { }
-// 
 export interface CategoryPageView extends TypeCategoryName, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
 export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeProduct { }
 export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
@@ -143,5 +142,8 @@ export interface NavigationLinkClick extends TypeGuestEmail, TypeLink, TypeLocal
 export interface TopBannerClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
 
 
+//
+export interface CommonClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface CommonCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
 
 

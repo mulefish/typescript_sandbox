@@ -1,203 +1,79 @@
 
-export function cartValidation(input: any): number {
-    // For AddToCart and RemoveFromCart
-    return isCartValid(input)
-} 
+import { CommonClick, CommonCart
+} from './version2_interfaces';
 
-/**
- * The following funcs will recive aJSON object a validate against a schema.
- * 
- * @param {object} input - The JSON object to be validated.
- * @returns {number} - The function returns:
- *                     - `0` if the input perfectly matches the AddToCart schema.
- *                     - `-1` if the input fails to match the schema due to missing or incorrect type properties.
- *                     - A positive integer representing the count of additional, unnecessary properties if the input matches the schema but includes extra properties.
- * NOTE: The func isValidAddToCart will have comments in it; The other funcs I will not include any comments. 
- */ 
-function isCartValid(input: any): number {
-    const requiredProps: { [key: string]: 'string' | 'number' } = {
-        guestHashedEmail: 'string',
-        browserUserAgent: 'string',
-        locale: 'string',
-        language: 'string',
-        productId: 'string',
-        productName: 'string',
-        productSKU: 'string',
-        productPrice: 'string',
-        skuQuantity: 'number',
-        currency: 'string'
-    };
-
-    let extraPropsCount = 0;
-    let missingOrIncorrectTypeCount = 0;
-
-    // Check for missing or incorrect type properties
-    for (const key in requiredProps) {
-        if (!input.hasOwnProperty(key) || typeof input[key] !== requiredProps[key]) {
-            missingOrIncorrectTypeCount++;
-        }
-    }
-    // Check for extra properties
-    for (const key in input) {
-        if (!requiredProps.hasOwnProperty(key)) {
-            extraPropsCount++;
-        }
-    }
-
-    if (missingOrIncorrectTypeCount > 0) {
-        return -1; // Missing or incorrect type for at least one required property
-    } else {
-        return extraPropsCount; // Number of extra properties
-    }
+function isValidLocale(locale: string): boolean {
+    const pattern = /^[a-z]{2}-[A-Z]{2}$/;
+    const x = pattern.test(locale);
+    return x 
 }
 
-export function isValidCartPageView(input: any): number {
-    const requiredProps: { [key: string]: 'string' | 'number' } = {
-        productId: 'string',
-        productName: 'string',
-        cartId: 'string',
-        cartType: 'string',
-        guestHashedEmail: 'string',
-        browserUserAgent: 'string',
-        locale: 'string',
-        language: 'string',
-        pageName: 'string',
-        productSKU: 'string',
-        productPrice: 'string',
-        skuQuantity: 'number',
-        currency: 'string',
-        cartTotalQuantity:'number'
-    };
-    let extraPropsCount = 0;
-    let missingOrIncorrectTypeCount = 0;
-    for (const key in requiredProps) {
-        if (!input.hasOwnProperty(key) || typeof input[key] !== requiredProps[key]) {
-            missingOrIncorrectTypeCount++;
-        }
-    }
-    for (const key in input) {
-        if (!requiredProps.hasOwnProperty(key)) {
-            extraPropsCount++;
-        }
-    }
 
-    if (missingOrIncorrectTypeCount > 0) {
-        return -1;
-    } else {
-        return extraPropsCount;
-    }
+function isCommonClick(obj: any): obj is CommonClick {
+    return typeof obj.guestHashedEmail === 'string' &&
+           typeof obj.browserUserAgent === 'string' &&
+           typeof obj.linkClickUrl === 'string' &&
+           typeof obj.linkClickText === 'string' &&
+           isValidLocale(obj.locale) === true &&
+           typeof obj.language === 'string';
 }
 
-export function isCartViewValidation(input: any): number {
-    const requiredProps: { [key: string]: 'string' | 'number' } = {
+function isCommonCart(obj: any): obj is CommonCart {
+    return typeof obj.guestHashedEmail === 'string' &&
+           typeof obj.browserUserAgent === 'string' &&
+           typeof obj.locale === 'string' &&
+           typeof obj.language === 'string' &&
+           typeof obj.productId === 'string' &&
+           typeof obj.productName === 'string' &&
+           typeof obj.productSKU === 'string' &&
+           typeof obj.productPrice === 'string' &&
+           typeof obj.skuQuantity === 'number' &&
+           typeof obj.currency === 'string';
+}
 
+
+
+// const noise = {
+//     guestHashedEmail: "example@example.com",
+//     browserUserAgent: "Mozilla/5.0",
+//     locale: "en-US",
+//     productId: "P123",
+//     productName: "Product Name",
+//     productSKU: "SKU123",
+//     productPrice: "100.00",
+//     skuQuantity: 1,
+//     currency: "USD"
+// };
+
+// export function classifyJsonObject(obj: any): "CommonClick" | "CommonCart" | "Neither" {
+//     console.log( obj )
     
-    productId: 'string',
-    productName: 'string',
-    productSKU: 'string',
-    productPrice: 'string',
-    skuQuantity: 'number',
-    currency: 'string',
-    locale: 'string',
-    language: 'string',
-    cartId: 'string',
-    cartType: 'string',
-    guestHashedEmail: 'string',
-    browserUserAgent: 'string'
-  
-    }
-
-    let extraPropsCount = 0;
-    let missingOrIncorrectTypeCount = 0;
-    for (const key in requiredProps) {
-        if (!input.hasOwnProperty(key) || typeof input[key] !== requiredProps[key]) {
-            missingOrIncorrectTypeCount++;
-        }
-    }
-    for (const key in input) {
-        if (!requiredProps.hasOwnProperty(key)) {
-            extraPropsCount++;
-        }
-    }
-
-    if (missingOrIncorrectTypeCount > 0) {
-        return -1;
-    } else {
-        return extraPropsCount;
-    }
-}
+//     if (isCommonClick(obj)) {
+//         console.log("isCommonClick")
+//         return "CommonClick";
+//     } else if (isCommonCart(obj)) {
+//         console.log("isCommonCart")
+//         return "CommonCart";
+//     } else {
+//         console.log("neither")
+//         return "Neither";
+//     }
+// }
 
 
-
-export function isCartViewWithProductOutOfStockValidation(input: any): number {
-
-
-
-    const requiredProps: { [key: string]: 'string' | 'number' } = {
+export function classifyJsonObject(obj: any): string {
+    console.log( obj )
     
-        productId: 'string',
-        productName: 'string',
-        productSKU: 'string',
-        productPrice: 'string',
-        skuQuantity: 'number',
-        currency: 'string',
-        locale: 'string',
-        language: 'string',
-        guestHashedEmail: 'string',
-        browserUserAgent: 'string',
-        productCartOutOfStockStatus: 'string'  
-    }
-
-    let extraPropsCount = 0;
-    let missingOrIncorrectTypeCount = 0;
-    for (const key in requiredProps) {
-        if (!input.hasOwnProperty(key) || typeof input[key] !== requiredProps[key]) {
-            missingOrIncorrectTypeCount++;
-        }
-    }
-    for (const key in input) {
-        if (!requiredProps.hasOwnProperty(key)) {
-            extraPropsCount++;
-        }
-    }
-
-    if (missingOrIncorrectTypeCount > 0) {
-        return -1;
+    if (isCommonClick(obj)) {
+        console.log("CommonClick")
+        return "CommonClick";
+    } else if (isCommonCart(obj)) {
+        console.log("CommonCart")
+        return "CommonCart";
     } else {
-        return extraPropsCount;
+        console.log("neither")
+        return "Neither";
     }
 }
 
-
-export function isCategoryPageView(input: any): number {
-    const requiredProps: { [key: string]: 'string' | 'number' } = {
-    
-        locale: 'string',
-        language: 'string',
-        pageName: 'string',
-        pageUrl: 'string',
-        categoryName: 'string',
-        guestHashedEmail: 'string',
-        browserUserAgent: 'string'
-    }
-
-    let extraPropsCount = 0;
-    let missingOrIncorrectTypeCount = 0;
-    for (const key in requiredProps) {
-        if (!input.hasOwnProperty(key) || typeof input[key] !== requiredProps[key]) {
-            missingOrIncorrectTypeCount++;
-        }
-    }
-    for (const key in input) {
-        if (!requiredProps.hasOwnProperty(key)) {
-            extraPropsCount++;
-        }
-    }
-
-    if (missingOrIncorrectTypeCount > 0) {
-        return -1;
-    } else {
-        return extraPropsCount;
-    }
-}
 
