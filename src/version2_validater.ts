@@ -1,13 +1,25 @@
 
-import { CommonClick, CommonCart
-} from './version2_interfaces';
+import { CommonClick, AddRemoveCart } from './version2_interfaces';
 
-function isValidLocale(locale: string): boolean {
+const isValidLocale = (locale: string): boolean => {
     const pattern = /^[a-z]{2}-[A-Z]{2}$/;
     const x = pattern.test(locale);
     return x 
 }
 
+const isValidLanguage = (language: string): boolean => { 
+    language = language.toLowerCase() 
+    const langs = new Set(['english', 'en', 'french', 'fr', 'japanese', 'jp']);
+    return langs.has(language);
+}
+
+
+const isValidMoney = (productPrice: string): boolean => {
+    const pattern = /^\d+(\.\d{2})?$/;
+    return pattern.test(productPrice);
+}
+
+// ///////////
 
 function isCommonClick(obj: any): obj is CommonClick {
     return typeof obj.guestHashedEmail === 'string' &&
@@ -15,64 +27,32 @@ function isCommonClick(obj: any): obj is CommonClick {
            typeof obj.linkClickUrl === 'string' &&
            typeof obj.linkClickText === 'string' &&
            isValidLocale(obj.locale) === true &&
-           typeof obj.language === 'string';
+           isValidLanguage(obj.language) === true;
 }
 
-function isCommonCart(obj: any): obj is CommonCart {
+function isCommonCart(obj: any): obj is AddRemoveCart {
     return typeof obj.guestHashedEmail === 'string' &&
            typeof obj.browserUserAgent === 'string' &&
+           isValidLocale(obj.locale) === true && 
            typeof obj.locale === 'string' &&
-           typeof obj.language === 'string' &&
+           isValidLanguage(obj.language) === true &&
            typeof obj.productId === 'string' &&
            typeof obj.productName === 'string' &&
            typeof obj.productSKU === 'string' &&
            typeof obj.productPrice === 'string' &&
            typeof obj.skuQuantity === 'number' &&
-           typeof obj.currency === 'string';
+           isValidMoney(obj.currency);
 }
 
 
-
-// const noise = {
-//     guestHashedEmail: "example@example.com",
-//     browserUserAgent: "Mozilla/5.0",
-//     locale: "en-US",
-//     productId: "P123",
-//     productName: "Product Name",
-//     productSKU: "SKU123",
-//     productPrice: "100.00",
-//     skuQuantity: 1,
-//     currency: "USD"
-// };
-
-// export function classifyJsonObject(obj: any): "CommonClick" | "CommonCart" | "Neither" {
-//     console.log( obj )
-    
-//     if (isCommonClick(obj)) {
-//         console.log("isCommonClick")
-//         return "CommonClick";
-//     } else if (isCommonCart(obj)) {
-//         console.log("isCommonCart")
-//         return "CommonCart";
-//     } else {
-//         console.log("neither")
-//         return "Neither";
-//     }
-// }
-
-
 export function classifyJsonObject(obj: any): string {
-    console.log( obj )
-    
+        // console.log( obj )
     if (isCommonClick(obj)) {
-        console.log("CommonClick")
         return "CommonClick";
     } else if (isCommonCart(obj)) {
-        console.log("CommonCart")
-        return "CommonCart";
+        return "AddRemoveCart";
     } else {
-        console.log("neither")
-        return "Neither";
+        return "No_Match";
     }
 }
 

@@ -8,7 +8,7 @@ function verdict(a: any, b: any, msg: string) {
     console.log(`${result} ${msg}`)
 }
 const jsons = {
-    "clickExample" : {
+    "click" : {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         linkClickUrl: "https://example.com",
@@ -16,7 +16,7 @@ const jsons = {
         locale: "en-US",
         language: "English"
     }, 
-    "cartExample" : {
+    "addCart" : {
         guestHashedEmail: "example@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -30,11 +30,34 @@ const jsons = {
     }
 }
 
-function test_clickExample(candidate:any, expected:string) {
+function test_happyPath(candidate:any, expected:string, testedInterface:string) {
+    
     const actual = classifyJsonObject(candidate)
-    const isOK = actual === expected
-    verdict(isOK, true, "test_clickExample: " + actual  + "   "  +expected )
+    const isOk = actual === expected
+    verdict(isOk, true, testedInterface + ": " + actual  + "   "  +expected )
 }
-test_clickExample(jsons["clickExample"], "CommonClick")
 
+function test_CommonClick_sadpath_wrongLanguage(candidate:any, expected:string) {
+    const x = JSON.parse(JSON.stringify(candidate));
+    x["language"] = "Kittycats"
+    const actual = classifyJsonObject(x)
+    const isOk = actual === expected
+    verdict(isOk, true, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected"  +expected )
+
+}
+
+function test_CommonClick_sadpath_noLanguage(candidate:any, expected:string) {
+    const x = JSON.parse(JSON.stringify(candidate));
+    x["language"] = "Kittycats"
+    const actual = classifyJsonObject(x)
+    const isOk = actual === expected
+    verdict(isOk, true, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected"  + expected)
+}
+
+const NO_MATCH = "No_Match"
+test_happyPath(jsons["click"], "CommonClick", "CommonClick")
+test_CommonClick_sadpath_noLanguage(jsons["click"], NO_MATCH)
+test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
+test_happyPath(jsons["addCart"], "AddRemoveCart", "AddRemoveCart")
+// test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
 
