@@ -1,4 +1,4 @@
-import { isValidAddToCart } from './version2_validater';
+import { cartValidation, isValidCartPageView } from './version2_validater';
 import {
     AddToCart,
     CartPageView,
@@ -519,10 +519,11 @@ function verdict(a: any, b: any, msg: string) {
         goodObjects['liveChatClick'] = liveChatClick_Json
         goodObjects['navigationLinkClick'] = navigationLinkClick_Json
         goodObjects['topBannerClick'] = topBannerClick_Json
-
+        /*
         for (let k in goodObjects) {
             console.log(k)
         }
+        */
         verdict(true, true, "test_allInterfaces")
         return goodObjects
     } catch (boom) {
@@ -532,15 +533,42 @@ function verdict(a: any, b: any, msg: string) {
 
 
 }
-
 function test_addToCart(candidate: any) {
-    for ( let k in candidate) {
-    //     console.log( k )
-    }
+    const score = cartValidation(candidate)
+    verdict(0, score, "test_addToCart " + score)
+}
+function test_addToCart_missingParams(candidate: any) { 
+    delete candidate['language']
+    delete candidate['currency']
+    const score = cartValidation(candidate)
+    verdict(-1, score, "test_addToCart_missingParams " + score )
+
+}
+function test_addToCart_withNoise(candidate: any) {
+    candidate["noise"] = "This is extra! It should be ignored!"
+    const score = cartValidation(candidate)
+    verdict(1, score, "test_addToCart_withNoise " + score )
+}
+function test_removeFromCart(candidate: any) {
+    const score = cartValidation(candidate)
+    verdict(0, score, "test_removeFromCart " + score)
 }
 
+
+function test_isValidCartPageView(candidate: any) { 
+    const score = isValidCartPageView(candidate)
+
+    verdict(score, 0, "test_isValidCartPageView " + score )
+}
+console.log("+ ------------------- +")
 const objectJsonMap = test_allInterfaces()
+// cart
 test_addToCart(objectJsonMap["addToCart"])
+test_addToCart(objectJsonMap["removeFromCart"])
+test_addToCart_withNoise(objectJsonMap["addToCart"])
+test_addToCart_missingParams(objectJsonMap["addToCart"])
+// unique
+test_isValidCartPageView(objectJsonMap["cartPageView"])
 
 
 
