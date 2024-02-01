@@ -135,3 +135,4 @@ export interface LinkClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail 
 export interface LiveChatClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
 export interface NavigationLinkClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
 export interface TopBannerClick extends TypeLink, TypeLocaleLanguage, TypeGuestEmail { }
+
