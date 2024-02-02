@@ -15,6 +15,6 @@ npm run tdd // test
 npm run server // web server  
 
 # screencap : Good match example
-![image2.png](./image1.png)
+![image2.png](./image2.png)
 # screencap : Bad match example
 ![image1.png](./image1.png)
