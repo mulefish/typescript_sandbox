@@ -177,7 +177,7 @@ const jsons = {
         skuQuantity: 1,
         currency: "USD"
       },
-      "pageView": {
+      "isCommonPageView": {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -232,7 +232,6 @@ test_CommonClick_sadpath_noLanguage(jsons["click"], NO_MATCH)
 test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
 test_happyPath(jsons["addCart"], "AddRemoveCart", "AddRemoveCart")
 test_happyPath(jsons['filtersClick'], "FiltersClick", "FiltersClick")
-test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['homePageView'], "HomePageView", "HomePageView")
 test_happyPath(jsons['purchase'], "Purchase", "Purchase")
 test_happyPath(jsons['searchResultsClick'], "SearchResultsClick", "SearchResultsClick")
@@ -242,7 +241,8 @@ test_happyPath(jsons['isEmailSignupSuccess'], "EmailSignupSuccess", "EmailSignup
 test_happyPath(jsons['isCartView'], "CartView", "CartView")
 test_happyPath(jsons['isCartViewWithProductOutOfStock'], "CartViewWithProductOutOfStock", "CartViewWithProductOutOfStock")
 test_happyPath(jsons['isCategoryPageView'], "CategoryPageView", "CategoryPageView")
-test_happyPath(jsons['pageView'], "CommonPageView", "CommonPageView")
+test_happyPath(jsons['isCommonPageView'], "CommonPageView", "CommonPageView")
+test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['isCheckoutPurchaseCompletePageView'], "CheckoutPurchaseCompletePageView", "CheckoutPurchaseCompletePageView")
 
 
