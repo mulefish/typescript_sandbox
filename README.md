@@ -18,9 +18,11 @@ npm run server // web server
 CLI: npm run server
 Browser: http://localhost:3000/version2.html
 
-# screencap : Good match example : Notice CommonClick maps into these events: ExitLinkClick,FAQClick,LinkClick,LiveChatClick,NavigationLinkClick,TopBannerClick
+# screencap : Good match example
+Notice CommonClick maps into these events: ExitLinkClick,FAQClick,LinkClick,LiveChatClick,NavigationLinkClick,TopBannerClick
 
 ![image1.png](./image1.png)
 
-# screencap : Bad match example : Notice the language of 'penny' is un-possible
+# screencap : Bad match example
+Notice the language of 'penny' is un-possible
 ![image2.png](./image2.png)
