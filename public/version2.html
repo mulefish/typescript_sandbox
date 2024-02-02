@@ -20,6 +20,7 @@
         &nbsp;|&nbsp;
         <button onclick="save()">save</button>
         <button onclick="load()">load</button>
+        <button onclick="cycle()">cycle</button>
         <button onclick="beautify()">beautify</button>
 
         <span id="feedBack"></span>
@@ -145,8 +146,6 @@
                         document.getElementById('resultViewer').style.backgroundColor = 'white';
                         document.getElementById('resultViewer').style.color = 'black';
                     }
-
-
                 } catch (failbot) {
                     document.getElementById("resultViewer").innerHTML = " *** " + failbot.message + " ***"
                 }

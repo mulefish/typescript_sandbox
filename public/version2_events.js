@@ -306,6 +306,9 @@ const getSelectLamEvent = () => {
 
 function changeEvent() {
     const x = getSelectLamEvent()
+    doit(x)
+}
+function doit(x) {
     document.getElementById("resultViewer").innerHTML = ""
     document.getElementById("tdr_area").value = ""
     document.getElementById("interfaces").innerHTML = ""
@@ -313,9 +316,6 @@ function changeEvent() {
     document.getElementById("milliseconds").innerHTML = ""
     document.getElementById("shouldBe").innerHTML = ""
 
-    
-
-       
     if (jsons.hasOwnProperty(x)) {
         document.getElementById("feedBack").innerHTML = "event " + x
         const payload = jsons[x].payload
@@ -324,7 +324,6 @@ function changeEvent() {
         document.getElementById("interfaces").innerHTML = jsons[x].interfaces
         document.getElementById("extends").innerHTML = jsons[x].extends
         document.getElementById("shouldBe").innerHTML = x
-        
 
         verify()
     }
@@ -340,4 +339,21 @@ function createSelectList() {
     })
     html += "</select>"
     document.getElementById("selecter").innerHTML = html
+}
+
+
+// Function to pause for a given time
+function pause(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+async function cycle() {
+
+    let keys = Object.keys(jsons)
+    for ( let i = 0 ; i < keys.length; i++ ) {
+        console.log( i + " of " + keys.length)
+        const k = keys[i]
+        doit(k)
+        await pause(1000);
+    }
 }
