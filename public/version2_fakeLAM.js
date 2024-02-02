@@ -1,4 +1,5 @@
-
+/// File size: 0.01464 megabytes
+////////// Start Fake Zod ////
 const isValidLocale = (locale) => {
     const pattern = /^[a-z]{2}-[A-Z]{2}$/;
     const x = pattern.test(locale);
@@ -18,7 +19,7 @@ const isValidCurrency = (currency) => {
     // const pattern = /^\d+(\.\d{2})?$/;
     return currencies.has(currency);
 };
-// ///////////
+// /////////// End fake Zod 
 function isCommonClick(obj) {
     return typeof obj.guestHashedEmail === 'string' &&
         typeof obj.browserUserAgent === 'string' &&
@@ -239,7 +240,7 @@ function isPageView(obj) {
 
 
 function classifyJsonObject(obj) {
-    // NOTE: The order of testing MATTERS!
+    // NOTE: The order of checking MATTERS!
     if (isPurchase(obj)) {
         return "Purchase";
     }
