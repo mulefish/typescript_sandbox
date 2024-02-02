@@ -2,8 +2,11 @@
 typescript sandbox
 
 # REPO
+https://github.com/mulefish/typescript_sandbox/
 
-github.com:mulefish/typescript_sandbox.git
+# Files of current interest:
+version2_tdd.js in the dist dir  
+robot.js in the src dir  
 
 
 # COMMANDS
