@@ -2,7 +2,8 @@
 typescript sandbox
 
 # REPO
-git@github.com:mulefish/typescript_sandbox.git
+
+github.com:mulefish/typescript_sandbox.git
 
 
 # COMMANDS
