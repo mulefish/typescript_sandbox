@@ -412,3 +412,254 @@ return     'guestHashedEmail' in obj && isValidMoney(obj.guestHashedEmail) &&
     'currency' in obj && isValidMoney(obj.currency);
 }
 
+// TEST DATA
+const testData={
+  "isComponentImpression": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String"
+  },
+  "isCheckoutPurchaseCompletePageView": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "orderTaxTotal": "102.00",
+    "orderShippingTotal": "103.00",
+    "pageName": "String",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD"
+  },
+  "isCategoryPageView": {
+    "categoryName": "String",
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String",
+    "pageUrl": "String"
+  },
+  "isCartViewWithProductOutOfStock": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD",
+    "productCartOutOfStockStatus": "String"
+  },
+  "isCartView": {
+    "cartId": "String",
+    "cartType": "String",
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD"
+  },
+  "isCartPageView": {
+    "cartId": "String",
+    "cartType": "String",
+    "cartTotalQuantity": 1,
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD"
+  },
+  "isEmailSignupSuccess": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "userId": "String",
+    "userHashedEmail": "String"
+  },
+  "isPurchase": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "orderTaxTotal": "102.00",
+    "orderShippingTotal": "103.00",
+    "orderId": "String",
+    "orderRevenue": "104.00",
+    "orderPaymentMethod": "String",
+    "orderShippingMethod": "String",
+    "orderShippingZipPostalCode": "String",
+    "orderShippingStateProvince": "String",
+    "orderShippingCountry": "String",
+    "orderPromoCode": "String",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD",
+    "orderDiscount": "105.00",
+    "userId": "String",
+    "userHashedEmail": "String"
+  },
+  "isErr": {
+    "errorType": "String",
+    "errorMessage": "String",
+    "errorGuestFacing": "String",
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish"
+  },
+  "isSearchResultsClick": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "searchTerm": "String",
+    "searchResultsType": "String",
+    "searchResultsCount": 1
+  },
+  "isSearchResultsPageView": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "searchTerm": "String",
+    "searchResultsType": "String",
+    "searchResultsCount": 1,
+    "pageName": "String"
+  },
+  "isPageView": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String",
+    "pageUrl": "String",
+    "campaignIdCID": "String",
+    "trafficSourceLastTouchChannel": "String",
+    "trafficSourceReferrerType": "String",
+    "trafficSourceReferringUrl": "String",
+    "browserType": "String",
+    "deviceType": "String",
+    "userSessionId": "String",
+    "implementationMethod": "String",
+    "siteProperty": "String",
+    "internalCampaignIdICID": "String"
+  },
+  "isHomePageView": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String",
+    "pageUrl": "String"
+  },
+  "isFiltersClick": {
+    "filterType": "String",
+    "filterValue": "String",
+    "filterState": "String",
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish"
+  },
+  "isCommonPageView": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "pageName": "String",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD"
+  },
+  "isCommonClick": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "linkClickUrl": "String",
+    "linkClickText": "String",
+    "locale": "en-US",
+    "language": "Engish"
+  },
+  "isAddRemoveCart": {
+    "guestHashedEmail": "String",
+    "browserUserAgent": "String",
+    "locale": "en-US",
+    "language": "Engish",
+    "productId": "String",
+    "productName": "String",
+    "productSKU": "String",
+    "productPrice": "101.00",
+    "skuQuantity": 1,
+    "currency": "USD"
+  }
+}
+
+    function verdict(a: any, b: any, start: number, msg: string) {
+        const milsec = new Date().getTime() - start
+        let result: string = "FAIL"
+        if (JSON.stringify(a) === JSON.stringify(b)) {
+            result = "PASS"
+        }
+        if (milsec > 20) {
+            msg = " TOO SLOW"
+        }
+        console.log(result + " milsec=" + milsec + " msg=" + msg)
+    }
+    
+    
+    function test_happyPath(candidate: any, expected: string, testedInterface: string) {
+        const t1 = new Date().getTime()
+        const actual = classifyJsonObject(candidate)
+        const isOk = actual === expected
+        if (isOk === false) {
+            console.log(candidate)
+        }
+    
+        verdict(isOk, true, t1, testedInterface + ": " + actual + "   " + expected)
+    }
+    
+    function test_CommonClick_sadpath_wrongLanguage(candidate: any, expected: string) {
+        const t1 = new Date().getTime()
+    
+        const x = JSON.parse(JSON.stringify(candidate));
+        x["language"] = "Kittycats"
+        const actual = classifyJsonObject(x)
+        const isOk = actual === expected
+        verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual + "   expected=" + expected)
+    
+    }
+    
+    function test_CommonClick_sadpath_noLanguage(candidate: any, expected: string) {
+        const t1 = new Date().getTime()
+    
+        const x = JSON.parse(JSON.stringify(candidate));
+        x["language"] = "Kittycats"
+        const actual = classifyJsonObject(x)
+        const isOk = actual === expected
+        verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual + "   expected=" + expected)
+    }

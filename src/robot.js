@@ -310,7 +310,97 @@ function makeTheGuards() {
     }
 }
 
+function makeTestData() { 
 
+
+    log("// TEST DATA")
+    let tests = {} 
+    for (let interface in interfaces) {
+        const dataName = "is" + interface 
+        tests[dataName] = {} 
+        const typesArray = interfaces[interface]
+        typesArray.forEach((thing) => {
+            const myTypes = types[thing]
+            for (let k in myTypes) {
+                const v = myTypes[k]
+                if ( k === "locale") {
+                    tests[dataName][k]="en-US"
+                } else if ( k === "language") {
+                    tests[dataName][k]="Engish"
+                } else if ( k === "productPrice" ) { 
+                                                // } || "orderTaxTotal" || "orderShippingTotal" || "orderRevenue" || "orderDiscount") {
+                    tests[dataName][k]="101.00"
+                } else if ( k === "orderTaxTotal") {
+                    tests[dataName][k]="102.00"
+                } else if ( k === "orderShippingTotal") {
+                    tests[dataName][k]="103.00"
+                } else if ( k === "orderRevenue") {
+                    tests[dataName][k]="104.00"
+                } else if ( k === "orderDiscount") {
+                    tests[dataName][k]="105.00"
+                } else if ( k === "currency") {
+                    tests[dataName][k]="USD"
+                } else if ( k.includes("Quantity") || k === "searchResultsCount" ) {
+                    tests[dataName][k]=1
+                } else if ( v === STRING) {
+                    tests[dataName][k]="String"
+                } else {
+                    tests[dataName][k]="?afakfklaldfkaffl " +k 
+                }
+            }
+        })
+    }
+    log( "const testData=" + JSON.stringify( tests, null, 2 ) )
+
+
+    const actualTests = `
+    function verdict(a: any, b: any, start: number, msg: string) {
+        const milsec = new Date().getTime() - start
+        let result: string = "FAIL"
+        if (JSON.stringify(a) === JSON.stringify(b)) {
+            result = "PASS"
+        }
+        if (milsec > 20) {
+            msg = " TOO SLOW"
+        }
+        console.log(result + " milsec=" + milsec + " msg=" + msg)
+    }
+    
+    
+    function test_happyPath(candidate: any, expected: string, testedInterface: string) {
+        const t1 = new Date().getTime()
+        const actual = classifyJsonObject(candidate)
+        const isOk = actual === expected
+        if (isOk === false) {
+            console.log(candidate)
+        }
+    
+        verdict(isOk, true, t1, testedInterface + ": " + actual + "   " + expected)
+    }
+    
+    function test_CommonClick_sadpath_wrongLanguage(candidate: any, expected: string) {
+        const t1 = new Date().getTime()
+    
+        const x = JSON.parse(JSON.stringify(candidate));
+        x["language"] = "Kittycats"
+        const actual = classifyJsonObject(x)
+        const isOk = actual === expected
+        verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual + "   expected=" + expected)
+    
+    }
+    
+    function test_CommonClick_sadpath_noLanguage(candidate: any, expected: string) {
+        const t1 = new Date().getTime()
+    
+        const x = JSON.parse(JSON.stringify(candidate));
+        x["language"] = "Kittycats"
+        const actual = classifyJsonObject(x)
+        const isOk = actual === expected
+        verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual + "   expected=" + expected)
+    }`
+    log(actualTests)
+
+}
 
 function main() {
 
@@ -319,6 +409,7 @@ function main() {
     makeInterfaces() // interfaces are objects? Merge types into one thing, anyhow.
     makeTheBrains() // This is tricky part
     makeTheGuards() // This is a pretty part of typescript
+    makeTestData() // Test data is grist for logic
 
     const fs = require('fs').promises;
     async function writeToFile(filename, content) {
