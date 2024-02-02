@@ -42,7 +42,7 @@ const isValidMoney = (productPrice: string): boolean => {
 
 const isValidCurrency = (currency: string): boolean => {
     const currencies = new Set(['USD', 'CAD', 'JPY']);
-    const pattern = /^\d+(\.\d{2})?$/;
+    // const pattern = /^\d+(\.\d{2})?$/;
     return currencies.has(currency);
 }
 

@@ -1,150 +1,340 @@
+// Running typescript is NICE! ( Error free! TypeChecking! )
+// Writing typescript is NO FUN!
+// BOILER PLATE 
 
-type TypeProduct = {
-    productId: string;
-    productName: string;
-    productSKU: string;
-    productPrice: string;
-    skuQuantity: number;
-    currency: string;
-};
+///////////// END BOILERPLATE ///
 
-type TypePageName = {
-    pageName: string;
-};
+const STRING = "string"
+const NUMBER = "number"
+
+const types = {
+    TypeProduct: {
+        productId: STRING,
+        productName: STRING,
+        productSKU: STRING,
+        productPrice: STRING,
+        skuQuantity: NUMBER,
+        currency: STRING
+    },
+    TypePageName: {
+        pageName: STRING
+    },
+    TypeLocaleLanguage: {
+        locale: STRING,
+        language: STRING
+    },
+    TypeGuestEmail: {
+        guestHashedEmail: STRING,
+        browserUserAgent: STRING
+    },
+    TypeCart: {
+        cartId: STRING,
+        cartType: STRING
+    },
+    TypePageUrl: {
+        pageUrl: STRING
+    },
+    TypeSearch: {
+        searchTerm: STRING,
+        searchResultsType: STRING,
+        searchResultsCount: NUMBER
+    },
+    TypeOrderTotal: {
+        orderTaxTotal: STRING,
+        orderShippingTotal: STRING
+    },
+    TypeLink: {
+        linkClickUrl: STRING,
+        linkClickText: STRING
+    },
+
+    TypeCategoryName: {
+        categoryName: STRING
+    },
+    TypeCartTotalQuantity: {
+        cartTotalQuantity: NUMBER
+    },
+
+    TypeProductOutOfStock: {
+        productCartOutOfStockStatus: STRING
+    },
+
+    TypeProductUniques: {
+        orderId: STRING,
+        orderRevenue: STRING,
+        orderPaymentMethod: STRING,
+        orderShippingMethod: STRING,
+        orderShippingZipPostalCode: STRING,
+        orderShippingStateProvince: STRING,
+        orderShippingCountry: STRING,
+        orderPromoCode: STRING,
+        productId: STRING,
+        productName: STRING,
+        productSKU: STRING,
+        productPrice: STRING,
+        skuQuantity: NUMBER,
+        currency: STRING,
+        orderDiscount: STRING
+    },
+    TypeUserId: {
+        userId: STRING,
+        userHashedEmail: STRING
+    },
+
+    TypePageViewUniques: {
+        campaignIdCID: STRING,
+        trafficSourceLastTouchChannel: STRING,
+        trafficSourceReferrerType: STRING,
+        trafficSourceReferringUrl: STRING,
+        browserType: STRING,
+        deviceType: STRING,
+        userSessionId: STRING,
+        implementationMethod: STRING,
+        siteProperty: STRING,
+        internalCampaignIdICID: STRING
+    },
+    TypeErrs: {
+        errorType: STRING,
+        errorMessage: STRING,
+        errorGuestFacing: STRING
+    },
+
+    TypeFilterUniques: {
+        filterType: STRING,
+        filterValue: STRING,
+        filterState: STRING
+    }
+}
+
+const interfaces = {
+    ComponentImpression: ["TypeGuestEmail", "TypeLocaleLanguage", "TypePageName"],
+    CheckoutPurchaseCompletePageView: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeOrderTotal", "TypePageName", "TypeProduct"],
+    CategoryPageView: ["TypeCategoryName", "TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypePageUrl"],
+    CartViewWithProductOutOfStock: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeProduct", "TypeProductOutOfStock"],
+    CartView: ["TypeCart", "TypeGuestEmail", "TypeLocaleLanguage", "TypeProduct"],
+    CartPageView: ["TypeCart", "TypeCartTotalQuantity", "TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypeProduct"],
+    EmailSignupSuccess: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeUserId"],
+    Purchase: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeOrderTotal", "TypeProductUniques", "TypeUserId"],
+    Err: ["TypeErrs", "TypeGuestEmail", "TypeLocaleLanguage"],
+    SearchResultsClick: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeSearch"],
+    SearchResultsPageView: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeSearch", "TypePageName"],
+    PageView: ["TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypePageUrl", "TypePageViewUniques"],
+    HomePageView: ["TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypePageUrl"],
+    CartPageView: ["TypeCart", "TypeCartTotalQuantity", "TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypeProduct"],
+    FiltersClick: ["TypeFilterUniques", "TypeGuestEmail", "TypeLocaleLanguage"],
+    CommonPageView: ["TypeGuestEmail", "TypeLocaleLanguage", "TypePageName", "TypeProduct"],
+    //interface OrderReviewPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+    //interface ProductDetailPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+    //interface CheckoutPaymentPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+    //interface CheckoutShippingPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+    CommonClick: ["TypeGuestEmail", "TypeLink", "TypeLocaleLanguage"],
+    //interface ExitLinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    //interface FAQClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    //interface LinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    //interface LiveChatClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    //interface NavigationLinkClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    //interface TopBannerClick extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+    AddRemoveCart: ["TypeGuestEmail", "TypeLocaleLanguage", "TypeProduct"]
+    //interface AddToCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+    //interface RemoveFromCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+}
+let everything = ""
+function log(msg) {
+    everything += msg + "\n"
+    console.log(msg)
+}
+
+function makeValidators() {
+    let v = `const isValidLocale = (locale: string): boolean => {
+        const pattern = /^[a-z]{2}-[A-Z]{2}$/;
+        const x = pattern.test(locale);
+        return x
+    }`
+    v += "\n"
+    v += `const isValidLanguage = (language: string): boolean => {
+        language = language.toLowerCase()
+        const langs = new Set(['english', 'en', 'french', 'fr', 'japanese', 'jp']);
+    
+        return langs.has(language);
+    }`
+    v += "\n"
+    v += `const isValidMoney = (productPrice: string): boolean => {
+        const pattern = /^\d+(\.\d{2})?$/;
+        return pattern.test(productPrice);
+    }`
+    v += "\n"
+    v += `const isValidCurrency = (currency: string): boolean => {
+        const currencies = new Set(['USD', 'CAD', 'JPY']);
+        return currencies.has(currency);
+    }`
+    v += "\n"
+    log(v)
+}
+
+function makeTypes() {
+
+    for (let type in types) {
+        log(`type ${type} = {`)
+        for (let k in types[type]) {
+            const v = types[type][k]
+            log(`     ${k}:${v};`)
+        }
+        log('}')
+    }
+
+}
+
+function makeInterfaces() {
+    log("// INTERFACES")
+    for (let interface in interfaces) {
+        const myTypes = interfaces[interface].join(", ")
+        const x = `export interface ${interface} extends ${myTypes} {}`
+        log(x)
+
+    }
+    log("\n\n")
+}
 
 
-type TypeLocaleLanguage = {
-    locale: string;
-    language: string;
-};
+function makeTheBrains() {
+    const theDecider = `
+    export function classifyJsonObject(obj: any): string {
+        // NOTE: The order of testing MATTERS!
+        if (isPurchase(obj)) {
+            return "Purchase"
+        }
+        else if (isCartPageView(obj)) {
+            return "CartPageView"
+        }
+        else if (isCheckoutPurchaseCompletePageView(obj)) {
+            return "CheckoutPurchaseCompletePageView"
+        }
+        else if (isCommonPageView(obj)) {
+            return "CommonPageView"
+        }
+        // else if (isCheckoutShippingPageView(obj)) {
+        //     return "CheckoutShippingPageView"
+        // }
+        else if (isEmailSignupSuccess(obj)) {
+            return "EmailSignupSuccess"
+        } else if (isSearchResultsPageView(obj)) {
+            return "SearchResultsPageView"
+        }
+        else if (isErr(obj)) {
+            return "Err"
+        }
+        else if (isSearchResultsClick(obj)) {
+            return "SearchResultsClick"
+        }
 
-type TypeGuestEmail = {
-    guestHashedEmail: string;
-    browserUserAgent: string;
-};
+        else if (isFiltersClick(obj)) {
+            return "FiltersClick"
+        }
+        else if (isCartViewWithProductOutOfStock(obj)) {
+            return "CartViewWithProductOutOfStock"
+        }
+        else if (isCategoryPageView(obj)) {
+            return "CategoryPageView"
+        }
+        else if (isPageView(obj)) {
+            return "PageView"
+        }
+        else if (isCartView(obj)) {
+            return "CartView"
+        }
+        else if (isHomePageView(obj)) {
+            return "HomePageView"
+        }
+        else if (isCommonClick(obj)) {
+            return "CommonClick";
+        }
+        // else if (isCommonCart(obj)) {
+        //     return "AddRemoveCart";
+        // }
+        else if (isComponentImpression(obj)) {
+            return "ComponentImpression"
+        }
+        else {
+            return "No_Match";
+        }
+    }`
+    log(theDecider)
+}
 
+function makeTheGuards() {
+    log("// GUARDS")
 
-type TypeCart = {
-    cartId: string;
-    cartType: string;
-};
+    for (let interface in interfaces) {
+        const funcName = `is${interface}`
+        const typesArray = interfaces[interface]
+        const functionDeclareLine = `function ${funcName}(obj: any): obj is ${interface} {`
+        log(functionDeclareLine)
 
+        // Needed later on the decided whether to emit a && or a ;
+        let n = 0
+        typesArray.forEach((thing) => {
+            const myTypes = types[thing]
+            n += Object.keys(myTypes).length
+        })
 
+        let loop = 0
+        let accumulator = "return "
 
-type TypePageUrl = {
-    pageUrl: string;
-};
-
-type TypeSearch = {
-    searchTerm: string;
-    searchResultsType: string;
-    searchResultsCount: number;
-};
-
-type TypeOrderTotal = {
-    orderTaxTotal: string;
-    orderShippingTotal: string;
-};
-
-type TypeLink = {
-    linkClickUrl: string;
-    linkClickText: string;
-};
-
-type TypeCategoryName = {
-    categoryName: string;
-};
-
-type TypeCartTotalQuantity = {
-    cartTotalQuantity: number;
-};
-
-type TypeProductOutOfStock = {
-    productCartOutOfStockStatus: string;
-};
-
-type TypeProductUniques = {
-    orderId: string;
-    orderRevenue: string;
-    orderPaymentMethod: string;
-    orderShippingMethod: string;
-    orderShippingZipPostalCode: string;
-    orderShippingStateProvince: string;
-    orderShippingCountry: string;
-    orderPromoCode: string;
-    productId: string;
-    productName: string;
-    productSKU: string;
-    productPrice: string;
-    skuQuantity: number;
-    currency: string;
-    orderDiscount: string;
-};
-
-type TypeUserId = {
-    userId: string;
-    userHashedEmail: string;
-};
-
-type TypePageViewUniques = {
-    campaignIdCID: string;
-    trafficSourceLastTouchChannel: string;
-    trafficSourceReferrerType: string;
-    trafficSourceReferringUrl: string;
-    browserType: string;
-    deviceType: string;
-    userSessionId: string;
-    implementationMethod: string;
-    siteProperty: string;
-    internalCampaignIdICID: string;
-};
-
-type Type = {
-    errorType: string;
-    errorMessage: string;
-    errorGuestFacing: string;
-};
-
-type TypeFilterUniques = {
-    filterType: string;
-    filterValue: string;
-    filterState: string;
-};
-
-
-export interface ComponentImpression              extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
-export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeProduct { }
-export interface CategoryPageView                 extends TypeCategoryName, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
-export interface CartViewWithProductOutOfStock    extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct, TypeProductOutOfStock { }
-export interface CartView                         extends TypeCart, TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
-export interface CartPageView                     extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface EmailSignupSuccess               extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
-export interface Purchase                         extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
-export interface Err                              extends Type, TypeGuestEmail, TypeLocaleLanguage { }
-export interface SearchResultsClick               extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
-export interface SearchResultsPageView            extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch, TypePageName { }
-export interface PageView                         extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
-export interface HomePageView                     extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
-export interface CartPageView                     extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface FiltersClick                     extends TypeFilterUniques, TypeGuestEmail, TypeLocaleLanguage { }
-export interface CommonPageView                   extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-interface OrderReviewPageView                     extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-interface ProductDetailPageView                   extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-interface CheckoutPaymentPageView                 extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-interface CheckoutShippingPageView                extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface CommonClick                      extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface ExitLinkClick                           extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface FAQClick                                extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface LinkClick                               extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface LiveChatClick                           extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface NavigationLinkClick                     extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
-interface TopBannerClick                          extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+        typesArray.forEach((thing) => {
+            const myTypes = types[thing]
+            const pad = "    "
+            for (let k in myTypes) {
+                let x = pad
+                if (k === "locale") {
+                    x += `'locale' in obj && isValidLocale(obj.locale)`
+                } else if (k === "language") {
+                    x += `'language' in obj && isValidLanguage(obj.language) `
+                } else if (k === "productPrice" || "orderTaxTotal" || "orderShippingTotal" || "orderRevenue" || "orderDiscount") {
+                    x += `'${k}' in obj && isValidMoney(obj.${k})`
+                } else if (k === "currency") {
+                    x += `'${k}' in obj && isValidCurrency(obj.${k})`
+                } else {
+                    x += `'${k}' in obj && typeof obj.${k} === '${myTypes[k]}'`
+                }
+                if (loop < n - 1) {
+                    x += ` &&\n`
+                } else {
+                    x += `;`
+                }
+                accumulator += x
+                loop++
+            }
+        })
+        log(accumulator)
+        log("}\n")
+    }
+}
 
 
 
-// AddRemoveCart
-export interface AddRemoveCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
-interface AddToCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
-interface RemoveFromCart extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct { }
+function main() {
 
+    makeValidators() // things like money is formatted OK?
+    makeTypes() // typescript needs types!
+    makeInterfaces() // interfaces are objects? Merge types into one thing, anyhow.
+    makeTheBrains() // This is tricky part
+    makeTheGuards() // This is a pretty part of typescript
 
+    const fs = require('fs').promises;
+    async function writeToFile(filename, content) {
+        try {
+            const fileHandle = await fs.open(filename, 'w');
+            await fs.writeFile(fileHandle, content);
+            await fileHandle.close();
+            console.log('File written and closed successfully.');
+        } catch (error) {
+            console.error('Error writing to file:', error);
+        }
+    }
+    writeToFile("version3_interfaces.ts", everything)
+
+    console.log("// *********** WROTE TO version3_interfaces.ts ******************** ")
+
+}
+
+main()
