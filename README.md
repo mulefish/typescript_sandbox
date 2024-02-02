@@ -1,6 +1,9 @@
 # typescript_sandbox
 typescript sandbox
 
+# TODO
+Nested interfaces
+
 # REPO
 https://github.com/mulefish/typescript_sandbox/
 
