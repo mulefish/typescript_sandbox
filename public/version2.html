@@ -7,7 +7,7 @@
         let categoricalOptionalityObjects = undefined
         let transformationModule = undefined
     </script>
-    <script src="version2.js"></script>
+    <script src="version2_events.js"></script>
     <script src="version2_fakeLAM.js"></script>
     <link rel="stylesheet" href="version2.css">
 </head>
@@ -34,9 +34,39 @@
 
                 </td>
                 <td valign="top">
-                    <div id="resultViewer">resultViewer</div>
-                    <div id="resultSpeed"></div>
+                    <table border='1'>
+                        <tr>
+                            <td>Determined to be</td>
+                            <td>
+                                <div id="resultViewer"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Should be</td>
+                            <td>
+                                <div id="shouldBe"></div>
+                            </td>
+                        </tr>
 
+                        <tr>
+                            <td>Interfaces</td>
+                            <td>
+                                <div id="interfaces"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Extends</td>
+                            <td>
+                                <div id="extends"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Milliseconds</td>
+                            <td>
+                                <div id="milliseconds"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>
@@ -100,8 +130,22 @@
                 try {
                     const json_as_string = document.getElementById('tdr_area').value;
                     const obj = JSON.parse(json_as_string)
-                    const result = classifyJsonObject(obj)
-                    document.getElementById("resultViewer").innerHTML = result
+                    const t1 = new Date().getTime()
+                    const determinedToBe = classifyJsonObject(obj)
+                    const milliseconds = new Date().getTime() - t1
+                    document.getElementById("resultViewer").innerHTML = determinedToBe
+                    const shouldBe = document.getElementById("shouldBe").innerHTML
+                    document.getElementById("milliseconds").innerHTML = "&nbsp;" + milliseconds
+
+                    if (shouldBe !== determinedToBe) {
+                        document.getElementById('resultViewer').style.backgroundColor = 'red';
+                        document.getElementById('resultViewer').style.color = 'white';
+                    } else {
+                        document.getElementById('resultViewer').style.backgroundColor = 'white';
+                        document.getElementById('resultViewer').style.color = 'black';
+                    }
+
+
                 } catch (failbot) {
                     document.getElementById("resultViewer").innerHTML = " *** " + failbot.message + " ***"
                 }
