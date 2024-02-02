@@ -114,17 +114,18 @@ type TypeFilterUniques = {
 
 // uniques
 
-export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
 export interface CartView extends TypeCart, TypeGuestEmail, TypeLocaleLanguage, TypeProduct { } 
 export interface CartViewWithProductOutOfStock extends TypeGuestEmail, TypeLocaleLanguage, TypeProduct, TypeProductOutOfStock { }
 export interface CategoryPageView extends TypeCategoryName, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
 export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeProduct { }
 export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
+
+
 //
+export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+
 export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
 export interface Purchase extends           TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
-//
-
 export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
 export interface SearchResultsClick    extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
 export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch, TypePageName{ }

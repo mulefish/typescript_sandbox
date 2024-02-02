@@ -138,6 +138,20 @@ const jsons = {
         language: "English",
         userId: "user123",
         userHashedEmail: "user@example.com"
+      },
+      'isCartView': {
+        cartId: "12345",
+        cartType: "regular",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
+        skuQuantity: 1,
+        currency: "USD"
       }
       
 }
@@ -188,4 +202,5 @@ test_happyPath(jsons['searchResultsClick'], "SearchResultsClick", "SearchResults
 test_happyPath(jsons['searchResultsPageView'], "SearchResultsPageView", "SearchResultsPageView")
 test_happyPath(jsons['isErr'], "Err", "Err")
 test_happyPath(jsons['isEmailSignupSuccess'], "EmailSignupSuccess", "EmailSignupSuccess")
+test_happyPath(jsons['isCartView'], "CartView", "CartView")
 

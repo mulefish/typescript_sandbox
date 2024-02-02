@@ -11,7 +11,8 @@ import {
     SearchResultsPageView,
     SearchResultsClick,
     Err,
-    EmailSignupSuccess
+    EmailSignupSuccess,
+    CartView
 } from './version2_interfaces';
 
 const isValidLocale = (locale: string): boolean => {
@@ -73,8 +74,8 @@ function isCommonCart(obj: any): obj is AddRemoveCart {
 
 export function classifyJsonObject(obj: any): string {
     // console.log( obj )
-    
-    
+
+
     if (isPurchase(obj)) {
         return "Purchase"
     }
@@ -89,10 +90,13 @@ export function classifyJsonObject(obj: any): string {
     else if (isSearchResultsClick(obj)) {
         return "SearchResultsClick"
     }
-
     else if (isCartPageView(obj)) {
         return "CartPageView"
     }
+    else if (isCartView(obj)) {
+        return "CartView"
+    }
+
     else if (isCheckoutShippingPageView(obj)) {
         return "CommonPageView"
     }
@@ -153,6 +157,9 @@ function isCartPageView(obj: any): obj is CartPageView {
         'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
         'currency' in obj && isValidCurrency(obj.currency);
 }
+
+
+
 
 function isHomePageView(obj: any): obj is HomePageView {
     return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
@@ -249,4 +256,19 @@ function isEmailSignupSuccess(obj: any): obj is EmailSignupSuccess {
         'language' in obj && isValidLanguage(obj.language) &&
         'userId' in obj && typeof obj.userId === 'string' &&
         'userHashedEmail' in obj && typeof obj.userHashedEmail === 'string';
+}
+
+function isCartView(obj: any): obj is CartView {
+    return 'cartId' in obj && typeof obj.cartId === 'string' &&
+        'cartType' in obj && typeof obj.cartType === 'string' &&
+        'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'productId' in obj && typeof obj.productId === 'string' &&
+        'productName' in obj && typeof obj.productName === 'string' &&
+        'productSKU' in obj && typeof obj.productSKU === 'string' &&
+        'productPrice' in obj && isValidMoney(obj.productPrice) &&
+        'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
+        'currency' in obj && isValidCurrency(obj.currency);
 }
