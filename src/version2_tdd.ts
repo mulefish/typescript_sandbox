@@ -1,26 +1,26 @@
 import { classifyJsonObject } from './version2_validater';
 
-function verdict(a: any, b: any, start:number, msg: string) {
+function verdict(a: any, b: any, start: number, msg: string) {
     const milsec = new Date().getTime() - start
     let result: string = "FAIL"
     if (JSON.stringify(a) === JSON.stringify(b)) {
         result = "PASS"
     }
-    if ( milsec > 20 ) {
-        msg = " TOO SLOW" 
+    if (milsec > 20) {
+        msg = " TOO SLOW"
     }
     console.log(`${result} milsec=${milsec} msg=${msg}`)
 }
 const jsons = {
-    "click" : {
+    "click": {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         linkClickUrl: "https://example.com",
         linkClickText: "Click Here",
         locale: "en-US",
         language: "English"
-    }, 
-    "addCart" : {
+    },
+    "addCart": {
         guestHashedEmail: "example@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -32,7 +32,7 @@ const jsons = {
         skuQuantity: 1,
         currency: "USD"
     },
-      "filtersClick": {
+    "filtersClick": {
         filterType: "category",
         filterValue: "electronics",
         filterState: "selected",
@@ -40,8 +40,8 @@ const jsons = {
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English"
-      },
-      "cartPageView":{
+    },
+    "cartPageView": {
         cartId: "cart123",
         cartType: "standard",
         cartTotalQuantity: 2,
@@ -56,16 +56,16 @@ const jsons = {
         productPrice: "100.00",
         skuQuantity: 1,
         currency: "USD"
-      },
-      'homePageView': {
+    },
+    'homePageView': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
         pageName: "Home Page",
         pageUrl: "https://www.example.com"
-      },
-      'purchase': {
+    },
+    'purchase': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -89,7 +89,7 @@ const jsons = {
         orderDiscount: "10.00",
         userId: "user123",
         userHashedEmail: "hashed@example.com"
-      },
+    },
     'searchResultsPageView': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
@@ -99,8 +99,8 @@ const jsons = {
         searchTerm: "laptops",
         searchResultsType: "Electronics",
         searchResultsCount: 150
-      },
-      'searchResultsClick': {
+    },
+    'searchResultsClick': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -108,8 +108,8 @@ const jsons = {
         searchTerm: "smartphones",
         searchResultsType: "Electronics",
         searchResultsCount: 200
-      },
-      'isErr': {
+    },
+    'isErr': {
         errorType: "404",
         errorMessage: "Page not found",
         errorGuestFacing: "The page you are looking for does not exist.",
@@ -117,16 +117,16 @@ const jsons = {
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English"
-      },
-      'isEmailSignupSuccess': {
+    },
+    'isEmailSignupSuccess': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
         userId: "user123",
         userHashedEmail: "user@example.com"
-      },
-      'isCartView': {
+    },
+    'isCartView': {
         cartId: "12345",
         cartType: "regular",
         guestHashedEmail: "hashed@example.com",
@@ -139,8 +139,8 @@ const jsons = {
         productPrice: "1000.00",
         skuQuantity: 1,
         currency: "USD"
-      },
-      'isCartViewWithProductOutOfStock':{
+    },
+    'isCartViewWithProductOutOfStock': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -152,8 +152,8 @@ const jsons = {
         skuQuantity: 1,
         currency: "USD",
         productCartOutOfStockStatus: "OutOfStock"
-      },
-      'isCategoryPageView':{
+    },
+    'isCategoryPageView': {
         categoryName: "Electronics",
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
@@ -161,8 +161,8 @@ const jsons = {
         language: "English",
         pageName: "Electronic Devices",
         pageUrl: "https://www.example.com/electronics"
-      },
-      'isCheckoutPurchaseCompletePageView': {
+    },
+    'isCheckoutPurchaseCompletePageView': {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -176,8 +176,8 @@ const jsons = {
         productPrice: "1000.00",
         skuQuantity: 1,
         currency: "USD"
-      },
-      "isCommonPageView": {
+    },
+    "isCommonPageView": {
         guestHashedEmail: "hashed@example.com",
         browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
@@ -189,41 +189,65 @@ const jsons = {
         productPrice: "100.00",
         skuQuantity: 1,
         currency: "USD"
-      },
+    },
+    "isComponentImpression": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Homepage"
+    },
+    "isPageView":{
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Home",
+        pageUrl: "https://www.example.com",
+        campaignIdCID: "Campaign123",
+        trafficSourceLastTouchChannel: "Social Media",
+        trafficSourceReferrerType: "Direct",
+        trafficSourceReferringUrl: "https://twitter.com",
+        browserType: "Chrome",
+        deviceType: "Desktop",
+        userSessionId: "session12345",
+        implementationMethod: "Manual",
+        siteProperty: "Main Site",
+        internalCampaignIdICID: "internalCampaign123"
+      }
 
-      
 }
 
-function test_happyPath(candidate:any, expected:string, testedInterface:string) {
-    const t1 = new Date().getTime() 
+function test_happyPath(candidate: any, expected: string, testedInterface: string) {
+    const t1 = new Date().getTime()
     const actual = classifyJsonObject(candidate)
     const isOk = actual === expected
-    if ( isOk === false ) {
+    if (isOk === false) {
         console.log(candidate)
     }
 
-    verdict(isOk, true, t1, testedInterface + ": " + actual  + "   "  +expected )
+    verdict(isOk, true, t1, testedInterface + ": " + actual + "   " + expected)
 }
 
-function test_CommonClick_sadpath_wrongLanguage(candidate:any, expected:string) {
-    const t1 = new Date().getTime() 
+function test_CommonClick_sadpath_wrongLanguage(candidate: any, expected: string) {
+    const t1 = new Date().getTime()
 
     const x = JSON.parse(JSON.stringify(candidate));
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected="  +expected )
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual + "   expected=" + expected)
 
 }
 
-function test_CommonClick_sadpath_noLanguage(candidate:any, expected:string) {
-    const t1 = new Date().getTime() 
+function test_CommonClick_sadpath_noLanguage(candidate: any, expected: string) {
+    const t1 = new Date().getTime()
 
     const x = JSON.parse(JSON.stringify(candidate));
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected="  + expected)
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual + "   expected=" + expected)
 }
 
 const NO_MATCH = "No_Match"
@@ -245,7 +269,11 @@ test_happyPath(jsons['isCommonPageView'], "CommonPageView", "CommonPageView")
 test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['isCheckoutPurchaseCompletePageView'], "CheckoutPurchaseCompletePageView", "CheckoutPurchaseCompletePageView")
 
+test_happyPath(jsons['isComponentImpression'], "ComponentImpression", "ComponentImpression")
 
+
+
+test_happyPath(jsons['isPageView'], "PageView", "PageView")
 
 
 

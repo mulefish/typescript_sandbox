@@ -6,7 +6,6 @@ import {
     FiltersClick,
     CartPageView,
     HomePageView,
-    PageView,
     Purchase,
     SearchResultsPageView,
     SearchResultsClick,
@@ -16,6 +15,8 @@ import {
     CartViewWithProductOutOfStock,
     CategoryPageView,
     CheckoutPurchaseCompletePageView,
+    ComponentImpression,
+    PageView
 } from './version2_interfaces';
 
 const isValidLocale = (locale: string): boolean => {
@@ -86,7 +87,7 @@ export function classifyJsonObject(obj: any): string {
     else if (isCheckoutPurchaseCompletePageView(obj)) {
         return "CheckoutPurchaseCompletePageView"
     }
-    else if ( isCommonPageView(obj)) { 
+    else if (isCommonPageView(obj)) {
         return "CommonPageView"
     }
     else if (isCheckoutShippingPageView(obj)) {
@@ -107,14 +108,14 @@ export function classifyJsonObject(obj: any): string {
     else if (isFiltersClick(obj)) {
         return "FiltersClick"
     }
-
-
-
     else if (isCartViewWithProductOutOfStock(obj)) {
         return "CartViewWithProductOutOfStock"
     }
     else if (isCategoryPageView(obj)) {
         return "CategoryPageView"
+    }
+    else if ( isPageView(obj)) {
+        return "PageView"
     }
     else if (isCartView(obj)) {
         return "CartView"
@@ -127,6 +128,9 @@ export function classifyJsonObject(obj: any): string {
     }
     else if (isCommonCart(obj)) {
         return "AddRemoveCart";
+    }
+    else if (isComponentImpression(obj)) {
+        return "ComponentImpression"
     }
     else {
         return "No_Match";
@@ -172,39 +176,19 @@ function isHomePageView(obj: any): obj is HomePageView {
         'pageName' in obj && typeof obj.pageName === 'string' &&
         'pageUrl' in obj && typeof obj.pageUrl === 'string';
 }
-/*
-function isPageView(obj: any): obj is PageView {
+
+function isCommonPageView(obj: any): obj is CommonPageView {
     return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
         'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
         'locale' in obj && isValidLocale(obj.locale) &&
         'language' in obj && isValidLanguage(obj.language) &&
         'pageName' in obj && typeof obj.pageName === 'string' &&
-        'pageUrl' in obj && typeof obj.pageUrl === 'string' &&
-        'campaignIdCID' in obj && typeof obj.campaignIdCID === 'string' &&
-        'trafficSourceLastTouchChannel' in obj && typeof obj.trafficSourceLastTouchChannel === 'string' &&
-        'trafficSourceReferrerType' in obj && typeof obj.trafficSourceReferrerType === 'string' &&
-        'trafficSourceReferringUrl' in obj && typeof obj.trafficSourceReferringUrl === 'string' &&
-        'browserType' in obj && typeof obj.browserType === 'string' &&
-        'deviceType' in obj && typeof obj.deviceType === 'string' &&
-        'userSessionId' in obj && typeof obj.userSessionId === 'string' &&
-        'implementationMethod' in obj && typeof obj.implementationMethod === 'string' &&
-        'siteProperty' in obj && typeof obj.siteProperty === 'string' &&
-        'internalCampaignIdICID' in obj && typeof obj.internalCampaignIdICID === 'string';
-}
-*/ 
-
-function isCommonPageView(obj: any): obj is CommonPageView {
-    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
-           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
-           'locale' in obj && isValidLocale(obj.locale) &&
-           'language' in obj && isValidLanguage(obj.language) &&   
-           'pageName' in obj && typeof obj.pageName === 'string' &&
-           'productId' in obj && typeof obj.productId === 'string' &&
-           'productName' in obj && typeof obj.productName === 'string' &&
-           'productSKU' in obj && typeof obj.productSKU === 'string' &&
-           'productPrice' in obj && isValidMoney(obj.productPrice) &&
-           'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
-           'currency' in obj && isValidCurrency(obj.currency);
+        'productId' in obj && typeof obj.productId === 'string' &&
+        'productName' in obj && typeof obj.productName === 'string' &&
+        'productSKU' in obj && typeof obj.productSKU === 'string' &&
+        'productPrice' in obj && isValidMoney(obj.productPrice) &&
+        'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
+        'currency' in obj && isValidCurrency(obj.currency);
 }
 
 
@@ -341,16 +325,41 @@ function isCheckoutPurchaseCompletePageView(obj: any): obj is CheckoutPurchaseCo
         'language' in obj && isValidLanguage(obj.language) &&
         'orderTaxTotal' in obj && isValidMoney(obj.orderTaxTotal) &&
         'orderShippingTotal' in obj && isValidMoney(obj.orderShippingTotal) &&
-
         'pageName' in obj && typeof obj.pageName === 'string' &&
-
         'productId' in obj && typeof obj.productId === 'string' &&
-
-
         'productName' in obj && typeof obj.productName === 'string' &&
         'productSKU' in obj && typeof obj.productSKU === 'string' &&
-
         'productPrice' in obj && isValidMoney(obj.productPrice) &&
         'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
         'currency' in obj && typeof obj.currency === 'string';
+}
+
+
+function isComponentImpression(obj: any): obj is ComponentImpression {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'pageName' in obj && typeof obj.pageName === 'string';
+}
+
+
+
+function isPageView(obj: any): obj is PageView {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+           'locale' in obj && isValidLocale(obj.locale) &&
+           'language' in obj && isValidLanguage(obj.language) &&
+        'pageName' in obj && typeof obj.pageName === 'string' &&
+           'pageUrl' in obj && typeof obj.pageUrl === 'string' &&
+           'campaignIdCID' in obj && typeof obj.campaignIdCID === 'string' &&
+           'trafficSourceLastTouchChannel' in obj && typeof obj.trafficSourceLastTouchChannel === 'string' &&
+           'trafficSourceReferrerType' in obj && typeof obj.trafficSourceReferrerType === 'string' &&
+           'trafficSourceReferringUrl' in obj && typeof obj.trafficSourceReferringUrl === 'string' &&
+           'browserType' in obj && typeof obj.browserType === 'string' &&
+           'deviceType' in obj && typeof obj.deviceType === 'string' &&
+           'userSessionId' in obj && typeof obj.userSessionId === 'string' &&
+           'implementationMethod' in obj && typeof obj.implementationMethod === 'string' &&
+           'siteProperty' in obj && typeof obj.siteProperty === 'string' &&
+           'internalCampaignIdICID' in obj && typeof obj.internalCampaignIdICID === 'string';
 }
