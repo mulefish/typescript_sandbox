@@ -31,16 +31,55 @@ const jsons = {
         productPrice: "100.00",
         skuQuantity: 1,
         currency: "USD"
-    }
+    },
+    "pageView": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Checkout Shipping",
+        productId: "12345",
+        productName: "Widget",
+        productSKU: "WIDGET-123",
+        productPrice: "100.00",
+        skuQuantity: 1,
+        currency: "USD"
+      },
+      "filtersClick": {
+        filterType: "category",
+        filterValue: "electronics",
+        filterState: "selected",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English"
+      },
+      "cartPageView":{
+        cartId: "cart123",
+        cartType: "standard",
+        cartTotalQuantity: 2,
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Cart Page",
+        productId: "12345",
+        productName: "Widget",
+        productSKU: "WIDGET-123",
+        productPrice: "100.00",
+        skuQuantity: 1,
+        currency: "USD"
+      }
+      
 }
 
 function test_happyPath(candidate:any, expected:string, testedInterface:string) {
     const t1 = new Date().getTime() 
     const actual = classifyJsonObject(candidate)
     const isOk = actual === expected
-    // if ( isOk === false ) {
-    //     console.log(candidate)
-    // }
+    if ( isOk === false ) {
+        console.log(candidate)
+    }
 
     verdict(isOk, true, t1, testedInterface + ": " + actual  + "   "  +expected )
 }
@@ -52,7 +91,7 @@ function test_CommonClick_sadpath_wrongLanguage(candidate:any, expected:string) 
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected"  +expected )
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected="  +expected )
 
 }
 
@@ -63,7 +102,7 @@ function test_CommonClick_sadpath_noLanguage(candidate:any, expected:string) {
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected"  + expected)
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected="  + expected)
 }
 
 const NO_MATCH = "No_Match"
@@ -71,5 +110,7 @@ test_happyPath(jsons["click"], "CommonClick", "CommonClick")
 test_CommonClick_sadpath_noLanguage(jsons["click"], NO_MATCH)
 test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
 test_happyPath(jsons["addCart"], "AddRemoveCart", "AddRemoveCart")
-// test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
+test_happyPath(jsons['pageView'], "CommonPageView", "CommonPageView")
+test_happyPath(jsons['filtersClick'], "FiltersClick", "FiltersClick")
+test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 

@@ -1,3 +1,4 @@
+
 type TypeProduct = {
     productId: string;
     productName: string;
@@ -7,14 +8,14 @@ type TypeProduct = {
     currency: string;
 };
 
+type TypePageName = {
+    pageName: string;
+};
+
+
 type TypeLocaleLanguage = {
     locale: string;
     language: string;
-};
-
-type TypeCart = {
-    cartId: string;
-    cartType: string;
 };
 
 type TypeGuestEmail = {
@@ -22,9 +23,13 @@ type TypeGuestEmail = {
     browserUserAgent: string;
 };
 
-type TypePageName = {
-    pageName: string;
+
+type TypeCart = {
+    cartId: string;
+    cartType: string;
 };
+
+
 
 type TypePageUrl = {
     pageUrl: string;
@@ -122,14 +127,21 @@ export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguag
 export interface Purchase extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
 export interface PageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
 export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
+export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
+
+///
+export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+
 export interface FiltersClick extends TypeFilterUniques, TypeGuestEmail, TypeLocaleLanguage { }
 
 
-// duplicates
-export interface OrderReviewPageView extends       TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface ProductDetailPageView extends     TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface CheckoutPaymentPageView  extends  TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-export interface CheckoutShippingPageView  extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+
+export interface CommonPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+
+interface OrderReviewPageView extends       TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+interface ProductDetailPageView extends     TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+interface CheckoutPaymentPageView  extends  TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
+interface CheckoutShippingPageView  extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
 
 
 // 
@@ -137,7 +149,7 @@ export interface CheckoutShippingPageView  extends TypeGuestEmail, TypeLocaleLan
 
 
 
-export interface CommonClick         extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
+export interface CommonClick  extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
 interface ExitLinkClick       extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
 interface FAQClick            extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
 interface LinkClick           extends TypeGuestEmail, TypeLink, TypeLocaleLanguage { }
