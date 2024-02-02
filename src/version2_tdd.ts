@@ -268,11 +268,7 @@ test_happyPath(jsons['isCategoryPageView'], "CategoryPageView", "CategoryPageVie
 test_happyPath(jsons['isCommonPageView'], "CommonPageView", "CommonPageView")
 test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['isCheckoutPurchaseCompletePageView'], "CheckoutPurchaseCompletePageView", "CheckoutPurchaseCompletePageView")
-
 test_happyPath(jsons['isComponentImpression'], "ComponentImpression", "ComponentImpression")
-
-
-
 test_happyPath(jsons['isPageView'], "PageView", "PageView")
 
 
