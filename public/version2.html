@@ -13,35 +13,36 @@
 </head>
 
 <body>
-    <div id="loadingModal" class="modal">
-        <div class="modal-content">
-            <p>mwa-mice.js is not ready.</p>
-        </div>
-    </div>
-    <span id="selecter"></span>
-    <button onclick="verify()">verify</button>
-    &nbsp;|&nbsp;
-    <button onclick="save()">save</button>
-    <button onclick="load()">load</button>
-    <button onclick="beautify()">beautify</button>
+    <div id="nudge">
+        <span id="selecter"></span>
+        <button onclick="verify()">verify</button>
+        &nbsp;|&nbsp;
+        <button onclick="save()">save</button>
+        <button onclick="load()">load</button>
+        <button onclick="beautify()">beautify</button>
 
-    <span id="feedBack"></span>
-    <div class="container">
-        <textarea class="textarea" id="tdr_area" rows="30">
-            
+        <span id="feedBack"></span>
+
+        <table id="layout" border="1">
+            <tr>
+                <td class="fiftypercentWidth" valign="top">
+                    <textarea class="textarea" id="tdr_area" rows="30">
+
 
             *** Google Events ***
         </textarea>
+
+                </td>
+                <td valign="top">
+                    <div id="resultViewer">resultViewer</div>
+                    <div id="resultSpeed"></div>
+
+                </td>
+            </tr>
+        </table>
+
+
     </div>
-
-    <div class="container">
-
-
-        <!-- <textarea class="textarea" id="lam_area" rows="40">lam_area</textarea> -->
-        <textarea class="textarea" id="resultViewer" rows="40">resultViewer</textarea>
-        <div id="blank_area"></div>
-    </div>
-
 
     <script>
 
@@ -95,18 +96,17 @@
     <script>
 
         function verify() {
-            if ( beautify() === true) { 
-                try { 
-                // finch 
-                const json_as_string = document.getElementById('tdr_area').value;
-                const obj = JSON.parse(json_as_string)
-                const result = classifyJsonObject(obj)
-                document.getElementById("resultViewer").value = result
-                } catch(failbot) {
-                    document.getElementById("resultViewer").value = " *** " + failbot.message + " ***"
+            if (beautify() === true) {
+                try {
+                    const json_as_string = document.getElementById('tdr_area').value;
+                    const obj = JSON.parse(json_as_string)
+                    const result = classifyJsonObject(obj)
+                    document.getElementById("resultViewer").innerHTML = result
+                } catch (failbot) {
+                    document.getElementById("resultViewer").innerHTML = " *** " + failbot.message + " ***"
                 }
             } else {
-                document.getElementById("resultViewer").value = " *** JSON failed ***"
+                document.getElementById("resultViewer").innerHTML = " *** JSON failed ***"
             }
         }
 
@@ -115,12 +115,12 @@
 
 
 
-<script>
-    function init() { 
-        createSelectList()
-    }
-    init()
-</script>
+    <script>
+        function init() {
+            createSelectList()
+        }
+        init()
+    </script>
 </body>
 
 
