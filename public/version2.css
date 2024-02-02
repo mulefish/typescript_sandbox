@@ -7,10 +7,14 @@ width: 100%;
     width: 100%;
     height: 50%;
 }
-
+#blank_area {
+    width:300px;
+}
 .textarea {
     width: 100%;
+    margin-left: 50px;
     resize:both;
+
 
 }
 /*

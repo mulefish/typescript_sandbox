@@ -1,460 +1,231 @@
 
-const lam_min_data = {
-
-    addToCartExample: {
-        // TypeProduct properties
-        productId: "112233",
-        productName: "High-Quality Headphones",
-        productSKU: "HQH-789",
-        productPrice: "150.00",
-        skuQuantity: 1,
-        currency: "USD",
-
-        // TypeLocaleLanguage properties
+const jsons = {
+    "click": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        linkClickUrl: "https://example.com",
+        linkClickText: "Click Here",
+        locale: "en-US",
+        language: "English"
+    },
+    "addCart": {
+        guestHashedEmail: "example@example.com",
+        browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "uniquehashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like"
-    },
-
-    cartPageViewExample: {
-        // TypeProduct properties
-        productId: "98765",
-        productName: "Super Widget",
-        productSKU: "SW-456",
-        productPrice: "49.99",
+        productId: "P123",
+        productName: "Product Name",
+        productSKU: "SKU123",
+        productPrice: "100.00",
         skuQuantity: 1,
-        currency: "USD",
-
-        // TypeLocaleLanguage properties
-        locale: "en-GB",
-        language: "English",
-
-        // TypeCart properties
-        cartId: "cart-54321",
-        cartType: "Online",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "anotherhashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15",
-
-        // TypeCartTotalQuantity properties
-        cartTotalQuantity: 3,
-
-        // TypePageName properties
-        pageName: "Cart Page"
+        currency: "USD"
     },
-
-    cartViewInstance: {
-        // TypeProduct properties
+    "filtersClick": {
+        filterType: "category",
+        filterValue: "electronics",
+        filterState: "selected",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English"
+    },
+    "cartPageView": {
+        cartId: "cart123",
+        cartType: "standard",
+        cartTotalQuantity: 2,
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Cart Page",
         productId: "12345",
-        productName: "Awesome Gadget",
-        productSKU: "AG-123",
-        productPrice: "99.99",
-        skuQuantity: 2,
-        currency: "USD",
-
-        // TypeLocaleLanguage properties
+        productName: "Widget",
+        productSKU: "WIDGET-123",
+        productPrice: "100.00",
+        skuQuantity: 1,
+        currency: "USD"
+    },
+    'homePageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
-
-        // TypeCart properties
-        cartId: "cart-67890",
-        cartType: "Standard",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "hashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+        pageName: "Home Page",
+        pageUrl: "https://www.example.com"
     },
-
-    cartViewWithProductOutOfStockExample: {
-        // TypeProduct properties
-        productId: "445566",
-        productName: "Ergonomic Keyboard",
-        productSKU: "ERG-101",
-        productPrice: "80.00",
+    'purchase': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        orderTaxTotal: "5.00",
+        orderShippingTotal: "2.50",
+        orderId: "order123",
+        orderRevenue: "100.00",
+        orderPaymentMethod: "Credit Card",
+        orderShippingMethod: "Standard Shipping",
+        orderShippingZipPostalCode: "12345",
+        orderShippingStateProvince: "NY",
+        orderShippingCountry: "USA",
+        orderPromoCode: "DISCOUNT10",
+        productId: "prod123",
+        productName: "Gadget",
+        productSKU: "GADG123",
+        productPrice: "95.00",
         skuQuantity: 1,
         currency: "USD",
-
-        // TypeLocaleLanguage properties
-        locale: "fr-FR",
-        language: "French",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "securehashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
-
-        // TypeProductOutOfStock properties
+        orderDiscount: "10.00",
+        userId: "user123",
+        userHashedEmail: "hashed@example.com"
+    },
+    'searchResultsPageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Search Results",
+        searchTerm: "laptops",
+        searchResultsType: "Electronics",
+        searchResultsCount: 150
+    },
+    'searchResultsClick': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        searchTerm: "smartphones",
+        searchResultsType: "Electronics",
+        searchResultsCount: 200
+    },
+    'isErr': {
+        errorType: "404",
+        errorMessage: "Page not found",
+        errorGuestFacing: "The page you are looking for does not exist.",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English"
+    },
+    'isEmailSignupSuccess': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        userId: "user123",
+        userHashedEmail: "user@example.com"
+    },
+    'isCartView': {
+        cartId: "12345",
+        cartType: "regular",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
+        skuQuantity: 1,
+        currency: "USD"
+    },
+    'isCartViewWithProductOutOfStock': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
+        skuQuantity: 1,
+        currency: "USD",
         productCartOutOfStockStatus: "OutOfStock"
     },
-
-    categoryPageViewExample: {
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypePageName properties
-        pageName: "Electronics",
-
-        // TypePageUrl properties
-        pageUrl: "https://www.examplestore.com/electronics",
-
-        // TypeCategoryName properties
+    'isCategoryPageView': {
         categoryName: "Electronics",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "uniquehashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Electronic Devices",
+        pageUrl: "https://www.example.com/electronics"
     },
-    checkoutPaymentPageViewExample: {
-        // TypeProduct properties
-        productId: "78910",
-        productName: "Smartwatch Fitness Tracker",
-        productSKU: "SFT-202",
-        productPrice: "199.99",
+    'isCheckoutPurchaseCompletePageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        orderTaxTotal: "5.00",
+        orderShippingTotal: "2.50",
+        pageName: "Purchase Complete",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
         skuQuantity: 1,
-        currency: "USD",
-
-        // TypeLocaleLanguage properties
+        currency: "USD"
+    },
+    "isCommonPageView": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
-
-        // TypePageName properties
-        pageName: "Checkout - Payment",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "encryptedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Linux; Android 10; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.210 Mobile Safari/537.36"
-    },
-
-    checkoutPurchaseCompletePageViewExample: {
-        // TypeProduct properties
-        productId: "32109",
-        productName: "Wireless Earbuds",
-        productSKU: "WEB-303",
-        productPrice: "120.00",
-        skuQuantity: 2,
-        currency: "USD",
-
-        // TypeLocaleLanguage properties
-        locale: "en-CA",
-        language: "English",
-
-        // TypeOrderTotal properties
-        orderTaxTotal: 10.00,
-        orderShippingTotal: 5.00,
-
-        // TypePageName properties
-        pageName: "Checkout - Purchase Complete",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "secureemailhash@example.com",
-        browserUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
-    },
-
-    checkoutShippingPageViewExample: {
-        productId: "65432",
-        productName: "Bluetooth Speaker",
-        productSKU: "BTS-404",
-        productPrice: "70.00",
+        pageName: "Checkout Shipping",
+        productId: "12345",
+        productName: "Widget",
+        productSKU: "WIDGET-123",
+        productPrice: "100.00",
         skuQuantity: 1,
-        currency: "USD",
+        currency: "USD"
+    },
+    "isComponentImpression": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
-        pageName: "Checkout - Shipping",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
+        pageName: "Homepage"
     },
-
-    exitLinkClickExample: {
-        locale: "en-US",
-        language: "English",
-        linkClickUrl: "https://externalwebsite.com",
-        linkClickText: "Visit our partner",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
-    },
-
-    homePageViewExample: {
+    "isPageView":{
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
         locale: "en-US",
         language: "English",
         pageName: "Home",
-        pageUrl: "https://www.examplestore.com",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
-    },
-    orderReviewPageViewExample: {
-        productId: "98765",
-        productName: "Gaming Mouse",
-        productSKU: "GM-508",
-        productPrice: "59.99",
-        skuQuantity: 1,
-        currency: "USD",
-        locale: "en-US",
-        language: "English",
-        pageName: "Checkout - Review Order",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
-    },
-
-    pageViewExample: {
-        locale: "en-US",
-        language: "English",
-        pageName: "About Us",
-        pageUrl: "https://www.examplestore.com/about",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string",
-        campaignIdCID: "CID123",
+        pageUrl: "https://www.example.com",
+        campaignIdCID: "Campaign123",
         trafficSourceLastTouchChannel: "Social Media",
         trafficSourceReferrerType: "Direct",
         trafficSourceReferringUrl: "https://twitter.com",
         browserType: "Chrome",
         deviceType: "Desktop",
-        userSessionId: "session123",
-        implementationMethod: "JavaScript",
+        userSessionId: "session12345",
+        implementationMethod: "Manual",
         siteProperty: "Main Site",
-        internalCampaignIdICID: "ICID456"
-    },
+        internalCampaignIdICID: "internalCampaign123"
+      }
+}
 
-    productDetailPageViewExample: {
-        productId: "123456",
-        productName: "LED Desk Lamp",
-        productSKU: "LDL-789",
-        productPrice: "45.00",
-        skuQuantity: 1,
-        currency: "USD",
-        locale: "en-US",
-        language: "English",
-        pageName: "Product Detail - LED Desk Lamp",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
-    },
+const getSelectLamEvent = () => {
+    const selectElement = document.getElementById("event_select");
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const x = selectedOption.text
+    return x
+}
 
-    purchaseExample: {
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
+function changeEvent() {
 
-        // TypeGuestEmail properties
-        guestHashedEmail: "encryptedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
+    const x = getSelectLamEvent()
+    document.getElementById("feedBack").innerHTML = "event " + x
+        const small = jsons[x]
+        const small_str = JSON.stringify(small, null, 2)
+        document.getElementById("tdr_area").value = small_str
+}
 
-        // TypeOrderTotal properties
-        orderTaxTotal: 15.00,
-        orderShippingTotal: 5.00,
-
-        // TypeProductUniques properties
-        orderId: "order123456",
-        orderRevenue: "220.00",
-        orderPaymentMethod: "Credit Card",
-        orderShippingMethod: "Express Delivery",
-        orderShippingZipPostalCode: "90001",
-        orderShippingStateProvince: "CA",
-        orderShippingCountry: "USA",
-        orderPromoCode: "NEWYEAR2023",
-        productId: "987654",
-        productName: "Smart Fitness Watch",
-        productSKU: "SFW-321",
-        productPrice: "200.00",
-        skuQuantity: 1,
-        currency: "USD",
-        orderDiscount: "20.00",
-
-        // TypeUserId properties
-        userId: "user12345",
-        userHashedEmail: "userencryptedemail@example.com"
-    },
-
-
-
-    removeFromCartExample: {
-        productId: "654321",
-        productName: "Wireless Mouse",
-        productSKU: "WM-222",
-        productPrice: "25.00",
-        skuQuantity: 1,
-        currency: "USD",
-        locale: "en-US",
-        language: "English",
-        guestHashedEmail: "useremailhash@example.com",
-        browserUserAgent: "user-agent-string"
-    },
-
-    searchResultsPageViewExample: {
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeSearch properties
-        searchTerm: "wireless headphones",
-        searchResultsType: "Product",
-        searchResultsCount: 25,
-
-        // TypePageName properties
-        pageName: "Search Results",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "hashedemail@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
-    },
-
-
-    errExample: {
-        // Type properties for error handling
-        errorType: "404 NotFound",
-        errorMessage: "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
-        errorGuestFacing: "Oops! We can't seem to find the page you're looking for.",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "userhash@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-    },
-
-    searchResultsClickExample: {
-        // TypeSearch properties
-        searchTerm: "eco-friendly water bottles",
-        searchResultsType: "Product",
-        searchResultsCount: 6,
-
-        // Assuming the user clicked on a result that was part of a list of 50,
-        // but we don't capture the specific result's count in this click.
-
-        // TypeLocaleLanguage properties
-        locale: "en-GB",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "uniqueuserhash@example.com",
-        browserUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
-    },
-
-    componentImpressionExample: {
-        // TypePageName properties
-        pageName: "Homepage - Featured Products",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "uniquehash@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
-    },
-
-
-    emailSignupSuccessExample: {
-        // TypeUserId properties
-        userId: "user123456",
-        userHashedEmail: "hashedemailsignup@example.com",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "hashedemailsignup@example.com",
-        browserUserAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3"
-
-    },
-
-    faqClickExample: {
-        // TypeLink properties
-        linkClickUrl: "https://www.example.com/faq",
-        linkClickText: "Frequently Asked Questions",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "userhash@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; "
-    },
-
-    filtersClickExample: {
-        // TypeFilterUniques properties
-        filterType: "Brand",
-        filterValue: "Acme Corp",
-        filterState: "Selected",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "userfilterclick@example.com",
-        browserUserAgent: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)"
-    },
-
-
-    linkClickExample: {
-        // TypeLink properties
-        linkClickUrl: "https://www.example.com/about-us",
-        linkClickText: "About Us",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "userlinkclick@example.com",
-        browserUserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"
-    },
-
-    liveChatClickExample: {
-        // TypeLink properties
-        linkClickUrl: "https://www.example.com/live-chat",
-        linkClickText: "Chat with Support",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "userlivechatclick@example.com",
-        browserUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
-    },
-
-    navigationLinkClickExample: {
-        // TypeLink properties
-        linkClickUrl: "https://www.example.com/products",
-        linkClickText: "Our Products",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "usernavlinkclick@example.com",
-        browserUserAgent: "Mozilla/5.0 (Linux; Android 9; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36"
-    },
-
-    topBannerClickExample: {
-        // TypeLink properties
-        linkClickUrl: "https://www.example.com/special-offer",
-        linkClickText: "Special Offer",
-
-        // TypeLocaleLanguage properties
-        locale: "en-US",
-        language: "English",
-
-        // TypeGuestEmail properties
-        guestHashedEmail: "usertopbannerclick@example.com",
-        browserUserAgent: "Mozilla/5.0 (iPad; CPU OS 13_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Mobile/15E148 Safari/604.1"
+function createSelectList() {
+    let html = '<select onchange="changeEvent()" id="event_select"><option>Pick something!!</option>'
+    for ( let k in jsons ) {
+        html += "<option>" + k + "</option>"
     }
+    html += "</select>"
+    document.getElementById("selecter").innerHTML = html
 }
-/*
-let keys = Object.keys(lam_min_data)
-keys = keys.sort()
-
-for ( let i in keys ) { 
-    const k = keys[i]
-    console.log( `<option>${k}</option>`)
-}
-*/
