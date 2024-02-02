@@ -19,7 +19,9 @@ CLI: npm run server
 Browser: http://localhost:3000/version2.html
 
 # screencap : Good match example
-Notice CommonClick maps into these events: ExitLinkClick,FAQClick,LinkClick,LiveChatClick,NavigationLinkClick,TopBannerClick
+A couple of things to notice here:  
+ - I have NOT told the system what event this is; It auto-determined that. 
+ - 'CommonClick' maps into these events: ExitLinkClick,FAQClick,LinkClick,LiveChatClick,NavigationLinkClick,TopBannerClick
 
 ![image1.png](./image1.png)
 
