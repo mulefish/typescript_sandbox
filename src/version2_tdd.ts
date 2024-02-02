@@ -1,11 +1,15 @@
 import { classifyJsonObject } from './version2_validater';
 
-function verdict(a: any, b: any, msg: string) {
+function verdict(a: any, b: any, start:number, msg: string) {
+    const milsec = new Date().getTime() - start
     let result: string = "FAIL"
     if (JSON.stringify(a) === JSON.stringify(b)) {
         result = "PASS"
     }
-    console.log(`${result} ${msg}`)
+    if ( milsec > 10 ) {
+        msg = " TOO SLOW"
+    }
+    console.log(`${result} milsec=${milsec} msg=${msg}`)
 }
 const jsons = {
     "click" : {
@@ -31,27 +35,35 @@ const jsons = {
 }
 
 function test_happyPath(candidate:any, expected:string, testedInterface:string) {
-    
+    const t1 = new Date().getTime() 
     const actual = classifyJsonObject(candidate)
     const isOk = actual === expected
-    verdict(isOk, true, testedInterface + ": " + actual  + "   "  +expected )
+    // if ( isOk === false ) {
+    //     console.log(candidate)
+    // }
+
+    verdict(isOk, true, t1, testedInterface + ": " + actual  + "   "  +expected )
 }
 
 function test_CommonClick_sadpath_wrongLanguage(candidate:any, expected:string) {
+    const t1 = new Date().getTime() 
+
     const x = JSON.parse(JSON.stringify(candidate));
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected"  +expected )
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_wrongLanguage: actual=" + actual  + "   expected"  +expected )
 
 }
 
 function test_CommonClick_sadpath_noLanguage(candidate:any, expected:string) {
+    const t1 = new Date().getTime() 
+
     const x = JSON.parse(JSON.stringify(candidate));
     x["language"] = "Kittycats"
     const actual = classifyJsonObject(x)
     const isOk = actual === expected
-    verdict(isOk, true, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected"  + expected)
+    verdict(isOk, true, t1, "test_CommonClick_sadpath_noLanguage: actual=" + actual  + "   expected"  + expected)
 }
 
 const NO_MATCH = "No_Match"
