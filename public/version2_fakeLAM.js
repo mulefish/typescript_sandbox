@@ -1,20 +1,33 @@
 /// File size: 0.01464 megabytes
 ////////// Start Fake Zod ////
 const isValidLocale = (locale) => {
+    if (locale === undefined) {
+        return false
+    }
     const pattern = /^[a-z]{2}-[A-Z]{2}$/;
     const x = pattern.test(locale);
     return x;
 };
 const isValidLanguage = (language) => {
+    if (language === undefined) {
+        return false
+    }
     language = language.toLowerCase();
     const langs = new Set(['english', 'en', 'french', 'fr', 'japanese', 'jp']);
     return langs.has(language);
 };
 const isValidMoney = (productPrice) => {
+    if (productPrice === undefined) {
+        return false
+    }
     const pattern = /^\d+(\.\d{2})?$/;
     return pattern.test(productPrice);
 };
 const isValidCurrency = (currency) => {
+    if (currency === undefined) {
+        return false
+    }
+
     const currencies = new Set(['USD', 'CAD', 'JPY']);
     // const pattern = /^\d+(\.\d{2})?$/;
     return currencies.has(currency);
