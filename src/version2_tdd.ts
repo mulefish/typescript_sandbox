@@ -121,6 +121,23 @@ const jsons = {
         searchTerm: "smartphones",
         searchResultsType: "Electronics",
         searchResultsCount: 200
+      },
+      'isErr': {
+        errorType: "404",
+        errorMessage: "Page not found",
+        errorGuestFacing: "The page you are looking for does not exist.",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English"
+      },
+      'isEmailSignupSuccess': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        userId: "user123",
+        userHashedEmail: "user@example.com"
       }
       
 }
@@ -169,4 +186,6 @@ test_happyPath(jsons['homePageView'], "HomePageView", "HomePageView")
 test_happyPath(jsons['purchase'], "Purchase", "Purchase")
 test_happyPath(jsons['searchResultsClick'], "SearchResultsClick", "SearchResultsClick")
 test_happyPath(jsons['searchResultsPageView'], "SearchResultsPageView", "SearchResultsPageView")
+test_happyPath(jsons['isErr'], "Err", "Err")
+test_happyPath(jsons['isEmailSignupSuccess'], "EmailSignupSuccess", "EmailSignupSuccess")
 

@@ -2,14 +2,16 @@
 import {
     CommonClick,
     AddRemoveCart,
-    CommonPageView, 
-    FiltersClick, 
-    CartPageView, 
-    HomePageView, 
-    PageView, 
-    Purchase, 
+    CommonPageView,
+    FiltersClick,
+    CartPageView,
+    HomePageView,
+    PageView,
+    Purchase,
     SearchResultsPageView,
-    SearchResultsClick
+    SearchResultsClick,
+    Err,
+    EmailSignupSuccess
 } from './version2_interfaces';
 
 const isValidLocale = (locale: string): boolean => {
@@ -71,31 +73,42 @@ function isCommonCart(obj: any): obj is AddRemoveCart {
 
 export function classifyJsonObject(obj: any): string {
     // console.log( obj )
-
-    if (isSearchResultsPageView(obj)) {
+    
+    
+    if (isPurchase(obj)) {
+        return "Purchase"
+    }
+    else if (isEmailSignupSuccess(obj)) {
+        return "EmailSignupSuccess"
+    } else if (isSearchResultsPageView(obj)) {
         return "SearchResultsPageView"
     }
-    else if ( isSearchResultsClick(obj)) {
-        return "SearchResultsClick"    
-    } 
+    else if (isErr(obj)) {
+        return "Err"
+    }
+    else if (isSearchResultsClick(obj)) {
+        return "SearchResultsClick"
+    }
+
     else if (isCartPageView(obj)) {
         return "CartPageView"
-    } else if (isCheckoutShippingPageView(obj)) {
+    }
+    else if (isCheckoutShippingPageView(obj)) {
         return "CommonPageView"
-    } else if (isHomePageView(obj)) {
+    }
+    else if (isHomePageView(obj)) {
         return "HomePageView"
-    } else if (isCommonClick(obj)) {
+    }
+    else if (isCommonClick(obj)) {
         return "CommonClick";
-   
-    } else if (isPurchase(obj)) {
-        return "Purchase"
-    } else if (isCommonCart(obj)) {
-
+    }
+    else if (isCommonCart(obj)) {
         return "AddRemoveCart";
-    } else if (isFiltersClick(obj)) {
+    }
+    else if (isFiltersClick(obj)) {
         return "FiltersClick"
-
-    } else {
+    }
+    else {
         return "No_Match";
     }
 }
@@ -216,4 +229,24 @@ function isSearchResultsClick(obj: any): obj is SearchResultsClick {
         'searchTerm' in obj && typeof obj.searchTerm === 'string' &&
         'searchResultsType' in obj && typeof obj.searchResultsType === 'string' &&
         'searchResultsCount' in obj && typeof obj.searchResultsCount === 'number';
+}
+
+
+function isErr(obj: any): obj is Err {
+    return 'errorType' in obj && typeof obj.errorType === 'string' &&
+        'errorMessage' in obj && typeof obj.errorMessage === 'string' &&
+        'errorGuestFacing' in obj && typeof obj.errorGuestFacing === 'string' &&
+        'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language);
+}
+
+function isEmailSignupSuccess(obj: any): obj is EmailSignupSuccess {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'userId' in obj && typeof obj.userId === 'string' &&
+        'userHashedEmail' in obj && typeof obj.userHashedEmail === 'string';
 }

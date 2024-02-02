@@ -120,12 +120,14 @@ export interface CartViewWithProductOutOfStock extends TypeGuestEmail, TypeLocal
 export interface CategoryPageView extends TypeCategoryName, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
 export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypePageName, TypeProduct { }
 export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
-export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
-export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
 //
+export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
+export interface Purchase extends           TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
+//
+
+export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
 export interface SearchResultsClick    extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
 export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch, TypePageName{ }
-export interface Purchase extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
 export interface PageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
 export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
 export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
