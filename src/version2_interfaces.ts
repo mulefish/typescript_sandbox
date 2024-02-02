@@ -42,8 +42,8 @@ type TypeSearch = {
 };
 
 type TypeOrderTotal = {
-    orderTaxTotal: number;
-    orderShippingTotal: number;
+    orderTaxTotal: string;
+    orderShippingTotal: string;
 };
 
 type TypeLink = {
@@ -122,16 +122,13 @@ export interface CheckoutPurchaseCompletePageView extends TypeGuestEmail, TypeLo
 export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage, TypePageName { }
 export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
 export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
+//
 export interface SearchResultsClick extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
 export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeSearch { }
 export interface Purchase extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
 export interface PageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
 export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
-export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
-
-///
 export interface CartPageView extends TypeCart, TypeCartTotalQuantity, TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeProduct { }
-
 export interface FiltersClick extends TypeFilterUniques, TypeGuestEmail, TypeLocaleLanguage { }
 
 

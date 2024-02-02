@@ -69,6 +69,49 @@ const jsons = {
         productPrice: "100.00",
         skuQuantity: 1,
         currency: "USD"
+      },
+      'homePageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Home Page",
+        pageUrl: "https://www.example.com"
+      },
+      'purchase': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        orderTaxTotal: "5.00",
+        orderShippingTotal: "2.50",
+        orderId: "order123",
+        orderRevenue: "100.00",
+        orderPaymentMethod: "Credit Card",
+        orderShippingMethod: "Standard Shipping",
+        orderShippingZipPostalCode: "12345",
+        orderShippingStateProvince: "NY",
+        orderShippingCountry: "USA",
+        orderPromoCode: "DISCOUNT10",
+        productId: "prod123",
+        productName: "Gadget",
+        productSKU: "GADG123",
+        productPrice: "95.00",
+        skuQuantity: 1,
+        currency: "USD",
+        orderDiscount: "10.00",
+        userId: "user123",
+        userHashedEmail: "hashed@example.com"
+      },
+    'searchResultsPageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Search Results",
+        searchTerm: "laptops",
+        searchResultsType: "Electronics",
+        searchResultsCount: 150
       }
       
 }
@@ -113,4 +156,16 @@ test_happyPath(jsons["addCart"], "AddRemoveCart", "AddRemoveCart")
 test_happyPath(jsons['pageView'], "CommonPageView", "CommonPageView")
 test_happyPath(jsons['filtersClick'], "FiltersClick", "FiltersClick")
 test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
+test_happyPath(jsons['homePageView'], "HomePageView", "HomePageView")
+test_happyPath(jsons['purchase'], "Purchase", "Purchase")
+test_happyPath(jsons['searchResultsPageView'], "SearchResultsPageView", "SearchResultsPageView")
+
+
+
+
+
+
+
+
+
 
