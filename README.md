@@ -15,7 +15,7 @@ npm run tdd // test
 npm run server // web server  
 
 # RUN THE SERVER
-CLI: npm run server
+CLI: npm run server   
 Browser: http://localhost:3000/version2.html
 
 # screencap : Good match example
