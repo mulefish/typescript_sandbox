@@ -12,7 +12,10 @@ import {
     SearchResultsClick,
     Err,
     EmailSignupSuccess,
-    CartView
+    CartView,
+    CartViewWithProductOutOfStock,
+    CategoryPageView,
+    CheckoutPurchaseCompletePageView
 } from './version2_interfaces';
 
 const isValidLocale = (locale: string): boolean => {
@@ -73,9 +76,7 @@ function isCommonCart(obj: any): obj is AddRemoveCart {
 
 
 export function classifyJsonObject(obj: any): string {
-    // console.log( obj )
-
-
+    // NOTE: The order of testing MATTERS!
     if (isPurchase(obj)) {
         return "Purchase"
     }
@@ -90,15 +91,23 @@ export function classifyJsonObject(obj: any): string {
     else if (isSearchResultsClick(obj)) {
         return "SearchResultsClick"
     }
+    else if (isCheckoutPurchaseCompletePageView(obj)) {
+        return "CheckoutPurchaseCompletePageView"        
+    }
+    else if (isCheckoutShippingPageView(obj)) {
+        return "CommonPageView"
+    }
     else if (isCartPageView(obj)) {
         return "CartPageView"
     }
+    else if ( isCartViewWithProductOutOfStock(obj)) {
+        return "CartViewWithProductOutOfStock"
+    }
+    else if ( isCategoryPageView(obj)) {
+        return "CategoryPageView"
+    }
     else if (isCartView(obj)) {
         return "CartView"
-    }
-
-    else if (isCheckoutShippingPageView(obj)) {
-        return "CommonPageView"
     }
     else if (isHomePageView(obj)) {
         return "HomePageView"
@@ -117,19 +126,6 @@ export function classifyJsonObject(obj: any): string {
     }
 }
 
-function isCheckoutShippingPageView(obj: any): obj is CommonPageView {
-    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
-        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
-        'locale' in obj && isValidLocale(obj.locale) &&
-        'language' in obj && isValidLanguage(obj.language) &&
-        'pageName' in obj && typeof obj.pageName === 'string' &&
-        'productId' in obj && typeof obj.productId === 'string' &&
-        'productName' in obj && typeof obj.productName === 'string' &&
-        'productSKU' in obj && typeof obj.productSKU === 'string' &&
-        'productPrice' in obj && typeof obj.productPrice === 'string' &&
-        'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
-        'currency' in obj && isValidCurrency(obj.currency);
-}
 
 function isFiltersClick(obj: any): obj is FiltersClick {
     return 'filterType' in obj && typeof obj.filterType === 'string' &&
@@ -271,4 +267,66 @@ function isCartView(obj: any): obj is CartView {
         'productPrice' in obj && isValidMoney(obj.productPrice) &&
         'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
         'currency' in obj && isValidCurrency(obj.currency);
+}
+
+
+function isCartViewWithProductOutOfStock(obj: any): obj is CartViewWithProductOutOfStock {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+           'locale' in obj && isValidLocale(obj.locale) &&
+           'language' in obj && isValidLanguage(obj.language) &&   
+           'productId' in obj && typeof obj.productId === 'string' &&
+           'productName' in obj && typeof obj.productName === 'string' &&
+           'productSKU' in obj && typeof obj.productSKU === 'string' &&
+           'productPrice' in obj && isValidMoney(obj.productPrice) &&
+           'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
+           'currency' in obj && typeof isValidCurrency(obj.currency) &&
+           'productCartOutOfStockStatus' in obj && typeof obj.productCartOutOfStockStatus === 'string';
+}
+
+function isCategoryPageView(obj: any): obj is CategoryPageView {
+    return 'categoryName' in obj && typeof obj.categoryName === 'string' &&
+           'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+           'locale' in obj && isValidLocale(obj.locale) &&
+           'language' in obj && isValidLanguage(obj.language) &&   
+           'pageName' in obj && typeof obj.pageName === 'string' &&
+           'pageUrl' in obj && typeof obj.pageUrl === 'string';
+}
+
+
+function isCheckoutShippingPageView(obj: any): obj is CommonPageView {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'pageName' in obj && typeof obj.pageName === 'string' &&
+        'productId' in obj && typeof obj.productId === 'string' &&
+        'productName' in obj && typeof obj.productName === 'string' &&
+        'productSKU' in obj && typeof obj.productSKU === 'string' &&
+        'productPrice' in obj && typeof obj.productPrice === 'string' &&
+        'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
+        'currency' in obj && isValidCurrency(obj.currency);
+}
+
+
+function isCheckoutPurchaseCompletePageView(obj: any): obj is CheckoutPurchaseCompletePageView {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+           'locale' in obj && isValidLocale(obj.locale) &&
+           'language' in obj && isValidLanguage(obj.language) &&   
+           'orderTaxTotal' in obj && isValidMoney(obj.orderTaxTotal) &&
+           'orderShippingTotal' in obj && isValidMoney(obj.orderShippingTotal) &&
+           
+           'pageName' in obj && typeof obj.pageName === 'string' &&
+
+           'productId' in obj && typeof obj.productId === 'string' &&
+
+
+           'productName' in obj && typeof obj.productName === 'string' &&
+           'productSKU' in obj && typeof obj.productSKU === 'string' &&
+
+           'productPrice' in obj && isValidMoney(obj.productPrice) &&
+           'skuQuantity' in obj && typeof obj.skuQuantity === 'number' &&
+           'currency' in obj && typeof obj.currency === 'string';
 }

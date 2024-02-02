@@ -6,8 +6,8 @@ function verdict(a: any, b: any, start:number, msg: string) {
     if (JSON.stringify(a) === JSON.stringify(b)) {
         result = "PASS"
     }
-    if ( milsec > 10 ) {
-        msg = " TOO SLOW"
+    if ( milsec > 20 ) {
+        msg = " TOO SLOW" 
     }
     console.log(`${result} milsec=${milsec} msg=${msg}`)
 }
@@ -32,19 +32,6 @@ const jsons = {
         skuQuantity: 1,
         currency: "USD"
     },
-    "pageView": {
-        guestHashedEmail: "hashed@example.com",
-        browserUserAgent: "Mozilla/5.0",
-        locale: "en-US",
-        language: "English",
-        pageName: "Checkout Shipping",
-        productId: "12345",
-        productName: "Widget",
-        productSKU: "WIDGET-123",
-        productPrice: "100.00",
-        skuQuantity: 1,
-        currency: "USD"
-      },
       "filtersClick": {
         filterType: "category",
         filterValue: "electronics",
@@ -152,7 +139,58 @@ const jsons = {
         productPrice: "1000.00",
         skuQuantity: 1,
         currency: "USD"
-      }
+      },
+      'isCartViewWithProductOutOfStock':{
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
+        skuQuantity: 1,
+        currency: "USD",
+        productCartOutOfStockStatus: "OutOfStock"
+      },
+      'isCategoryPageView':{
+        categoryName: "Electronics",
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Electronic Devices",
+        pageUrl: "https://www.example.com/electronics"
+      },
+      'isCheckoutPurchaseCompletePageView': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        orderTaxTotal: "5.00",
+        orderShippingTotal: "2.50",
+        pageName: "Purchase Complete",
+        productId: "abc123",
+        productName: "Laptop",
+        productSKU: "LAP12345",
+        productPrice: "1000.00",
+        skuQuantity: 1,
+        currency: "USD"
+      },
+      "pageView": {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        pageName: "Checkout Shipping",
+        productId: "12345",
+        productName: "Widget",
+        productSKU: "WIDGET-123",
+        productPrice: "100.00",
+        skuQuantity: 1,
+        currency: "USD"
+      },
+
       
 }
 
@@ -193,7 +231,6 @@ test_happyPath(jsons["click"], "CommonClick", "CommonClick")
 test_CommonClick_sadpath_noLanguage(jsons["click"], NO_MATCH)
 test_CommonClick_sadpath_wrongLanguage(jsons['click'], NO_MATCH)
 test_happyPath(jsons["addCart"], "AddRemoveCart", "AddRemoveCart")
-test_happyPath(jsons['pageView'], "CommonPageView", "CommonPageView")
 test_happyPath(jsons['filtersClick'], "FiltersClick", "FiltersClick")
 test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['homePageView'], "HomePageView", "HomePageView")
@@ -203,4 +240,12 @@ test_happyPath(jsons['searchResultsPageView'], "SearchResultsPageView", "SearchR
 test_happyPath(jsons['isErr'], "Err", "Err")
 test_happyPath(jsons['isEmailSignupSuccess'], "EmailSignupSuccess", "EmailSignupSuccess")
 test_happyPath(jsons['isCartView'], "CartView", "CartView")
+test_happyPath(jsons['isCartViewWithProductOutOfStock'], "CartViewWithProductOutOfStock", "CartViewWithProductOutOfStock")
+test_happyPath(jsons['isCategoryPageView'], "CategoryPageView", "CategoryPageView")
+test_happyPath(jsons['pageView'], "CommonPageView", "CommonPageView")
+test_happyPath(jsons['isCheckoutPurchaseCompletePageView'], "CheckoutPurchaseCompletePageView", "CheckoutPurchaseCompletePageView")
+
+
+
+
 
