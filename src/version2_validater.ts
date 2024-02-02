@@ -1,5 +1,16 @@
 
-import { CommonClick, AddRemoveCart, CommonPageView, FiltersClick, CartPageView, HomePageView, PageView, Purchase, SearchResultsPageView } from './version2_interfaces';
+import {
+    CommonClick,
+    AddRemoveCart,
+    CommonPageView, 
+    FiltersClick, 
+    CartPageView, 
+    HomePageView, 
+    PageView, 
+    Purchase, 
+    SearchResultsPageView,
+    SearchResultsClick
+} from './version2_interfaces';
 
 const isValidLocale = (locale: string): boolean => {
     const pattern = /^[a-z]{2}-[A-Z]{2}$/;
@@ -61,7 +72,13 @@ function isCommonCart(obj: any): obj is AddRemoveCart {
 export function classifyJsonObject(obj: any): string {
     // console.log( obj )
 
-    if (isCartPageView(obj)) {
+    if (isSearchResultsPageView(obj)) {
+        return "SearchResultsPageView"
+    }
+    else if ( isSearchResultsClick(obj)) {
+        return "SearchResultsClick"    
+    } 
+    else if (isCartPageView(obj)) {
         return "CartPageView"
     } else if (isCheckoutShippingPageView(obj)) {
         return "CommonPageView"
@@ -69,8 +86,7 @@ export function classifyJsonObject(obj: any): string {
         return "HomePageView"
     } else if (isCommonClick(obj)) {
         return "CommonClick";
-    } else if ( isSearchResultsPageView(obj)) {
-        return "SearchResultsPageView"
+   
     } else if (isPurchase(obj)) {
         return "Purchase"
     } else if (isCommonCart(obj)) {
@@ -182,11 +198,22 @@ function isPurchase(obj: any): obj is Purchase {
 
 function isSearchResultsPageView(obj: any): obj is SearchResultsPageView {
     return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
-           'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
-           'locale' in obj && isValidLocale(obj.locale) &&
-           'language' in obj && isValidLanguage(obj.language) &&   
-           'pageName' in obj && typeof obj.pageName === 'string' &&
-           'searchTerm' in obj && typeof obj.searchTerm === 'string' &&
-           'searchResultsType' in obj && typeof obj.searchResultsType === 'string' &&
-           'searchResultsCount' in obj && typeof obj.searchResultsCount === 'number';
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'pageName' in obj && typeof obj.pageName === 'string' &&
+        'searchTerm' in obj && typeof obj.searchTerm === 'string' &&
+        'searchResultsType' in obj && typeof obj.searchResultsType === 'string' &&
+        'searchResultsCount' in obj && typeof obj.searchResultsCount === 'number';
+}
+
+
+function isSearchResultsClick(obj: any): obj is SearchResultsClick {
+    return 'guestHashedEmail' in obj && typeof obj.guestHashedEmail === 'string' &&
+        'browserUserAgent' in obj && typeof obj.browserUserAgent === 'string' &&
+        'locale' in obj && isValidLocale(obj.locale) &&
+        'language' in obj && isValidLanguage(obj.language) &&
+        'searchTerm' in obj && typeof obj.searchTerm === 'string' &&
+        'searchResultsType' in obj && typeof obj.searchResultsType === 'string' &&
+        'searchResultsCount' in obj && typeof obj.searchResultsCount === 'number';
 }

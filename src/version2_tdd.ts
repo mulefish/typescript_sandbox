@@ -112,6 +112,15 @@ const jsons = {
         searchTerm: "laptops",
         searchResultsType: "Electronics",
         searchResultsCount: 150
+      },
+      'searchResultsClick': {
+        guestHashedEmail: "hashed@example.com",
+        browserUserAgent: "Mozilla/5.0",
+        locale: "en-US",
+        language: "English",
+        searchTerm: "smartphones",
+        searchResultsType: "Electronics",
+        searchResultsCount: 200
       }
       
 }
@@ -158,14 +167,6 @@ test_happyPath(jsons['filtersClick'], "FiltersClick", "FiltersClick")
 test_happyPath(jsons['cartPageView'], "CartPageView", "CartPageView")
 test_happyPath(jsons['homePageView'], "HomePageView", "HomePageView")
 test_happyPath(jsons['purchase'], "Purchase", "Purchase")
+test_happyPath(jsons['searchResultsClick'], "SearchResultsClick", "SearchResultsClick")
 test_happyPath(jsons['searchResultsPageView'], "SearchResultsPageView", "SearchResultsPageView")
-
-
-
-
-
-
-
-
-
 

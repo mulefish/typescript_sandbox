@@ -123,8 +123,8 @@ export interface ComponentImpression extends TypeGuestEmail, TypeLocaleLanguage,
 export interface EmailSignupSuccess extends TypeGuestEmail, TypeLocaleLanguage, TypeUserId { }
 export interface Err extends Type, TypeGuestEmail, TypeLocaleLanguage { }
 //
-export interface SearchResultsClick extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
-export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypeSearch { }
+export interface SearchResultsClick    extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch { }
+export interface SearchResultsPageView extends TypeGuestEmail, TypeLocaleLanguage, TypeSearch, TypePageName{ }
 export interface Purchase extends TypeGuestEmail, TypeLocaleLanguage, TypeOrderTotal, TypeProductUniques, TypeUserId { }
 export interface PageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl, TypePageViewUniques { }
 export interface HomePageView extends TypeGuestEmail, TypeLocaleLanguage, TypePageName, TypePageUrl { }
